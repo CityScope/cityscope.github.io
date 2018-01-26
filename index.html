@@ -4,13 +4,13 @@
 <head>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Roboto+Condensed" rel="stylesheet">
 
-    <title>three.js webgl - loaders - OBJ loader</title>
+    <title>CityScope</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <style>
         body {
             font-family: Monospace;
-            background-color: rgb(128, 128, 128);
+            background-color: rgb(0, 0, 0);
             color: #fff;
             margin: 0px;
             overflow: hidden;
@@ -81,12 +81,12 @@
             camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 10000);
             // scene
             scene = new THREE.Scene();
-            var ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
+            var ambientLight = new THREE.AmbientLight(0xcccccc, 0.2);
             scene.add(ambientLight);
             var pointLight = new THREE.PointLight(0xffffff, 0.8);
             camera.add(pointLight);
             scene.add(camera);
-            // texture
+            // loader
             var manager = new THREE.LoadingManager();
             manager.onProgress = function (item, loaded, total) {
                 console.log(item, loaded, total);
@@ -115,9 +115,9 @@
             }, onProgress, onError);
 
             function many(object) {
-                for (let i = 0; i < 500; i++) {
+                for (let i = 0; i < 400; i++) {
                     clone = object.clone();
-                    clone.position.set(rnd(-40, 40), rnd(-40, 40), rnd(-40, 40))
+                    clone.position.set(rnd(-50, 50), rnd(-50, 50), rnd(-50, 50))
 
                     scene.add(clone);
                 }
