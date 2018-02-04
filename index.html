@@ -75,9 +75,14 @@
             mouseY = 0;
         var windowHalfX = window.innerWidth / 2;
         var windowHalfY = window.innerHeight / 2;
+        var pointLight;
 
         init();
         animate();
+
+        function rnd(min, max) {
+            return Math.random() * (max - min) + min;
+        }
 
         function init() {
 
@@ -88,9 +93,11 @@
             scene = new THREE.Scene();
             var ambientLight = new THREE.AmbientLight(0xcccccc, 0.2);
             scene.add(ambientLight);
-            var pointLight = new THREE.PointLight(0xffffff, 0.8);
+            pointLight = new THREE.PointLight(0xffffff, 0.8, 100);
+            pointLight.position.set(0, 0, 0);
             camera.add(pointLight);
             scene.add(camera);
+
             // loader
             var manager = new THREE.LoadingManager();
             manager.onProgress = function (item, loaded, total) {
@@ -123,13 +130,11 @@
                 for (let i = 0; i < 400; i++) {
                     clone = object.clone();
                     clone.position.set(rnd(-50, 50), rnd(-50, 50), rnd(-50, 50))
+                    clone.rotation.set(rnd(-50, 50), rnd(-50, 50), rnd(-50, 50))
+
 
                     scene.add(clone);
                 }
-            }
-
-            function rnd(min, max) {
-                return Math.random() * (max - min) + min;
             }
 
 
@@ -170,8 +175,10 @@
 
             camera.position.x += (mouseX - camera.position.x) * .05;
             camera.position.y += (-mouseY - camera.position.y) * .05;
+
             camera.lookAt(scene.position);
             renderer.render(scene, camera);
+
         }
     </script>
 
