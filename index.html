@@ -21,7 +21,15 @@
             color: #ff00ea;
             font-size: 1em;
             line-height: 1.5em;
+            text-align: center;
         }
+
+        a,
+        a:visited {
+            color: #ff00ea;
+            text-decoration: none;
+        }
+
 
         .center-page {
             left: 0;
@@ -37,10 +45,9 @@
             height: auto;
         }
 
-        a:link,
-        a:hover,
-        a:visited {
-            text-decoration: none;
+        u:hover {
+            text-decoration: none !important;
+            border-bottom: 20px solid #ff00ea80;
         }
     </style>
 </head>
@@ -48,10 +55,16 @@
 <body>
 
     <div id="title" class="center-page">
-        <a href="https://github.com/CityScope">
-            <h1>Here we build
-                <br> CityScope
-            </h1>
+
+        <h1>
+            <u>
+                <a href="https://github.com/CityScope">
+                    here we build CityScope
+                </a>
+            </u>
+        </h1>
+
+
         </a>
         <br>
         <br>
@@ -114,7 +127,7 @@
             material = new THREE.MeshStandardMaterial({
                 color: 'white'
             });
-            var onError = function (xhr) {};
+            var onError = function (xhr) { };
             var loader = new THREE.OBJLoader(manager);
             loader.load('lego.obj', function (object) {
                 object.traverse(function (child) {
