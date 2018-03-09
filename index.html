@@ -139,6 +139,21 @@
                 many(object)
             }, onProgress, onError);
 
+          //--------------------------------------------
+          
+            var logoLoader = new THREE.OBJLoader(manager);
+            loader.load('mlcs.obj', function (object) {
+                object.traverse(function (child) {
+                    if (child instanceof THREE.Mesh) {
+                        child.material = material;
+                    }
+                });
+                // clone = object.clone(); //?
+                object.scale.set(0.25, 0.25, 0.25);
+                many(object)
+            }, onProgress, onError);
+          //-------------------------------------------
+
             function many(object) {
                 for (let i = 0; i < 400; i++) {
                     clone = object.clone();
