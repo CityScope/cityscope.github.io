@@ -140,17 +140,43 @@
             }, onProgress, onError);
 
           //--------------------------------------------
-          
+
+          // test if this is stable!
             var logoLoader = new THREE.OBJLoader(manager);
             loader.load('mlcs.obj', function (object) {
-                object.traverse(function (child) {
-                    if (child instanceof THREE.Mesh) {
-                        child.material = material;
-                    }
-                });
-                // clone = object.clone(); //?
-                object.scale.set(0.25, 0.25, 0.25);
-                many(object)
+              
+              // the mother is the Geometry to accumulate the
+              // clones.
+              var motherGeom = new THREE.Geometry();
+              
+              var mlcsMesh = new THREE.Mesh();
+
+              // still not sure this is the right way
+              // to cast object -> Mesh
+              object.traverse(function (child) {
+                if (child instanceof THREE.Mesh) {
+                  mlcsMesh = child;
+                }
+              });
+
+              // loaded geometry is a BufferedGeometry,
+              // convert to normal Geometry.
+              var mlcsGeom = new THREE.Geometry().fromBufferGeometry(mlcsMesh.geometry);
+              
+              mlcsGeom.scale(0.25, 0.25, 0.25);
+                
+              for (let i=0; i< 400; i++) { 
+                  let clone = mlcsGeom.clone();
+                  clone.translate(rnd(-50, 50), rnd(-50, 50), rnd(-50, 50));
+                  clone.rotateX(rnd(-50, 50));   
+                  clone.rotateY(rnd(-50, 50));
+                  clone.rotateZ(rnd(-50, 50));
+                  motherGeom.merge(clone);
+              }
+
+              let motherMesh = new THREE.Mesh(motherGeom, material);
+              scene.add(motherMesh);
+                
             }, onProgress, onError);
           //-------------------------------------------
 
