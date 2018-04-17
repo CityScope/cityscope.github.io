@@ -5,7 +5,7 @@
 ### Ready to build your own CityScope platform? 
 Most importantly, CityScope is not one tool but a whole slew of tools [Hardware & software] aimed to provide urban modeling and simulation solutions with an emphasis on UI/UX.  
 
-- the [page](https://cityscope.github.io) serves overview of the cityscope platform
+- the [page](https://cityscope.github.io) serves overview of the CityScope platform
 
 - the [wiki](https://github.com/CityScope/cityscope.github.io/wiki) is for high level documentation
  
