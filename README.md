@@ -4,10 +4,10 @@ Cityscope is a set of interconnected tools aimed to provide urban modeling and s
 ### Cityscope schema of tools
 Although each solution may require a different setup or combination of tools, the main Cityscope schema is composed by 4 main modules. Each module can be built with one or more systems.   
 ![alt text](/docs/Cityscope schema.jpg)
-**Scanner:** This module is composed by hardware and software. It scans with a webcam the position of the buildings from a model.
-**Server**: It stores the data read by the scanner. Data can be accessed via API. You can read more in the [CS_CityIO_Backend](https://github.com/CityScope/CS_CityIO_Backend)
-**Model**: Depending on the solution, the nature of the model may vary. The most common is agent-based-model computed with the Gama software.
-**GUI**: The client software displays the output of the model. It projects the result of the model on the table with the helo of a projection. The tools used can vary depending on the nature. (Tools commonly used are processing, Grasshoper, Unity...)
+* **Scanner:** This module is composed by hardware and software. It scans with a webcam the position of the buildings from a model.
+* **Server**: It stores the data read by the scanner. Data can be accessed via API. You can read more in the [CS_CityIO_Backend](https://github.com/CityScope/CS_CityIO_Backend)
+* **Model**: Depending on the solution, the nature of the model may vary. The most common is agent-based-model computed with the Gama software.
+* **GUI**: The client software displays the output of the model. It projects the result of the model on the table with the helo of a projection. The tools used can vary depending on the nature. (Tools commonly used are processing, Grasshoper, Unity...)
 
 ### Ready to build your own CityScope platform? 
 
