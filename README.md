@@ -16,12 +16,12 @@ Most importantly, CityScope is not one tool but a whole slew of tools [Hardware 
 
 For example, if you wish to build a table with Lego grid scanning and project back a visualization onto the table, the following repos will serve you:
 - [building the table's hardware and installation](https://github.com/CityScope/cityscope.github.io/tree/master/CS_Hardware)
+- [CityScopeJS - CityScope webapps](https://github.com/CityScope/CS_cityscopeJS)
 - [projection mapping]( https://github.com/CityScope/CS_prjmapJS) [for web apps, the next two repos has PM internally]
-- scanning and analyzing lego grids:
+- scanning lego grids:
     - In Rhino/Grasshopper: https://github.com/CityScope/CS_Rhino_Grasshopper_Template
     - in Unity3d: https://github.com/CityScope/CS_CityScope_Unity
-    - In Javascript [WIP]: https://github.com/CityScope/CS_cityscopeJS
-connecting scanned Legos to visualization or 3rd party tools for analysis: https://github.com/CityScope/CS_CityIO_Backend
+connecting scanned Legos to visualization or 3rd party tools for analysis: https://github.com/CityScope/CS_CityIO
 
 ----
 This is only one form by which CityScope tools can come together to create a platform! There are many other potential combinations, depending on [3].
