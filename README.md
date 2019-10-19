@@ -33,7 +33,7 @@ For example, if you wish to build a table with Lego grid scanning and project ba
   - [Unity3d](https://github.com/CityScope/CS_CityScope_Unity)
 
 * [CityScopeJS - CityScope web frontend](https://github.com/CityScope/CS_cityscopeJS)
-* [Simple projection mapping](https://github.com/CityScope/CS_prjmapJS) [for web apps, the next two repos has PM internally]
+* [Simple projection mapping for static images/videos](https://github.com/CityScope/CS_cityscopeJS_Projection)
 
 This is only one form by which CityScope tools can come together to create a platform! There are many other potential combinations.
 
