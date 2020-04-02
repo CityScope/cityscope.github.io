@@ -1,3 +1,10 @@
+img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 1em;
+    margin: 1vw;
+}
+
 .result-pane > div {
     right: 0;
     left: 0;
@@ -7,62 +14,6 @@
     padding-left: 15%;
     padding-right: 15%;
     font-size: 1.2em;
-}
-
-body {
-    margin: 0px;
-}
-
-.legotitle {
-    font-family: "Press Start 2P";
-    color: #ff5278;
-    font-size: 1em;
-    line-height: 1.5em;
-    text-align: center;
-}
-
-a,
-a:visited {
-    color: #ff5278;
-    text-decoration: none;
-}
-
-.center-page {
-    left: 0;
-    margin: auto;
-    top: -50vh;
-    width: 100%;
-    z-index: 10;
-    position: relative;
-    margin-bottom: -10em;
-    text-align: center;
-}
-
-.resize {
-    width: 60px;
-    height: auto;
-}
-
-u:hover {
-    text-decoration: none !important;
-    border-bottom: 20px solid #ff5278;
-}
-
-a:link,
-a:visited {
-    text-decoration: none;
-    color: #ff5278;
-}
-a:hover {
-    text-decoration: underline;
-    color: #ff5278;
-}
-
-img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 0.1em;
-    margin: 1vw;
 }
 
 .MuiIconButton-label {

@@ -9,14 +9,12 @@ import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+
 import { MainListItems } from "./menu";
 import Content from "./Content";
 import GitHubIcon from "@material-ui/icons/GitHub";
-import CloudQueueIcon from "@material-ui/icons/CloudQueue";
 
-const drawerWidth = 300;
+const drawerWidth = 200;
 
 const styles = theme => ({
     root: {
@@ -27,31 +25,28 @@ const styles = theme => ({
     toolbar: {
         paddingRight: 24
     },
-    toolbarIcon: {
+
+    CSlogo: {
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
-        padding: "0 5%",
+        width: "2em",
+        borderRadius: "none",
+        height: "auto",
         ...theme.mixins.toolbar
     },
+
     appBar: {
         background: "#1D1F21",
         zIndex: theme.zIndex.drawer + 1,
-        transition: theme.transitions.create(["width", "margin"], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen
-        }),
         color: "#FFF"
     },
+
     appBarShift: {
         background: "#1D1F21",
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(["width", "margin"], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen
-        })
+        marginLeft: drawerWidth
     },
+
     menuButton: {
         marginLeft: 12,
         marginRight: 36
@@ -63,10 +58,12 @@ const styles = theme => ({
 
     title: {
         flexGrow: 1,
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: "lighter"
     },
+
     drawerPaper: {
+        paddingTop: "5em",
         color: "#FFF",
         background: "#1D1F21",
         position: "relative",
@@ -77,17 +74,7 @@ const styles = theme => ({
             duration: theme.transitions.duration.enteringScreen
         })
     },
-    drawerPaperClose: {
-        overflowX: "hidden",
-        transition: theme.transitions.create("width", {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen
-        }),
-        width: theme.spacing() * 7,
-        [theme.breakpoints.up("sm")]: {
-            width: theme.spacing() * 9
-        }
-    },
+
     appBarSpacer: theme.mixins.toolbar,
     content: {
         flexGrow: 1,
@@ -108,15 +95,7 @@ const styles = theme => ({
 
 class Dashboard extends React.Component {
     state = {
-        open: false
-    };
-
-    handleDrawerOpen = () => {
-        this.setState({ open: true });
-    };
-
-    handleDrawerClose = () => {
-        this.setState({ open: false });
+        open: true
     };
 
     render() {
@@ -137,17 +116,6 @@ class Dashboard extends React.Component {
                         disableGutters={!this.state.open}
                         className={classes.toolbar}
                     >
-                        <IconButton
-                            color="inherit"
-                            aria-label="Open drawer"
-                            onClick={this.handleDrawerOpen}
-                            className={classNames(
-                                classes.menuButton,
-                                this.state.open && classes.menuButtonHidden
-                            )}
-                        >
-                            <MenuIcon />
-                        </IconButton>
                         <Typography
                             component="h6"
                             variant="h6"
@@ -155,14 +123,14 @@ class Dashboard extends React.Component {
                             noWrap
                             className={classes.title}
                         >
-                            MIT CityScope Project
+                            MIT CityScope
                         </Typography>
 
                         <IconButton
                             color="inherit"
                             onClick={props =>
                                 window.open(
-                                    "https://github.com/CityScope/CS_cityscopeJS",
+                                    "https://github.com/CityScope",
                                     "_blank"
                                 )
                             }
@@ -170,40 +138,28 @@ class Dashboard extends React.Component {
                             <GitHubIcon />
                         </IconButton>
 
-                        <IconButton
-                            color="inherit"
-                            onClick={props =>
-                                window.open(
-                                    "https://cityio.media.mit.edu",
-                                    "_blank"
-                                )
-                            }
-                        >
-                            <CloudQueueIcon />
+                        <IconButton className={classes.CSlogo}>
+                            <a href="https://www.media.mit.edu/projects/cityscope/overview/">
+                                <img src="./resources/logo.png" alt="" />
+                            </a>
                         </IconButton>
                     </Toolbar>
                 </AppBar>
+
                 <Drawer
                     variant="permanent"
                     classes={{
-                        paper: classNames(
-                            classes.drawerPaper,
-                            !this.state.open && classes.drawerPaperClose
-                        )
+                        paper: classNames(classes.drawerPaper)
                     }}
                     open={this.state.open}
                 >
-                    <div className={classes.toolbarIcon}>
-                        <IconButton onClick={this.handleDrawerClose}>
-                            <ChevronLeftIcon />
-                        </IconButton>
-                    </div>
                     <Divider />
                     <List>
                         <MainListItems />
                     </List>
                     <Divider />
                 </Drawer>
+
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
                     <div className={classes.tableContainer}>

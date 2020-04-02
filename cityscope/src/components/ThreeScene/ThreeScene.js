@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import "./ThreeScene.css";
 import * as THREE from "three";
-
+import { Events, animateScroll as scroll } from "react-scroll";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
+import Arrow from "../Arrow/Arrow";
 
 const style = {
     height: "100vh"
 };
+
 export default class ThreeScene extends Component {
     constructor(props) {
         super(props);
@@ -15,6 +18,13 @@ export default class ThreeScene extends Component {
     }
 
     componentDidMount() {
+        Events.scrollEvent.register("begin", function() {
+            console.log("begin", arguments);
+        });
+        Events.scrollEvent.register("end", function() {
+            console.log("end", arguments);
+        });
+
         this._sceneSetup();
         this._loadOBJmodel();
         this.startAnimationLoop();
@@ -22,6 +32,9 @@ export default class ThreeScene extends Component {
     }
 
     componentWillUnmount() {
+        Events.scrollEvent.remove("begin");
+        Events.scrollEvent.remove("end");
+
         window.cancelAnimationFrame(this.requestID);
         window.removeEventListener("resize", this.handleWindowResize);
     }
@@ -118,24 +131,21 @@ export default class ThreeScene extends Component {
     render() {
         return (
             <React.Fragment>
-                <div style={style} ref={div => (this.mountingDiv = div)}></div>
-                <div id="title" className="center-page">
-                    <h1 className="legotitle">
+                <Arrow />
+                <div className="legotitle">
+                    <h1>
                         <u>
-                            <a href="https://github.com/CityScope">
+                            <a
+                                href="/#"
+                                onClick={() => scroll.scrollToBottom()}
+                            >
                                 here we build CityScope
                             </a>
                         </u>
                     </h1>
-
-                    <a href="https://www.media.mit.edu/projects/cityscope/overview/">
-                        <img
-                            src="./resources/logo.png"
-                            alt=""
-                            className="resize"
-                        />
-                    </a>
                 </div>
+
+                <div style={style} ref={div => (this.mountingDiv = div)}></div>
             </React.Fragment>
         );
     }

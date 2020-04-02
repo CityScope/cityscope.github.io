@@ -6,7 +6,8 @@ export default class App extends Component {
     render() {
         return (
             <React.Fragment>
-                <ThreeScene /> <DocsMinsite />
+                <ThreeScene />
+                <DocsMinsite />
             </React.Fragment>
         );
     }

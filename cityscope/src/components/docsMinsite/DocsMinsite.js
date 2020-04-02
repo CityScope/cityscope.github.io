@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles.css";
+import "./DocsMinsite.css";
 import Dashboard from "./Dashboard";
 import Provider from "./provider";
 
