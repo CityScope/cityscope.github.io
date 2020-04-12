@@ -8,7 +8,7 @@ import HomeIcon from "@material-ui/icons/Home";
 
 function MainListItems() {
     const { setContentUrl } = useContext(AppContext);
-    const changeContentUrl = url => {
+    const changeContentUrl = (url) => {
         setContentUrl(url);
     };
     return (
@@ -22,6 +22,15 @@ function MainListItems() {
                 <ListItemIcon>
                     <HomeIcon />
                 </ListItemIcon>
+                <ListItemText primary="CityScope" />
+            </ListItem>
+
+            <ListItem
+                button
+                onClick={() => {
+                    changeContentUrl("./docs/md/Home.md");
+                }}
+            >
                 <ListItemText primary="CityScope" />
             </ListItem>
         </div>
