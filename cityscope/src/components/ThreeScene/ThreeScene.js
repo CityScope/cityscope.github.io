@@ -6,22 +6,22 @@ import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
 import Arrow from "../Arrow/Arrow";
 
 const style = {
-    height: "100vh"
+    height: "100vh",
 };
 
 export default class ThreeScene extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.count = 500;
-        this.paths = ["./resources/mlcs.obj", "./resources/legoBrick.obj"];
+        this.count = 200;
+        this.paths = ["./resources/mlcs.obj", "./resources/lego.obj"];
     }
 
     componentDidMount() {
-        Events.scrollEvent.register("begin", function() {
+        Events.scrollEvent.register("begin", function () {
             console.log("begin", arguments);
         });
-        Events.scrollEvent.register("end", function() {
+        Events.scrollEvent.register("end", function () {
             console.log("end", arguments);
         });
 
@@ -53,12 +53,11 @@ export default class ThreeScene extends Component {
 
         var ambientLight = new THREE.AmbientLight(0xcccccc, 0.2);
         this.scene.add(ambientLight);
-        let pointLight = new THREE.PointLight(0xffffff, 0.8, 100);
+        let pointLight = new THREE.PointLight(0xffffff, 0.8, 20);
         pointLight.position.set(0, 0, 0);
         this.camera.add(pointLight);
         this.scene.add(this.camera);
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
-        this.renderer.shadowMap.enabled = true;
         this.renderer.setSize(width, height);
         this.mountingDiv.appendChild(this.renderer.domElement);
     };
@@ -68,16 +67,16 @@ export default class ThreeScene extends Component {
         let rnd = this._rnd;
         let scene = this.scene;
         let material = new THREE.MeshStandardMaterial({
-            color: "white"
+            color: "white",
         });
 
         var loader = new OBJLoader();
 
-        this.paths.forEach(URL => {
-            loader.load(URL, function(object) {
+        this.paths.forEach((URL) => {
+            loader.load(URL, function (object) {
                 var wrapperObj = new THREE.Geometry();
                 var objMesh = new THREE.Mesh();
-                object.traverse(function(child) {
+                object.traverse(function (child) {
                     if (child instanceof THREE.Mesh) {
                         objMesh = child;
                     }
@@ -85,10 +84,10 @@ export default class ThreeScene extends Component {
                 var mlcsGeom = new THREE.Geometry().fromBufferGeometry(
                     objMesh.geometry
                 );
-                mlcsGeom.scale(0.25, 0.25, 0.25);
+                mlcsGeom.scale(0.1, 0.1, 0.1);
                 for (let i = 0; i < count; i++) {
                     let clone = mlcsGeom.clone();
-                    clone.translate(rnd(-50, 50), rnd(-50, 50), rnd(-50, 50));
+                    clone.translate(rnd(-10, 10), rnd(-10, 10), rnd(-10, 10));
                     clone.rotateX(rnd(-50, 50));
                     clone.rotateY(rnd(-50, 50));
                     clone.rotateZ(rnd(-50, 50));
@@ -145,7 +144,10 @@ export default class ThreeScene extends Component {
                     </h1>
                 </div>
 
-                <div style={style} ref={div => (this.mountingDiv = div)}></div>
+                <div
+                    style={style}
+                    ref={(div) => (this.mountingDiv = div)}
+                ></div>
             </React.Fragment>
         );
     }
