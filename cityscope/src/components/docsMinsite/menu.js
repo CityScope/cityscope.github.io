@@ -31,7 +31,7 @@ function MainListItems() {
                     changeContentUrl("./docs/md/Home.md");
                 }}
             >
-                <ListItemText primary="CityScope" />
+                <ListItemText primary="Intro" />
             </ListItem>
         </div>
     );

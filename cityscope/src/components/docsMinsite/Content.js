@@ -7,16 +7,16 @@ export default () => {
     const [content, setContent] = useState();
     const { contentUrl } = useContext(AppContext);
     const globalDocsURL =
-        "https://raw.githubusercontent.com/CityScope/cityscope.github.io/master/";
+        "https://raw.githubusercontent.com/CityScope/cityscope.github.io/dev/";
 
     const thisDocURL = globalDocsURL + contentUrl;
 
     useEffect(() => {
         axios
             .get(thisDocURL, {
-                mode: "no-cors"
+                mode: "no-cors",
             })
-            .then(response => {
+            .then((response) => {
                 setContent(response.data);
             });
     }, [thisDocURL]);
@@ -26,7 +26,7 @@ export default () => {
             <ReactMarkdown
                 className="result"
                 source={content}
-                transformImageUri={uri =>
+                transformImageUri={(uri) =>
                     uri.startsWith("http") ? uri : `${globalDocsURL}${uri}`
                 }
             />
