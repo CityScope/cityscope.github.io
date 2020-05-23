@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import ThreeScene from "./components/ThreeScene/ThreeScene";
-import DocsMinsite from "./components/docsMinsite/DocsMinsite";
+import "./components/docsMinsite/DocsMinsite.css";
+import Dashboard from "./components/docsMinsite/Dashboard";
+import Provider from "./components/docsMinsite/provider";
 
 export default class App extends Component {
     render() {
         return (
-            <React.Fragment>
-                <ThreeScene />
-                <DocsMinsite />
-            </React.Fragment>
+            <Provider>
+                <Dashboard />
+            </Provider>
         );
     }
 }

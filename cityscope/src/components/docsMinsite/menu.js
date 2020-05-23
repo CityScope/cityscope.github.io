@@ -25,17 +25,53 @@ function MainListItems() {
                 </ListItemIcon>
                 <ListItemText primary="CityScope" />
             </ListItem>
-
+            {/*  */}
             <ListItem
                 button
                 onClick={() => {
-                    changeContentUrl("./docs/md/Home.md");
+                    changeContentUrl("./docs/md/schema_archive.md");
                 }}
             >
                 <ListItemIcon>
                     <DescriptionIcon />
                 </ListItemIcon>
-                <ListItemText primary="Docs" />
+                <ListItemText primary="(archive) schema" />
+            </ListItem>
+            {/*  */}
+            <ListItem
+                button
+                onClick={() => {
+                    changeContentUrl("./docs/md/specs_archive.md");
+                }}
+            >
+                <ListItemIcon>
+                    <DescriptionIcon />
+                </ListItemIcon>
+                <ListItemText primary="(archive) specs" />
+            </ListItem>
+            {/*  */}
+            <ListItem
+                button
+                onClick={() => {
+                    changeContentUrl("./docs/md/licences.md");
+                }}
+            >
+                <ListItemIcon>
+                    <DescriptionIcon />
+                </ListItemIcon>
+                <ListItemText primary="licences" />
+            </ListItem>
+            {/*  */}
+            <ListItem
+                button
+                onClick={() => {
+                    changeContentUrl("./docs/md/opensource.md");
+                }}
+            >
+                <ListItemIcon>
+                    <DescriptionIcon />
+                </ListItemIcon>
+                <ListItemText primary="open-source" />
             </ListItem>
         </div>
     );

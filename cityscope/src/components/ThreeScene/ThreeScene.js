@@ -3,10 +3,10 @@ import "./ThreeScene.css";
 import * as THREE from "three";
 import { Events, animateScroll as scroll } from "react-scroll";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
-import Arrow from "../Arrow/Arrow";
 
 const style = {
-    height: "100vh",
+    height: "80vh",
+    width: "80vw",
 };
 
 export default class ThreeScene extends Component {
@@ -130,18 +130,8 @@ export default class ThreeScene extends Component {
     render() {
         return (
             <React.Fragment>
-                <Arrow />
                 <div className="legotitle">
-                    <h1>
-                        <u>
-                            <a
-                                href="/#"
-                                onClick={() => scroll.scrollToBottom()}
-                            >
-                                here we build CityScope
-                            </a>
-                        </u>
-                    </h1>
+                    <h1>here we build CityScope</h1>
                 </div>
 
                 <div

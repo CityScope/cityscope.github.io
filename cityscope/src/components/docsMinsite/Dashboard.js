@@ -13,17 +13,18 @@ import IconButton from "@material-ui/core/IconButton";
 import { MainListItems } from "./menu";
 import Content from "./Content";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import Info from "./Info";
 
 const drawerWidth = 200;
 
-const styles = theme => ({
+const styles = (theme) => ({
     root: {
         display: "flex",
         background: "#1D1F21",
-        color: "#FFF"
+        color: "#FFF",
     },
     toolbar: {
-        paddingRight: 24
+        paddingRight: 24,
     },
 
     CSlogo: {
@@ -33,33 +34,33 @@ const styles = theme => ({
         width: "2em",
         borderRadius: "none",
         height: "auto",
-        ...theme.mixins.toolbar
+        ...theme.mixins.toolbar,
     },
 
     appBar: {
         background: "#1D1F21",
         zIndex: theme.zIndex.drawer + 1,
-        color: "#FFF"
+        color: "#FFF",
     },
 
     appBarShift: {
         background: "#1D1F21",
-        marginLeft: drawerWidth
+        marginLeft: drawerWidth,
     },
 
     menuButton: {
         marginLeft: 12,
-        marginRight: 36
+        marginRight: 36,
     },
 
     menuButtonHidden: {
-        display: "none"
+        display: "none",
     },
 
     title: {
         flexGrow: 1,
         fontSize: 25,
-        fontWeight: "lighter"
+        fontWeight: "lighter",
     },
 
     drawerPaper: {
@@ -71,8 +72,8 @@ const styles = theme => ({
         width: drawerWidth,
         transition: theme.transitions.create("width", {
             easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen
-        })
+            duration: theme.transitions.duration.enteringScreen,
+        }),
     },
 
     appBarSpacer: theme.mixins.toolbar,
@@ -80,22 +81,22 @@ const styles = theme => ({
         flexGrow: 1,
         padding: theme.spacing() * 3,
         height: "100vh",
-        overflow: "auto"
+        overflow: "auto",
     },
     chartContainer: {
-        marginLeft: -22
+        marginLeft: -22,
     },
     tableContainer: {
-        height: 320
+        height: 320,
     },
     h5: {
-        marginBottom: theme.spacing() * 2
-    }
+        marginBottom: theme.spacing() * 2,
+    },
 });
 
 class Dashboard extends React.Component {
     state = {
-        open: true
+        open: true,
     };
 
     render() {
@@ -104,6 +105,8 @@ class Dashboard extends React.Component {
         return (
             <div className={classes.root}>
                 <CssBaseline />
+
+                <Info />
 
                 <AppBar
                     position="fixed"
@@ -128,7 +131,7 @@ class Dashboard extends React.Component {
 
                         <IconButton
                             color="inherit"
-                            onClick={props =>
+                            onClick={(props) =>
                                 window.open(
                                     "https://github.com/CityScope",
                                     "_blank"
@@ -149,7 +152,7 @@ class Dashboard extends React.Component {
                 <Drawer
                     variant="permanent"
                     classes={{
-                        paper: classNames(classes.drawerPaper)
+                        paper: classNames(classes.drawerPaper),
                     }}
                     open={this.state.open}
                 >
