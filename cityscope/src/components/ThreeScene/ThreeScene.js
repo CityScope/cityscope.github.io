@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./ThreeScene.css";
 import * as THREE from "three";
-import { Events, animateScroll as scroll } from "react-scroll";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
 
 const style = {
@@ -18,13 +17,6 @@ export default class ThreeScene extends Component {
     }
 
     componentDidMount() {
-        Events.scrollEvent.register("begin", function () {
-            console.log("begin", arguments);
-        });
-        Events.scrollEvent.register("end", function () {
-            console.log("end", arguments);
-        });
-
         this._sceneSetup();
         this._loadOBJmodel();
         this.startAnimationLoop();
@@ -32,9 +24,6 @@ export default class ThreeScene extends Component {
     }
 
     componentWillUnmount() {
-        Events.scrollEvent.remove("begin");
-        Events.scrollEvent.remove("end");
-
         window.cancelAnimationFrame(this.requestID);
         window.removeEventListener("resize", this.handleWindowResize);
     }

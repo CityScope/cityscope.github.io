@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Info() {
+export default function ThreeModal() {
     const classes = useStyles();
 
     const [open, setOpen] = React.useState(true);
