@@ -1,7 +1,22 @@
- the system is still heavily in rapid development, so
+# CityScope Hardware
+
+### This repo contains manuals, guides and specifications for building CityScope TUI platforms at different scales.
+
+CityScope hardware setup for CS+HCU FindingPlaces project, 2016
+
+![Ariel Noyman HCU](/docs/figures/arielnoymanHCU.png "HCU FindingPlaces")
+
+CityScope generic module [Design: [Karthik Patanjali](http://www.karthikpatanjali.com/#/cityscope-table/), 2015]
+
+![Karthik_Patanjali](/docs/figures/KarthikPatanjali.png "Karthik_Patanjali")
+
+# Specs
+
+The system is still in rapid development, so
 the specification is very flexible. At this point the main components of a cityscope table will be:
 
 ## Hardware
+
 1. PC (preferably windows, since some software is win only)
 
 2. [Table](https://github.com/CityScope/cityscope.github.io/tree/master/CS_Hardware)
@@ -17,16 +32,21 @@ the specification is very flexible. At this point the main components of a citys
 6. (Internet connection)
 
 ## Software
+
 CityScope is composed of multiple software
+
 1. Scanner (gets input from camera converts it to information that can be parsed through various simulation)
-currently this functionality is provided using one of below:
-  - Rhinoceros 3D (win only)
-  - Unity game engine
-  - Browser, JavaScript
+   currently this functionality is provided using one of below:
+
+-   Rhinoceros 3D (win only)
+-   Unity game engine
+-   Browser, JavaScript
+
 2. Simulation / Visualization
-this differs largely on what to simulate, or the research question on focus.
-In fact, some CityScope table has multiple simulations and visualizations living together.
-  - [Gama](http://gama-platform.org/) for agent based simulation
-  - General Simulation and visualization 
-    - Rhinoceros 3D / Grasshopper
-    - Unity game engine
+   this differs largely on what to simulate, or the research question on focus.
+   In fact, some CityScope table has multiple simulations and visualizations living together.
+
+-   [Gama](http://gama-platform.org/) for agent based simulation
+-   General Simulation and visualization
+    -   Rhinoceros 3D / Grasshopper
+    -   Unity game engine
