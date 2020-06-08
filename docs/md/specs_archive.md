@@ -1,6 +1,6 @@
 # CityScope Hardware
 
-### This repo contains manuals, guides and specifications for building CityScope TUI platforms at different scales.
+### `CityScope_CAD.zip` file contain cutting lists and CAD sketches to produce a generic CityScope scanning table.
 
 CityScope hardware setup for CS+HCU FindingPlaces project, 2016
 

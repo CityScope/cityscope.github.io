@@ -3,6 +3,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DescriptionIcon from "@material-ui/icons/Description";
+import Divider from "@material-ui/core/Divider";
 
 import { AppContext } from "./provider";
 import HomeIcon from "@material-ui/icons/Home";
@@ -23,8 +24,17 @@ function MainListItems() {
                 <ListItemIcon>
                     <HomeIcon />
                 </ListItemIcon>
-                <ListItemText primary="CityScope" />
+                <ListItemText primary="Home" />
             </ListItem>
+
+            <Divider />
+
+            <ListItem>
+                <ListItemText>
+                    <h2>General</h2>
+                </ListItemText>
+            </ListItem>
+
             {/*  */}
             <ListItem
                 button
@@ -72,6 +82,29 @@ function MainListItems() {
                     <DescriptionIcon />
                 </ListItemIcon>
                 <ListItemText primary="open-source" />
+            </ListItem>
+
+            <Divider />
+
+            <ListItem>
+                <ListItemText>
+                    <h2>CityScopeJS</h2>
+                </ListItemText>
+            </ListItem>
+
+            {/*  */}
+            <ListItem
+                button
+                onClick={() => {
+                    changeContentUrl(
+                        "https://raw.githubusercontent.com/CityScope/CS_cityscopeJS/master/README.md"
+                    );
+                }}
+            >
+                <ListItemIcon>
+                    <DescriptionIcon />
+                </ListItemIcon>
+                <ListItemText primary="CSjs" />
             </ListItem>
         </div>
     );

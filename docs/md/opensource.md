@@ -1,6 +1,4 @@
--> in the perspective of cities, and urban planning
-
-# Why Open Source??
+# Why Open Source?
 
 -   we see a lot of cities opening up their data
 -   yet when we say data driven planning, opening the tools is as important as the data, to show how we can collect, analyze, visualize (give insights) and even govern to tackle [wicked problems](https://en.wikipedia.org/wiki/Wicked_problem)
