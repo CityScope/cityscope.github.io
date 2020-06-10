@@ -1,7 +1,6 @@
 {
     "name": "cityscope",
     "version": "0.1.0",
-    "private": true,
     "homepage": "https://cityscope.media.mit.edu/",
     "dependencies": {
         "@material-ui/core": "^4.9.8",
