@@ -6,11 +6,11 @@ README.md
 
 CityScope (CS) Types are the basic land-use units that can be combined and arranged to represent urban environments within the CityScope platform. CS Types are assigned to each cell within the grid that is overlaid over the urban area of enquiry. The grid provides unified segmentation, scale and a level of abstraction that can be easily manipulated by users. Each cell within the grid can either be fixed or dynamic, depending on project limits; fixed cells within a grid are not intended to be changeable by users; dynamic cells are intended for manipulation to interact with the CityScope platform. Interactions take place as users manipulate Types within the project area. 
 
-![CS BOXEL](BOXEL.jpg)
+![CS BOXEL. Photo: Ariel Noyman](/dev/docs/figures/BOXEL_Scheme.jpg)
 
 CS Types are represented by tiles that are set within the cells of a grid. At minimum, each tile must include land use and economic activity data, which can be complemented with additional dimensions of information that are assigned by users during the commissioning of a table. Additional information that can be assigned to a CS Type includes, but is not limited to, the acoustic characteristics, demographic information, and/or the utilization of a type. 
 
-![LEGO 3Types](200713_3Types3.jpg)
+![CS LEGO 3Types. Photo: Luis Alonso](/dev/docs/figures/Types_examples.jpg)
 
 To standardize the analysis and visualization modules, the CityScope platform uses unified data classifications to define each Type. CS Types may differ from project to project depending on the programming and intervention under investigation. To standardize how CS Types are defined, the classification uses unified dictionary of attributes that include, but are not limited to, land-use and economic activity, as defined by the American Planning Association, Land-Based Classification Standards or LBCS, and the North American Industry Classification System or NAICS, for the associated economic activity. Additional characteristics can be added when project specific modules are being used. 
 
@@ -51,7 +51,7 @@ As an example exercise we will define 3 of the most popular CS types: A simple s
 No floors, 100% of park activity. NAICS mapping = 712190. LBCS mapping = 7000
 
 
-![LEGO Park3](Park3.jpg)
+![CS LEGO Park. Photo: Luis Alonso](/dev/docs/figures/Type_Park.jpg)
 
 ```json
 {
@@ -80,7 +80,7 @@ No floors, 100% of park activity. NAICS mapping = 712190. LBCS mapping = 7000
 
 Individual housing building, 100% of Residential activities. NAICS mapping = null (Since NAICS is the "standard used by Federal statistical agencies in classifying business establishments"; housing doesn't have a correlation in NAICS). LBCS mapping = 1100
 
-![LEGO House3](House3.jpg)
+![CS LEGO House. Photo: Luis Alonso](/dev/docs/figures/Type_House.jpg)
 
 ```json
 {
@@ -105,7 +105,7 @@ Office and Shopping building: 80% of Financial activities, 20% of Restaurant and
 * The lower 20% of floors are devoted to a mix of shopping 75% and restaurants 25%
 * The upper 80% of floors and is devoted to a mix of finance 50% and Public Administration 50%
 
-![LEGO Office3](Office3.jpg)
+![CS LEGO Office. Photo: Luis Alonso](/dev/docs/figures/Type_Office.jpg)
 
 ```json
 {
@@ -272,7 +272,7 @@ Mapping Correlation between LBCS and NAICS: Here is a shortcut for finding the c
 Below are some more examples of CityScope types. These can be copy and pasted or modified for use in different CityScope projects:
 A single grid-cell may contain multiple LBCS and multiple NAICS on different floors or even on the same floor. Therefore, the value of each attribute is formatted as a list of objects. The object in the list represents a grouping of floors starting with the lower-most floors. Each object contains the mix of uses within that floor-group. For example, the following represents the NAICS attribute for a grid cell where:
  
-![LEGO Ariel](Ariel.jpg)
+![CS LEGO scheme. Photo: Ariel Noyman](/dev/docs/figures/Type_scheme.jpg)
 
 ## Mixed use building
 
