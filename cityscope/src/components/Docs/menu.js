@@ -26,12 +26,80 @@ function MainListItems() {
                 </ListItemIcon>
                 <ListItemText primary="Home" />
             </ListItem>
+            {/*  */}
 
             <Divider />
+            {/*  */}
 
             <ListItem>
                 <ListItemText>
-                    <h2>General</h2>
+                    <h2>CityScope</h2>
+                </ListItemText>
+            </ListItem>
+
+            {/*  */}
+
+            <ListItem
+                button
+                onClick={() => {
+                    changeContentUrl("./docs/md/types.md");
+                }}
+            >
+                <ListItemIcon>
+                    <DescriptionIcon />
+                </ListItemIcon>
+                <ListItemText primary="CS Types" />
+            </ListItem>
+
+            {/*  */}
+
+            <ListItem
+                button
+                onClick={() => {
+                    changeContentUrl(
+                        "https://raw.githubusercontent.com/CityScope/CS_cityscopeJS/master/README.md"
+                    );
+                }}
+            >
+                <ListItemIcon>
+                    <DescriptionIcon />
+                </ListItemIcon>
+                <ListItemText primary="CityScope Frontend" />
+            </ListItem>
+
+            {/*  */}
+
+            <ListItem
+                button
+                onClick={() => {
+                    changeContentUrl("./docs/md/licences.md");
+                }}
+            >
+                <ListItemIcon>
+                    <DescriptionIcon />
+                </ListItemIcon>
+                <ListItemText primary="licences" />
+            </ListItem>
+
+            {/*  */}
+
+            <ListItem
+                button
+                onClick={() => {
+                    changeContentUrl("./docs/md/opensource.md");
+                }}
+            >
+                <ListItemIcon>
+                    <DescriptionIcon />
+                </ListItemIcon>
+                <ListItemText primary="open-source" />
+            </ListItem>
+
+            <Divider />
+            {/*  */}
+            <ListItem>
+                <ListItemText>
+                    <h2>Archive</h2>
                 </ListItemText>
             </ListItem>
 
@@ -60,52 +128,6 @@ function MainListItems() {
                 <ListItemText primary="(archive) specs" />
             </ListItem>
             {/*  */}
-            <ListItem
-                button
-                onClick={() => {
-                    changeContentUrl("./docs/md/licences.md");
-                }}
-            >
-                <ListItemIcon>
-                    <DescriptionIcon />
-                </ListItemIcon>
-                <ListItemText primary="licences" />
-            </ListItem>
-            {/*  */}
-            <ListItem
-                button
-                onClick={() => {
-                    changeContentUrl("./docs/md/opensource.md");
-                }}
-            >
-                <ListItemIcon>
-                    <DescriptionIcon />
-                </ListItemIcon>
-                <ListItemText primary="open-source" />
-            </ListItem>
-
-            <Divider />
-
-            <ListItem>
-                <ListItemText>
-                    <h2>CityScopeJS</h2>
-                </ListItemText>
-            </ListItem>
-
-            {/*  */}
-            <ListItem
-                button
-                onClick={() => {
-                    changeContentUrl(
-                        "https://raw.githubusercontent.com/CityScope/CS_cityscopeJS/master/README.md"
-                    );
-                }}
-            >
-                <ListItemIcon>
-                    <DescriptionIcon />
-                </ListItemIcon>
-                <ListItemText primary="CSjs" />
-            </ListItem>
         </div>
     );
 }
