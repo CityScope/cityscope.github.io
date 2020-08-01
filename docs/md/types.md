@@ -1,4 +1,4 @@
-#CityScope Types System
+# CityScope Types System
 
 CityScope (CS) Types are the basic land-use units that can be combined and arranged to represent urban environments within the CityScope platform. CS Types are assigned to each cell within the grid that is overlaid over the urban area of enquiry. The grid provides unified segmentation, scale and a level of abstraction that can be easily manipulated by users. Each cell within the grid can either be fixed or dynamic, depending on project limits; fixed cells within a grid are not intended to be changeable by users; dynamic cells are intended for manipulation to interact with the CityScope platform. Interactions take place as users manipulate Types within the project area.
 
