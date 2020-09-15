@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import "./components/Docs/DocsMinsite.css";
-import Docs from "./components/Docs/Docs";
-import Provider from "./components/Docs/provider";
+import "./style.css";
+import CSdocs from "./components/CSdocs";
+import Provider from "./components/provider";
 
 export default class App extends Component {
     render() {
         return (
             <Provider>
-                <Docs />
+                <CSdocs />
             </Provider>
         );
     }

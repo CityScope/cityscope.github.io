@@ -30,9 +30,9 @@ img {
 pre {
     border-radius: 1vw;
     padding: 1vw;
-    box-shadow: 0vw 0vw 0.5vw 0.05vw #ff5278;
+    box-shadow: 0vw 0vw 1vw 0.1vw #ff5278;
     overflow-x: auto;
-    background-color: #212325;
+    background-color: #000000;
 }
 
 blockquote {

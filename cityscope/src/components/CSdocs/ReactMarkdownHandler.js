@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
 import ReactMarkdown from "react-markdown";
-import { AppContext } from "./provider";
+import { AppContext } from "../provider";
 import axios from "axios";
 
-export default () => {
+export default function ReactMarkdownHandler() {
     const [content, setContent] = useState();
     const { contentUrl: thisContentURL } = useContext(AppContext);
 
@@ -45,4 +45,4 @@ export default () => {
             />
         </div>
     );
-};
+}

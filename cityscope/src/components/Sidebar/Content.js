@@ -4,11 +4,10 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DescriptionIcon from "@material-ui/icons/Description";
 import Divider from "@material-ui/core/Divider";
-
-import { AppContext } from "./provider";
 import HomeIcon from "@material-ui/icons/Home";
+import { AppContext } from "../provider";
 
-function MainListItems() {
+export function Content() {
     const { setContentUrl } = useContext(AppContext);
     const changeContentUrl = (url) => {
         setContentUrl(url);
@@ -131,5 +130,3 @@ function MainListItems() {
         </div>
     );
 }
-
-export { MainListItems };

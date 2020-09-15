@@ -5,22 +5,13 @@
     "dependencies": {
         "@material-ui/core": "^4.9.8",
         "@material-ui/icons": "^4.9.1",
-        "@testing-library/jest-dom": "^4.2.4",
-        "@testing-library/react": "^9.5.0",
-        "@testing-library/user-event": "^7.2.1",
         "axios": "^0.19.2",
-        "classnames": "^2.2.6",
         "gh-pages": "^2.2.0",
-        "i": "^0.3.6",
-        "node-sass": "^4.13.1",
-        "npm": "^6.14.4",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-markdown": "^4.3.1",
-        "react-scripts": "3.4.1",
-        "react-scroll": "^1.7.16",
-        "three": "^0.115.0",
-        "three-orbitcontrols": "^2.110.3"
+        "react-scripts": "^3.4.3",
+        "three": "^0.115.0"
     },
     "scripts": {
         "predeploy": "yarn run build",
