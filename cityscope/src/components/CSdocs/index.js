@@ -43,7 +43,7 @@ export default function CSdocs() {
                     [classes.appBarShift]: open,
                 })}
             >
-                <ThreeModal />
+                {/* <ThreeModal /> */}
                 <Toolbar>
                     <IconButton
                         color="inherit"

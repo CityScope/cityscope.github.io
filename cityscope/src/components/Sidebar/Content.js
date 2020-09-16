@@ -3,7 +3,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DescriptionIcon from "@material-ui/icons/Description";
-import Divider from "@material-ui/core/Divider";
+import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import HomeIcon from "@material-ui/icons/Home";
 import { AppContext } from "../provider";
 
@@ -12,121 +12,85 @@ export function Content() {
     const changeContentUrl = (url) => {
         setContentUrl(url);
     };
-    return (
-        <div>
-            <ListItem
-                button
-                onClick={() => {
-                    changeContentUrl("README.md");
-                }}
-            >
-                <ListItemIcon>
-                    <HomeIcon />
-                </ListItemIcon>
-                <ListItemText primary="Home" />
-            </ListItem>
-            {/*  */}
 
-            <Divider />
-            {/*  */}
+    const contentObj = {
+        home: { url: "README.md", icon: <HomeIcon />, slug: "Home" },
+        types: {
+            url: "./docs/md/types.md",
+            icon: <DescriptionIcon />,
+            slug: "CS Types",
+        },
+        frontend: {
+            url:
+                "https://raw.githubusercontent.com/CityScope/CS_cityscopeJS/master/README.md",
+            icon: <DescriptionIcon />,
+            slug: "CityScopeJS",
+        },
 
-            <ListItem>
-                <ListItemText>
-                    <h2>CityScope</h2>
-                </ListItemText>
-            </ListItem>
+        brix_index: {
+            url:
+                "https://raw.githubusercontent.com/CityScope/CS_Brix/master/docs/markdown/index.md",
+            icon: <DescriptionIcon />,
+            slug: "brix: intro",
+        },
+        brix_class: {
+            url:
+                "https://raw.githubusercontent.com/CityScope/CS_Brix/master/docs/markdown/classes.md",
+            icon: <DescriptionIcon />,
+            slug: "brix: class",
+        },
 
-            {/*  */}
+        brix_tutorial: {
+            url:
+                "https://raw.githubusercontent.com/CityScope/CS_Brix/master/docs/markdown/tutorial.md",
+            icon: <DescriptionIcon />,
+            slug: "brix: tutorial",
+        },
 
-            <ListItem
-                button
-                onClick={() => {
-                    changeContentUrl("./docs/md/types.md");
-                }}
-            >
-                <ListItemIcon>
-                    <DescriptionIcon />
-                </ListItemIcon>
-                <ListItemText primary="CS Types" />
-            </ListItem>
+        licence: {
+            url: "./docs/md/licences.md",
+            icon: <DescriptionIcon />,
+            slug: "licences",
+        },
+        oss: {
+            url: "./docs/md/opensource.md",
+            icon: <DescriptionIcon />,
+            slug: "open-source",
+        },
+        schema: {
+            url: "./docs/md/schema_archive.md",
+            icon: <ErrorOutlineIcon />,
+            slug: "(archive) schema",
+        },
+        specs: {
+            url: "./docs/md/specs_archive.md",
+            icon: <ErrorOutlineIcon />,
+            slug: "(archive) specs",
+        },
+    };
 
-            {/*  */}
+    let contentItem = () => {
+        let contentItemsArray = [];
+        for (const conObj in contentObj) {
+            const url = contentObj[conObj].url;
+            const slug = contentObj[conObj].slug;
+            const icon = contentObj[conObj].icon;
+            let item = (
+                <ListItem
+                    key={conObj}
+                    button
+                    onClick={() => {
+                        changeContentUrl(url);
+                    }}
+                >
+                    <ListItemIcon>{icon}</ListItemIcon>
+                    <ListItemText primary={slug} />
+                </ListItem>
+            );
 
-            <ListItem
-                button
-                onClick={() => {
-                    changeContentUrl(
-                        "https://raw.githubusercontent.com/CityScope/CS_cityscopeJS/master/README.md"
-                    );
-                }}
-            >
-                <ListItemIcon>
-                    <DescriptionIcon />
-                </ListItemIcon>
-                <ListItemText primary="CityScope Frontend" />
-            </ListItem>
-
-            {/*  */}
-
-            <ListItem
-                button
-                onClick={() => {
-                    changeContentUrl("./docs/md/licences.md");
-                }}
-            >
-                <ListItemIcon>
-                    <DescriptionIcon />
-                </ListItemIcon>
-                <ListItemText primary="licences" />
-            </ListItem>
-
-            {/*  */}
-
-            <ListItem
-                button
-                onClick={() => {
-                    changeContentUrl("./docs/md/opensource.md");
-                }}
-            >
-                <ListItemIcon>
-                    <DescriptionIcon />
-                </ListItemIcon>
-                <ListItemText primary="open-source" />
-            </ListItem>
-
-            <Divider />
-            {/*  */}
-            <ListItem>
-                <ListItemText>
-                    <h2>Archive</h2>
-                </ListItemText>
-            </ListItem>
-
-            {/*  */}
-            <ListItem
-                button
-                onClick={() => {
-                    changeContentUrl("./docs/md/schema_archive.md");
-                }}
-            >
-                <ListItemIcon>
-                    <DescriptionIcon />
-                </ListItemIcon>
-                <ListItemText primary="(archive) schema" />
-            </ListItem>
-            {/*  */}
-            <ListItem
-                button
-                onClick={() => {
-                    changeContentUrl("./docs/md/specs_archive.md");
-                }}
-            >
-                <ListItemIcon>
-                    <DescriptionIcon />
-                </ListItemIcon>
-                <ListItemText primary="(archive) specs" />
-            </ListItem>
-            {/*  */}
-        </div>
-    );
+            contentItemsArray.push(item);
+        }
+        return contentItemsArray;
+    };
+    return <div>{contentItem()}</div>;
 }
