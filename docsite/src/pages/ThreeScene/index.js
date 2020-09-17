@@ -1,19 +1,18 @@
 import React, { Component } from "react";
-import "./ThreeScene.css";
 import * as THREE from "three";
-import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 
 const style = {
-    height: "80vh",
-    width: "80vw",
+    height: "100vh",
+    width: "100vw",
 };
 
 export default class ThreeScene extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {};
-        this.count = 200;
-        this.paths = ["./resources/mlcs.obj", "./resources/lego.obj"];
+        this.count = 100;
+        this.paths = ["./models/mlcs.obj", "./models/lego.obj"];
     }
 
     componentDidMount() {

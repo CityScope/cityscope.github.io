@@ -1,14 +1,18 @@
-# CityScope Hardware
+---
+id: Specs
+---
+
+## CityScope Hardware
 
 ### `CityScope_CAD.zip` file contain cutting lists and CAD sketches to produce a generic CityScope scanning table.
 
 CityScope hardware setup for CS+HCU FindingPlaces project, 2016
 
-![Ariel Noyman HCU](/docs/figures/arielnoymanHCU.png "HCU FindingPlaces")
+![Ariel Noyman HCU](img/arielnoymanHCU.png "HCU FindingPlaces")
 
 CityScope generic module [Design: [Karthik Patanjali](http://www.karthikpatanjali.com/#/cityscope-table/), 2015]
 
-![Karthik_Patanjali](/docs/figures/KarthikPatanjali.png "Karthik_Patanjali")
+![Karthik_Patanjali](img/KarthikPatanjali.png "Karthik_Patanjali")
 
 # Specs
 
