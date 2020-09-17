@@ -1,5 +1,5 @@
 module.exports = {
-    title: "MIT CityScope",
+    title: "Here We Build CityScope",
     tagline: "Urban Modelling & Simulation",
     url: "https://www.media.mit.edu/projects/cityscope/overview/",
     baseUrl: "/",

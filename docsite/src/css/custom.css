@@ -7,19 +7,137 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
-  --ifm-code-font-size: 95%;
+    --ifm-color-primary: #ff5278;
+    --ifm-color-primary-dark: #ff305e;
+    --ifm-color-primary-darker: #ff1f51;
+    --ifm-color-primary-darkest: #ec0034;
+    --ifm-color-primary-light: #ff7492;
+    --ifm-color-primary-lighter: #ff859f;
+    --ifm-color-primary-lightest: #ffb7c7;
+    --ifm-code-font-size: 95%;
 }
 
 .docusaurus-highlight-code-line {
-  background-color: rgb(72, 77, 91);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
+    background-color: rgb(72, 77, 91);
+    display: block;
+    margin: 0 calc(-1 * var(--ifm-pre-padding));
+    padding: 0 var(--ifm-pre-padding);
+}
+
+/**
+imported from old site 
+*/
+
+body {
+    margin: 0px;
+}
+
+.legotitle {
+    font-family: "Press Start 2P";
+    color: #ff5278;
+    font-size: 0.5em;
+    line-height: 3em;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: 50% 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+a,
+a:visited {
+    color: #ff5278;
+    text-decoration: none;
+}
+
+u:hover {
+    text-decoration: none !important;
+    border-bottom: 20px solid #ff5278;
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #ff5278;
+}
+a:hover {
+    text-decoration: underline;
+    color: #ff5278;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 1em;
+    margin: 1vw;
+}
+
+.result-pane > div {
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: auto;
+    padding: 2vh;
+    padding-left: 15%;
+    padding-right: 15%;
+    font-size: 1.2em;
+    max-width: 1500px;
+}
+
+.MuiIconButton-label {
+    color: rgb(255, 255, 255);
+}
+
+.MuiListSubheader-root {
+    color: rgb(255, 255, 255) !important;
+    font-weight: lighter !important;
+    font-size: 1.5em !important;
+}
+
+pre {
+    border-radius: 1vw;
+    padding: 1vw;
+    box-shadow: 0vw 0vw 1vw 0.1vw #ff5278;
+    overflow-x: auto;
+    background-color: #000000;
+}
+
+blockquote {
+    margin: 0;
+    padding-left: 3em;
+    border-left: 0.5em;
+}
+
+.MuiListItemIcon-root {
+    color: #fff !important;
+}
+
+/* Scrool Bar */
+/* width */
+::-webkit-scrollbar {
+    width: 0.5px;
+    height: 0.5em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 0.5em;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-track {
+    margin: 1em;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(100, 100, 100);
+    border-radius: 10px;
+    background-clip: padding-box;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #808080;
 }

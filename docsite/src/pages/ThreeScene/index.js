@@ -116,17 +116,6 @@ export default class ThreeScene extends Component {
     };
 
     render() {
-        return (
-            <React.Fragment>
-                <div className="legotitle">
-                    <h1>here we build CityScope</h1>
-                </div>
-
-                <div
-                    style={style}
-                    ref={(div) => (this.mountingDiv = div)}
-                ></div>
-            </React.Fragment>
-        );
+        return <div style={style} ref={(div) => (this.mountingDiv = div)} />;
     }
 }
