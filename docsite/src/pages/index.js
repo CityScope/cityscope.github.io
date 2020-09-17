@@ -15,25 +15,21 @@ function Home() {
             title={`${siteConfig.title}`}
             description="MIT CityScope project"
         >
-            <header className={clsx("hero hero--primary", styles.heroBanner)}>
-                <div className="container">
-                    <h1 className="hero__title">{siteConfig.title}</h1>
-                    <p className="hero__subtitle">{siteConfig.tagline}</p>
-                    <div className={styles.buttons}>
-                        <Link
-                            className={clsx(
-                                "button button--outline button--secondary button--lg",
-                                styles.getStarted
-                            )}
-                            to={useBaseUrl("docs/")}
-                        >
-                            go to docs
-                        </Link>
-                    </div>
+            <div className="container">
+                <div className={(styles.buttons, "fixedCenterPosition")}>
+                    <Link
+                        className={clsx(
+                            "button button--outline button--secondary button--lg",
+                            styles.getStarted
+                        )}
+                        to={useBaseUrl("docs/")}
+                    >
+                        <h1 className="legotitle">
+                            {siteConfig.title}
+                        </h1>
+                    </Link>
                 </div>
-            </header>
-
-        
+            </div>
             <ThreeScene />
         </Layout>
     );

@@ -1,7 +1,8 @@
 module.exports = {
     someSidebar: {
-        About: ["Introduction", "Docs Development"],
-        "CityScope data": ["CityScope Types System"],
-        Archive: ["Schema", "Specs"],
+        About: ["general/Introduction", "general/Docs Development"],
+        "CityScope data": ["data/CityScope Types System"],
+        Frontend: ["frontend/CityScopeJS"],
+        Archive: ["archive/Schema", "archive/Specs"],
     },
 };

@@ -1,12 +1,12 @@
 module.exports = {
     title: "Here We Build CityScope",
     tagline: "Urban Modelling & Simulation",
-    url: "https://www.media.mit.edu/projects/cityscope/overview/",
+    url: "https://cityscope.media.mit.edu",
     baseUrl: "/",
     onBrokenLinks: "throw",
     favicon: "img/favicon.ico",
-    organizationName: "MIT City Science", // Usually your GitHub org/user name.
-    projectName: "MIT CityScope", // Usually your repo name.
+    organizationName: "CityScope", // Usually your GitHub org/user name.
+    projectName: "cityscope.github.io", // Usually your repo name.
     themeConfig: {
         navbar: {
             title: "MIT CityScope",
@@ -30,7 +30,11 @@ module.exports = {
             ],
         },
         footer: {
-            style: "dark",
+            logo: {
+                alt: "Logo",
+                src: "img/ML_logo_sml.png",
+                href: "https://github.com/CityScope",
+            },
             copyright: `Copyright © ${new Date().getFullYear()} CityScope, MIT City Science`,
         },
     },
