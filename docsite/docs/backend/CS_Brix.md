@@ -26,6 +26,14 @@ What are the types of indicators you can build? Indicators can be anything that 
 
 * Simulation: These type of indicators are also displayed on the table but they are the result of an agent based simulation and are therefore displayed as a dynamic layer. They change over time like a short movie. These are not yet supported by this library.
 
+## Installation
+
+Brix is now on pip. Just do:
+
+```
+pip install cs-brix
+```
+
 ## Tutorial
 
 ### Basics of building a CityScope indicator
