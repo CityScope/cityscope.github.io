@@ -1,14 +1,17 @@
 module.exports = {
-    someSidebar: {
+    sidebar: {
         About: [
             "general/Introduction",
+            "general/CityScopeJS Ecosystem",
+            "general/Guideline",
             "general/Docs Development",
             "general/Open Source",
             "general/License",
         ],
-        "CityScope data": ["data/CityScope Types System"],
+
         Frontend: ["frontend/CityScopeJS"],
-        Backend: ["backend/brix/Brix"],
+        Interfaces: ["TUI/TUI Introduction", "TUI/CityScoPy"],
+        Modules: ["modules/CityScope Types System", "modules/brix/Brix"],
         Archive: ["archive/Schema", "archive/Specs"],
     },
 };
