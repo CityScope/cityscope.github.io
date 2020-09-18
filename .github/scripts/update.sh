@@ -7,14 +7,21 @@
 #   * REPO_NAME_OWNER: Organization or user where the repo lives (e.g. CityScope)
 #   * REPO_NAME: Name of repo (e.g. CS_Brix)
 #   * DESTINATION_PATH: Path in local repo where to store the md file (it defaults to docsite/docs/general)
-#   * SOURCE_FILE_PATH: Path to fetch, including name of file, from remote repo (it defaults to README.md)
+#   * SOURCE_FILE_PATH: Path to fetch, including name of file, from remote repo (it defaults to master/README.md)
 
-echo "Copying docs from: ${2}/${4:-README.md}"
+echo "Copying docs from: ${2}/${4:-master/README.md}"
 echo "Copying docs into: ${3:-docsite/docs/general}/${2}.md"
+echo "Downloading file at https://raw.githubusercontent.com/${1}/${2}/${4:-master/README.md}"
 mkdir -p ${3:-docsite/docs/general}/
-curl -o ${3:-docsite/docs/general}/${2}_raw.md https://github.com/${1}/${2}/blob/master/${4:-README.md}
+curl -o ${3:-docsite/docs/general}/${2}_raw.md https://raw.githubusercontent.com/${1}/${2}/${4:-master/README.md}
+head ${3:-docsite/docs/general}/${2}_raw.md
 touch ${3:-docsite/docs/general}/${2}_id.md
-printf "---\nid: ${2}\n---\n\n" > ${3:-docsite/docs/general}/${2}_id.md
-cat ${3:-docsite/docs/general}/${2}_id.md ${3:-docsite/docs/general}/${2}_raw.md > ${3:-docsite/docs}/${2}/${2}.md
+echo "---" >> ${3:-docsite/docs/general}/${2}_id.md
+echo "id: ${2}" >> ${3:-docsite/docs/general}/${2}_id.md
+echo "---" >> ${3:-docsite/docs/general}/${2}_id.md
+head ${3:-docsite/docs/general}/${2}_id.md
+cat ${3:-docsite/docs/general}/${2}_id.md ${3:-docsite/docs/general}/${2}_raw.md > ${3:-docsite/docs}/${2}.md
+head ${3:-docsite/docs}/${2}.md
+ls -la ${3:-docsite/docs/general}/
 rm ${3:-docsite/docs/general}/${2}_id.md
 rm ${3:-docsite/docs/general}/${2}_raw.md
