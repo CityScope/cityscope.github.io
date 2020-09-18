@@ -18,9 +18,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Update CS_Brix
-        run: bash .github/scripts/update.sh CityScope CS_Brix docsite/docs/backend docs-pages/docs/markdown/docusaurus.md 
+        run: bash .github/scripts/update.sh CityScope CS_Brix docsite/docs/modules docs-pages/docs/markdown/docusaurus.md 
       - name: Update CS_Proxymix
-        run: bash .github/scripts/update.sh wiki/CityScope CS_Proxymix docsite/docs/backend Home.md
+        run: bash .github/scripts/update.sh wiki/CityScope CS_Proxymix docsite/docs/modules Home.md
       # SYNTAX TO ADD REPOS
       # - name: Update REPO_NAME
         # run: bash .github/scripts/update.sh REPO_NAME_OWNER REPO_NAME DESTINATION_PATH(Defaults to docsite/docs/general) PATH_TO_FILE(Defaults to README.md)
