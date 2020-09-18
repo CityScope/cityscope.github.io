@@ -3,7 +3,7 @@ id: CS_Brix
 ---
 # Brix
 
-Brix is a python library for CityScope modules which handles communication with City I/O.
+Brix is a python library for CityScope modules which handles communication with [City I/O](http://cityio.media.mit.edu/).
 
 Full documentation can be found [here](https://cityscope.media.mit.edu/CS_Brix/).
 
