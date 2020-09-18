@@ -6,14 +6,14 @@
 # Run as: update.sh REPO_NAME_OWNER REPO_NAME (DESTINATION_PATH) (SOURCE_FILE_PATH)
 #   * REPO_NAME_OWNER: Organization or user where the repo lives (e.g. CityScope)
 #   * REPO_NAME: Name of repo (e.g. CS_Brix)
-#   * DESTINATION_PATH: Path in local repo where to store the md file (it defaults to docsite/docs/modules)
 #   * SOURCE_FILE_PATH: Path to fetch, including name of file, from remote repo (it defaults to master/README.md)
+#   * DESTINATION_PATH: Path in local repo where to store the md file (it defaults to docsite/docs/modules)
 
 REPO_NAME_OWNER=${1}
 REPO_NAME=${2}
 REPO_LABEL=${REPO_NAME#"CS_"}
-DESTINATION_PATH=${3:-docsite/docs/modules}/${REPO_LABEL}
-SOURCE_FILE_PATH=${4:-master/README.md}
+SOURCE_FILE_PATH=${3:-master/README.md}
+DESTINATION_PATH=${4:-docsite/docs/modules}/${REPO_LABEL}
 echo "Copying docs from: ${REPO_NAME}/${SOURCE_FILE_PATH}"
 echo "Copying docs into: ${DESTINATION_PATH}/${REPO_LABEL}.md"
 echo "Downloading file at https://raw.githubusercontent.com/${REPO_NAME_OWNER}/${REPO_NAME}/${SOURCE_FILE_PATH}"

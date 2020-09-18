@@ -18,12 +18,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Update CS_Brix
-        run: bash .github/scripts/update.sh CityScope CS_Brix docsite/docs/modules docs-pages/docs/markdown/docusaurus.md 
+        run: bash .github/scripts/update.sh CityScope CS_Brix docs-pages/docs/markdown/docusaurus.md docsite/docs/modules
       - name: Update CS_Proxymix
-        run: bash .github/scripts/update.sh wiki/CityScope CS_Proxymix docsite/docs/modules Home.md
+        run: bash .github/scripts/update.sh wiki/CityScope CS_Proxymix Home.md docsite/docs/modules
       # SYNTAX TO ADD REPOS
       # - name: Update REPO_NAME
-        # run: bash .github/scripts/update.sh REPO_NAME_OWNER REPO_NAME DESTINATION_PATH(Defaults to docsite/docs/general) PATH_TO_FILE(Defaults to README.md)
+        # run: bash .github/scripts/update.sh REPO_NAME_OWNER REPO_NAME PATH_TO_FILE(Defaults to README.md) DESTINATION_PATH(Defaults to docsite/docs/modules)
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
         with:
