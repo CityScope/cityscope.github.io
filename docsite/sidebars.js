@@ -11,7 +11,7 @@ module.exports = {
 
         Frontend: ["frontend/CityScopeJS"],
         Interfaces: ["TUI/TUI Introduction", "TUI/CityScoPy"],
-        Modules: ["modules/CityScope Types System", "modules/brix/Brix"],
+        Modules: ["modules/CityScope Types System", "modules/Brix/Brix"],
         Archive: ["archive/Schema", "archive/Specs"],
     },
 };
