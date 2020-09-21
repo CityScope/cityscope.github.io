@@ -12,7 +12,7 @@
 REPO_NAME_OWNER=${1}
 REPO_NAME=${2}
 REPO_LABEL=${REPO_NAME#"CS_"}
-DESTINATION_PATH=${3:-docsite/docs/modules}/${REPO_LABEL}
+DESTINATION_PATH=${3:-docsite/docs/general}/${REPO_LABEL}
 shift
 shift 
 shift
@@ -35,18 +35,22 @@ mkdir -p ${DESTINATION_PATH}/
 for SFP in $SOURCE_FILE_PATH
 do
 echo "Downloading file at https://raw.githubusercontent.com/${REPO_NAME_OWNER}/${REPO_NAME}/${SFP}"
-curl -o ${DESTINATION_PATH}/${SFP}_raw.md https://raw.githubusercontent.com/${REPO_NAME_OWNER}/${REPO_NAME}/${SFP}
+curl -o ${DESTINATION_PATH}/${SFP////_}_raw.md https://raw.githubusercontent.com/${REPO_NAME_OWNER}/${REPO_NAME}/${SFP}
 done
+
 touch ${DESTINATION_PATH}/${REPO_LABEL}_id.md
 echo "---" >> ${DESTINATION_PATH}/${REPO_LABEL}_id.md
 echo "id: ${REPO_LABEL}" >> ${DESTINATION_PATH}/${REPO_LABEL}_id.md
 echo "---" >> ${DESTINATION_PATH}/${REPO_LABEL}_id.md
+
+rm -f ${DESTINATION_PATH}/${REPO_LABEL}.md
 touch ${DESTINATION_PATH}/${REPO_LABEL}.md
+
 cat ${DESTINATION_PATH}/${REPO_LABEL}_id.md >> ${DESTINATION_PATH}/${REPO_LABEL}.md
 rm ${DESTINATION_PATH}/${REPO_LABEL}_id.md
 for SFP in $SOURCE_FILE_PATH
 do
-cat ${DESTINATION_PATH}/${SFP}_raw.md >> ${DESTINATION_PATH}/${REPO_LABEL}.md
+cat ${DESTINATION_PATH}/${SFP////_}_raw.md >> ${DESTINATION_PATH}/${REPO_LABEL}.md
 echo "" >> ${DESTINATION_PATH}/${REPO_LABEL}.md
-rm ${DESTINATION_PATH}/${SFP}_raw.md
+rm ${DESTINATION_PATH}/${SFP////_}_raw.md
 done
