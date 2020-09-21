@@ -44,11 +44,14 @@ module.exports = {
             {
                 docs: {
                     sidebarPath: require.resolve("./sidebars.js"),
-                    editUrl: "https://github.com/CityScope/cityscope.github.io",
+                    editUrl: 
+                    "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/"
+                    // "https://github.com/CityScope/cityscope.github.io",
                 },
                 theme: {
                     customCss: require.resolve("./src/css/custom.css"),
                 },
+
             },
         ],
     ],
