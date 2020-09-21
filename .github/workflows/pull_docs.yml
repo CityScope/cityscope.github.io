@@ -25,7 +25,7 @@ jobs:
         # run: bash .github/scripts/update.sh wiki/CityScope CS_Proxymix docsite/docs/modules
       # SYNTAX TO ADD REPOS
       # - name: Update REPO_NAME
-        # run: bash .github/scripts/update.sh REPO_NAME_OWNER REPO_NAME PATH_TO_FILE(Defaults to README.md) DESTINATION_PATH(Defaults to docsite/docs/modules)
+        # run: bash .github/scripts/update.sh REPO_NAME_OWNER REPO_NAME DESTINATION_PATH(Defaults to docsite/docs/modules) PATH_TO_FILE(Defaults to README.md or to Home.md if its a wiki) 
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
         with:
