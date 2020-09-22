@@ -19,8 +19,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Update CS_Brix
         run: bash .github/scripts/update.sh CityScope CS_Brix docsite/docs/modules docs-pages/docs/markdown/docusaurus.md
-      # - name: Update CS_CityIO
-        # run: bash .github/scripts/update.sh wiki/CityScope CS_CityIO docsite/docs/backend Home.md API.md Client-Examples.md
+      - name: Update CS_CityIO
+        run: bash .github/scripts/update.sh CityScope CS_CityIO docsite/docs/backend docs/cityio_documentation.md
       # - name: Update CS_Proxymix
         # run: bash .github/scripts/update.sh wiki/CityScope CS_Proxymix docsite/docs/modules
       # SYNTAX TO ADD REPOS
