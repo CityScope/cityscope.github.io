@@ -63,7 +63,7 @@ cityscopy = Cityscopy(CITYSCOPY_SETTINGS_PATH)
 
 ##### main scanning and sending method
 
-Scanner will detect colors in arrays of 2d-pixel arrays. Than, these color arrays will be compared to list of `tags` attribute of a given `__settings__.json` file. Then the tool will return a list of `type` and `rotation` for each of the scanned arrays. This list is then converted to cityIO acceptable JSON format and can be sent using POST request.
+Scanner will detect colors in arrays of 2d-pixel arrays. Then, these color arrays will be compared to list of `tags` attribute of a given `__settings__.json` file. Then the tool will return a list of `type` and `rotation` for each of the scanned arrays. This list is then converted to cityIO acceptable JSON format and can be sent using POST request.
 
 ##### options in `__settings__.json`
 
@@ -75,6 +75,7 @@ Scanner will detect colors in arrays of 2d-pixel arrays. Than, these color array
         "rotation": ["0", "1", "2", "3"], // default rotations (0, 90, 180, 270)
         "nrows": 10, // number of columns to scan
         "ncols": 10, // number of rows to scan
+        "cell_gap": 10, // spacing between grid fields when using physical grid
         "camId": 0, // openCV will pick `camID` camera (usually 0)
         "interval": 250, // in ms, how many time should this send the packet
         "gui": true, // toggle GUI display
