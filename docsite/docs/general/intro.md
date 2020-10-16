@@ -3,13 +3,15 @@ id: Introduction
 slug: /
 ---
 
-## MIT CityScope
-
 ![CityScope in Andorra. Photo: Ariel Noyman](img/cs_an.jpg)
 
 ### What is CityScope?
 
 CityScope is a project conducted at the MIT Media Lab City Science group. It includes a slew of tangible and digital platforms dedicated to solving spatial design and urban planning challenges. The tools range from simulations that quantify the impact of disruptive interventions in cities to community engagement systems. We develop and deploy these tools around the world and maintain free and open-source community for the majority of our work.
+
+## CityScope Ecosystem
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/o71Ab4cJ1uA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 This [website](https://cityscope.github.io) serves documentation for the CityScope project.
 
