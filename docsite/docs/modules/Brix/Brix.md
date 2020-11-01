@@ -128,7 +128,7 @@ Note that if you define `viz_type` in the return dictionary of `return_indicator
 
 ### Deploy your indicator
 
-Finally, once you have build a series of indicators, the right way to deploy them is to use the `brix.Handler` class. A `brix.Handler` object should be the go-to connection to the table and will handle all possible exceptions. The two most important methods are `brix.Handler.add_indicators()` which takes a list of `brix.Indicator` objects and connects them to the table, and `brix.Handler.listen()` that is a method that runs continuously waiting for updates in the CityScope table. The example below assumes you have already defined indicators named Density, Diversity and Proximity in a file named `myindicators.py`.
+Finally, once you have build a series of indicators, the right way to deploy them is to use the `brix.Handler` class. A `brix.Handler` object should be the go-to connection to the table and will handle all possible exceptions. The two most important methods are `brix.Handler.add_indicators()` which takes a list of `brix.Indicator` objects and connects them to the table, and `brix.Handler.listen()` that is a method that runs continuously waiting for updates in the CityScope table. This method creates its own thread by default, to free up the main thread in case the user needs to connect to other tables. The example below assumes you have already defined indicators named Density, Diversity and Proximity in a file named `myindicators.py`.
 
 ```
 from brix import Handler
@@ -232,6 +232,19 @@ Prints the front end url for the table.
 Clears all indicators from the table.
 
 
+#### property daemon()
+A boolean value indicating whether this thread is a daemon thread.
+
+This must be set before start() is called, otherwise RuntimeError is
+raised. Its initial value is inherited from the creating thread; the
+main thread is not a daemon thread and therefore all threads created in
+the main thread default to daemon = False.
+
+The entire Python program exits when only daemon threads are left.
+
+
+#### getName()
+
 #### get_geogrid_data(include_geometries=False, with_properties=False, as_df=False)
 Returns the geogrid data from:
 [http://cityio.media.mit.edu/api/table/table_name/GEOGRIDDATA](http://cityio.media.mit.edu/api/table/table_name/GEOGRIDDATA)
@@ -306,6 +319,14 @@ Returns the current values of numeric indicators. Used for developing a composit
 Gets table properties. This info can also be accessed through `brix.Handler.get_geogrid_props()`.
 
 
+#### property ident()
+Thread identifier of this thread or None if it has not been started.
+
+This is a nonzero integer. See the get_ident() function. Thread
+identifiers may be recycled when a thread exits and another thread is
+created. The identifier is available even after the thread has exited.
+
+
 #### indicator(name)
 Returns the `brix.Indicator` with the given name.
 
@@ -328,6 +349,46 @@ Returns the `brix.Indicator` with the given name.
 
 
 
+#### isAlive()
+Return whether the thread is alive.
+
+This method is deprecated, use is_alive() instead.
+
+
+#### isDaemon()
+
+#### is_alive()
+Return whether the thread is alive.
+
+This method returns True just before the run() method starts until just
+after the run() method terminates. The module function enumerate()
+returns a list of all alive threads.
+
+
+#### join(timeout=None)
+Wait until the thread terminates.
+
+This blocks the calling thread until the thread whose join() method is
+called terminates – either normally or through an unhandled exception
+or until the optional timeout occurs.
+
+When the timeout argument is present and not None, it should be a
+floating point number specifying a timeout for the operation in seconds
+(or fractions thereof). As join() always returns None, you must call
+is_alive() after join() to decide whether a timeout happened – if the
+thread is still alive, the join() call timed out.
+
+When the timeout argument is not present or None, the operation will
+block until the thread terminates.
+
+A thread can be join()ed many times.
+
+join() raises a RuntimeError if an attempt is made to join the current
+thread as that would cause a deadlock. It is also an error to join() a
+thread before it has been started and attempts to do so raises the same
+exception.
+
+
 #### list_indicators()
 Returns list of all indicator names.
 
@@ -344,20 +405,41 @@ Returns list of all indicator names.
 
 
 
-#### listen(showFront=True, append=False)
-Listen for changes in the table’s geogrid and update all indicators accordingly.
+#### listen(new_thread=True, showFront=True, append=False)
+Listens for changes in the table’s geogrid and update all indicators accordingly.
 You can use the update_package method to see the object that will be posted to the table.
 This method starts with an update before listening.
+This runs in a separate thread by default.
 
 
 * **Parameters**
 
     
+    * **new_thread** (boolean, defaults to True.) – If True it will run in a separate thread, freeing up the main thread for other tables.
+    We recommend setting this to False when debugging, to avoid needed to recreate the object.
+
+
     * **showFront** (boolean, defaults to True) – If True it will open the front-end URL in a webbrowser at start.
+    Only works if new_tread=False.
 
 
     * **append** (boolean, defaults to False) – If True it will append the new indicators to whatever is already there.
+    This option will be deprecated soon. We recommend not using it unless strictly necessary.
 
+
+
+#### property name()
+A string used for identification purposes only.
+
+It has no semantics. Multiple threads may be given the same name. The
+initial name is set by the constructor.
+
+
+#### property native_id()
+Native integral thread ID of this thread, or None if it has not been started.
+
+This is a non-negative integer. See the get_native_id() function.
+This represents the Thread ID as reported by the kernel.
 
 
 #### perform_update(grid_hash_id=None, append=True)
@@ -401,6 +483,11 @@ Returns the value returned by `brix.Indicator.return_indicator()` function of th
 See also `brix.Handler.previous_indicators()` and `brix.Handler.previous_access()`.
 
 
+#### run()
+Run method to be called by `Thread.start()`.
+It runs `Handler._listen()`.
+
+
 #### see_current(indicator_type='numeric')
 Returns the current values of the indicators posted for the table.
 
@@ -421,6 +508,20 @@ Returns the current values of the indicators posted for the table.
 
     dict
 
+
+
+#### setDaemon(daemonic)
+
+#### setName(name)
+
+#### start()
+Start the thread’s activity.
+
+It must be called at most once per thread object. It arranges for the
+object’s run() method to be invoked in a separate thread of control.
+
+This method will raise a RuntimeError if called more than once on the
+same thread object.
 
 
 #### test_indicators()
@@ -465,7 +566,14 @@ Returns the geogrid data from the linked table. Function mainly used for develop
 
 * **Parameters**
 
-    **as_df** (boolean, defaults to False) – If True it will return data as a pandas.DataFrame.
+    
+    * **as_df** (boolean, defaults to False) – If True it will return data as a pandas.DataFrame.
+
+
+    * **include_geometries** (boolean, defaults to `brix.Indicator.requires_geometry`) – If True, it will override the default parameter of the Indicator.
+
+
+    * **with_properties** (boolean, defaults to `brix.Indicator.requires_geogrid_props`) – If True, it will override the default parameter of the Indicator.
 
 
 
@@ -542,7 +650,14 @@ Returns the geogrid data from the linked table. Function mainly used for develop
 
 * **Parameters**
 
-    **as_df** (boolean, defaults to False) – If True it will return data as a pandas.DataFrame.
+    
+    * **as_df** (boolean, defaults to False) – If True it will return data as a pandas.DataFrame.
+
+
+    * **include_geometries** (boolean, defaults to `brix.Indicator.requires_geometry`) – If True, it will override the default parameter of the Indicator.
+
+
+    * **with_properties** (boolean, defaults to `brix.Indicator.requires_geogrid_props`) – If True, it will override the default parameter of the Indicator.
 
 
 
