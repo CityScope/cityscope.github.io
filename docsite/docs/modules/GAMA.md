@@ -1,5 +1,5 @@
 ---
-id: Simulation_GAMA
+id: GAMA
 ---
 Agent-Based Model developped in the [CityScience](https://www.media.mit.edu/groups/city-science/overview/) group using [Gama Platform](https://gama-platform.github.io/) and integrated in [CityScope](https://www.media.mit.edu/projects/cityscope/overview/)
 
