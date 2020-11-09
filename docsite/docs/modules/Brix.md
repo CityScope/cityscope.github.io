@@ -1,13 +1,11 @@
 ---
 id: Brix
 ---
-# Brix
-
 Brix is a python library for CityScope modules which handles communication with [City I/O](http://cityio.media.mit.edu/).
 
 Full documentation can be found [here](https://cityscope.media.mit.edu/CS_Brix/).
 
-## Introduction
+# Introduction
 
 What is this library for? If you have never heard of a CityScope before, you might want to stop reading and learn about them [here](https://cityscope.media.mit.edu/). CityScope is an awesome way to interact, explore, and co-create urban interventions in a way that can be accessed by multiple people with different background. If you know what they are, please keep reading.
 
@@ -26,7 +24,7 @@ What are the types of indicators you can build? Indicators can be anything that 
 
 * Simulation: These type of indicators are also displayed on the table but they are the result of an agent based simulation and are therefore displayed as a dynamic layer. They change over time like a short movie. These are not yet supported by this library.
 
-## Installation
+# Installation
 
 Brix is now on pip. Just do:
 
@@ -34,9 +32,9 @@ Brix is now on pip. Just do:
 pip install cs-brix
 ```
 
-## Tutorial
+# Tutorial
 
-### Basics of building a CityScope indicator
+## Basics of building a CityScope indicator
 
 Let’s get to it. First, what table are you building for? If you don’t have a specific table, that is totally okay and you can create one [here](https://cityscope.media.mit.edu/CS_cityscopeJS/). Note: by the time you read this, CityScope might pose some limitations on new projects (`tables`). Please follow instructions in the link above.
 For this tutorial, we crated one called `dungeonmaster`.
@@ -72,7 +70,7 @@ class MyIndicator(Indicator):
                 return 1
 ```
 
-### Let’s talk data (input)
+## Let’s talk data (input)
 
 What is `geogrid_data`?
 Every time we create a CityScope table, we define a regularly spaced grid which is overlaid on the city district we’re modelling. These grid cells are the basic unit of analysis for the CityScope modules. Every grid cell has properties such as the `Type` which represents the land use and `Height` which represents the number of floors. These data are dynamic and are updated each time a user interacts with the CityScope table, experimenting with the spatial organisation of land uses and infrastructure. These dynamic data are stored the variable geogrid_data. This is a list of ojects: one for each grid cell in the CityScope table. The contents of each object really depends on the specific table you are building for and on the properties assigned to your indicator. There are two options that will control what geogrid_data contains which are: `brix.Indicator.requires_geometry` and `brix.Indicator.requires_geogrid_props`. These two properties are set to `False` by default, but you can change them inside the `brix.Indicator.setup()` function depending on the needs of your indicator.
@@ -93,7 +91,7 @@ If you are testing and are curious how `geogrid_data` would look like if you set
 I.get_geogrid_data(include_geometries=True)
 ```
 
-### Build and test your indicator (output)
+## Build and test your indicator (output)
 
 This library ensures that you can focus on what you do best: writing a kick ass `brix.Indicator.return_indicator()` function that will make everyone’s urban planning life better.
 
@@ -126,7 +124,7 @@ Note that if you define `viz_type` in the return dictionary of `return_indicator
 ]
 ```
 
-### Deploy your indicator
+## Deploy your indicator
 
 Finally, once you have build a series of indicators, the right way to deploy them is to use the `brix.Handler` class. A `brix.Handler` object should be the go-to connection to the table and will handle all possible exceptions. The two most important methods are `brix.Handler.add_indicators()` which takes a list of `brix.Indicator` objects and connects them to the table, and `brix.Handler.listen()` that is a method that runs continuously waiting for updates in the CityScope table. This method creates its own thread by default, to free up the main thread in case the user needs to connect to other tables. The example below assumes you have already defined indicators named Density, Diversity and Proximity in a file named `myindicators.py`.
 
@@ -484,8 +482,8 @@ See also `brix.Handler.previous_indicators()` and `brix.Handler.previous_access(
 
 
 #### run()
-Run method to be called by `Thread.start()`.
-It runs `Handler._listen()`.
+Run method to be called by `threading.Thread.start()`.
+It runs `brix.Handler._listen()`.
 
 
 #### see_current(indicator_type='numeric')
