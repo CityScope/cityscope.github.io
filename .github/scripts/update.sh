@@ -28,7 +28,7 @@ while getopts ":o:r:d:s:l:" opt; do
 done
 
 REPO_LABEL=${REPO_LABEL:-${REPO_NAME#"CS_"}}
-DESTINATION_PATH=${DESTINATION_PATH:-docsite/docs/general}/${REPO_LABEL}
+DESTINATION_PATH=${DESTINATION_PATH:-docsite/docs/general}
 if [[ "${REPO_NAME_OWNER#"wiki/"}" != "$REPO_NAME_OWNER" ]]; then
 SOURCE_FILE_PATH=${SOURCE_FILE_PATH:-Home.md}
 else
