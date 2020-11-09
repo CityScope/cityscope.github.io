@@ -18,11 +18,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Update CS_Brix
-        run: bash .github/scripts/update.sh CityScope CS_Brix docsite/docs/modules docs-pages/docs/markdown/docusaurus.md
+        run: bash .github/scripts/update.sh -o CityScope -r CS_Brix -d docsite/docs/modules -s docs-pages/docs/markdown/docusaurus.md
       - name: Update CS_GAMABrix
-        run: bash .github/scripts/update.sh CityScope CS_Simulation_GAMA docsite/docs/modules master/CS_CityScope_GAMA/models/cityIO/README.md
+        run: bash .github/scripts/update.sh -o CityScope -r CS_Simulation_GAMA -d docsite/docs/modules -s master/CS_CityScope_GAMA/models/cityIO/README.md -l GAMA
       - name: Update CS_CityIO
-        run: bash .github/scripts/update.sh CityScope CS_CityIO docsite/docs/backend docs/cityio_documentation.md
+        run: bash .github/scripts/update.sh -o CityScope -r CS_CityIO -d docsite/docs/backend -s docs/cityio_documentation.md
       # - name: Update CS_Proxymix
         # run: bash .github/scripts/update.sh wiki/CityScope CS_Proxymix docsite/docs/modules
       # SYNTAX TO ADD REPOS

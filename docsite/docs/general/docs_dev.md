@@ -22,12 +22,12 @@ To add your repository to this documentation site, link the markdown files by ed
 
 ```
   - name: Update REPO_NAME
-    run: bash .github/scripts/update.sh REPO_NAME_OWNER REPO_NAME DESTINATION_PATH PATH_TO_FILE
+    run: bash .github/scripts/update.sh -o REPO_NAME_OWNER -r REPO_NAME (-d DESTINATION_PATH) (-s SOURCE_FILE_PATH) (-l REPO_LABEL)
 ```
 
 In the `yml` file you'll probably see other repositories linked. Make sure to match the indentation level of them and that `name` and `run` are at the same level. 
 
-Note that `PATH_TO_FILE` can link as many files as needed, and the action will ensure they are all concatenated in a single `md` file and will add the necessary front-matter. The documentation will be generated at: `<DESTINATION_PATH>/<REPO_LABEL>/<REPO_LABEL>.md`. `REPO_LABEL` is inferred from your `REPO_NAME` by removing the prefix `CS_` if it exists (e.g. `CS_Brix` becomes `Brix` and `MyRepo` stays as `MyRepo`).
+The documentation will be generated at: `<DESTINATION_PATH>/<REPO_LABEL>/<REPO_LABEL>.md`. `REPO_LABEL` is inferred by default from your `REPO_NAME` by removing the prefix `CS_` if it exists (e.g. `CS_Brix` becomes `Brix` and `MyRepo` stays as `MyRepo`). 
 
 You can skip `PATH_TO_FILE` if your documentation is in the `README.md`. 
 
@@ -38,11 +38,11 @@ If your documentation is in the `README.md` and your library is part of `modules
 For example, a simple module called `CS_MyModule` part of the `CityScope` organization that has all its documentation in `README.md` should be added as:
 ```
   - name: Update CS_MyModule
-    run: bash .github/scripts/update.sh CityScope CS_MyModule
+    run: bash .github/scripts/update.sh -o CityScope -r CS_MyModule
 ```
 
 To add the `Home` wiki page of a module called `CS_MyModule`, part of the `CityScope` organization, use the following block:
 ```
   - name: Update CS_MyModule
-    run: bash .github/scripts/update.sh wiki/CityScope CS_MyModule
+    run: bash .github/scripts/update.sh -o wiki/CityScope -r CS_MyModule
 ```
