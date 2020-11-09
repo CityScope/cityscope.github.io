@@ -27,7 +27,7 @@ To add your repository to this documentation site, link the markdown files by ed
 
 In the `yml` file you'll probably see other repositories linked. Make sure to match the indentation level of them and that `name` and `run` are at the same level. 
 
-The documentation will be generated at: `<DESTINATION_PATH>/<REPO_LABEL>/<REPO_LABEL>.md`. `REPO_LABEL` is inferred by default from your `REPO_NAME` by removing the prefix `CS_` if it exists (e.g. `CS_Brix` becomes `Brix` and `MyRepo` stays as `MyRepo`). 
+The documentation will be generated at: `<DESTINATION_PATH>/<REPO_LABEL>.md`. `REPO_LABEL` is inferred by default from your `REPO_NAME` by removing the prefix `CS_` if it exists (e.g. `CS_Brix` becomes `Brix` and `MyRepo` stays as `MyRepo`). 
 
 You can skip `PATH_TO_FILE` if your documentation is in the `README.md`. 
 
