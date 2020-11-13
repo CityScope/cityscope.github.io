@@ -35,6 +35,15 @@ Once you are done and want to deploy, change:
 bool post_on<-true;
 ```
 
+Below are some variable definitions that you might be interested in:
+* `city_io_table`: String, name of the table to connect to.
+* `post_on`: Boolean, used to turn the posting feature on or off. Keep it off while building the model and turn it on to post to the table.
+* `update_frequency`: Intenger, frequency, in number of simulation ticks, by which to update local grid by checking for changes in gridhash. This is not the posting frequency. Optional, and defaults to `10`.
+* `send_first_batch`: Boolean, if `false` it will only send the results of the simulation once the full day has run. Optional and defaults to `true`.
+* `cycle_first_batch`: Integer, simulation tick in which to send the first batch of data to the server. Optional and defaults to `100`.
+* `step`: Float, time between two simulation ticks. Defaults to `60 #sec`.
+* `saveLocationInterval`: Float, frequency in second by which to save locally the location of agents. This is not the post frequency. Optional and defaults to `10` steps.	
+* `totalTimeInSec`: Integer, total time in seconds that the simulation will run for. Defaults to a whole day. Please note that `CityIO` will not render more than 1 day of simulation.
 
 
 ## Input
@@ -87,12 +96,12 @@ First, pull the image from dockerhub. This step only needs to be performed once 
 > docker pull gamaplatform/gama
 ```
 
-Second, we will build the `xml` file with the model meta parameters. You will only need to do this once for each model. From your repo (the folder that contains models, results, etc), run:
+Second, we will build the `xml` file with the model meta parameters. You will only need to do this once for each model. Ensure you model directory (the folder that contains models, results, etc) contains a `headless` folder, and then run the following command adding the name of your gama file where needed:
 ```
-> docker run --rm -v "$(pwd)":/usr/lib/gama/headless/my_model gamaplatform/gama -xml CityScopeHeadless my_model/models/cityIO.gaml my_model/headless/myHeadlessModel.xml
+> docker run --rm -v "$(pwd)":/usr/lib/gama/headless/my_model gamaplatform/gama -xml CityScopeHeadless my_model/models/[model_file.gaml] my_model/headless/myHeadlessModel.xml
 ```
 
-This creates a file called `myHeadlessModel.xml` in your `headless` folder. If you know how to edit this file, feel free to modify it now. For more information about this file, check the [documentation](https://gama-platform.github.io/wiki/Headless).
+This creates a file called `myHeadlessModel.xml` in your `headless` folder. If you know how to edit this file, feel free to modify it now. For more information about this file, check the [documentation](https://gama-platform.github.io/wiki/Headless). Please note that by default the simulation will only run 1000 steps. If you wish to change this, edit the `xml` and change the `finalStep` property to a higher number or just delete if you wish the model to run continuosly.
 
 Finally, we will run this model inside a container. This final step is what you will repeat everytime you modify your model. Run the following command, again from your model director:
 ```
