@@ -44,6 +44,7 @@ Below are some variable definitions that you might be interested in:
 * `step`: Float, time between two simulation ticks. Defaults to `60 #sec`.
 * `saveLocationInterval`: Float, frequency in second by which to save locally the location of agents. This is not the post frequency. Optional and defaults to `10` steps.	
 * `totalTimeInSec`: Integer, total time in seconds that the simulation will run for. Defaults to a whole day. Please note that `CityIO` will not render more than 1 day of simulation.
+* `idle_update_frequency`: Float, time in real world seconds (not simulation seconds) between two get requests to check hash when in idle mode. 
 
 
 ## Input
