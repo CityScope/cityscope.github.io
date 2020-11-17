@@ -12,7 +12,7 @@ module.exports = {
         Frontend: ["frontend/CityScopeJS"],
         "User Interfaces": ["UI/UI Introduction", "UI/CityScoPy","UI/RoboScope"],
         Modules: ["modules/Types System", "modules/Brix", "modules/GAMA"],
-        Backend: ["backend/CityIO/CityIO"],
+        Backend: ["backend/CityIO"],
         Archive: [
             "archive/Schema",
             "archive/Specs",
