@@ -4,38 +4,75 @@ id: GAMA
 Agent-Based Model developped in the [CityScience](https://www.media.mit.edu/groups/city-science/overview/) group using [Gama Platform](https://gama-platform.github.io/) and integrated in [CityScope](https://www.media.mit.edu/projects/cityscope/overview/)
 
 
-#  Tutorial
+# Introduction
 
-If you don’t have a specific table, you can create one [here](https://cityscope.media.mit.edu/CS_cityscopeJS/). For this tutorial, we crated one called `dungeonmaster`. In this tutorial we will see how to load a table in GAMA, instantiate a Grid, run an hello world simulation and send results back. 
+What is this library for? If you have never heard of a CityScope before, you might want to stop reading and learn about them [here](https://cityscope.media.mit.edu/). CityScope is an awesome way to interact, explore, and co-create urban interventions in a way that can be accessed by multiple people with different background. If you know what they are, please keep reading.
 
-The first step is to add the import from the `GAMABrix.gaml` file. Right after declaring your model, import the necessary species and functions by running:
+What is a CityScope table? a ‘table’ is our way of describing a CityScope project. Why table then? Since historically, most CityScope instances were composed of a mesh between a physical table-top 3D model of a city, augmented with projections, software, and other interface hardware. So a table => project.
 
+What is an indicator? An indicator is the result of running a module for CityScope. Indicators work by listening for updated from the CityScope table they are linked to, calculating some values by using a model, some function of the data, or a simulation, and then post the result of the calculations to CityIO to be displayed in the table.
+
+What are the types of indicators you can build? Indicators can be anything that could be displayed on a CityScope table, including the supporting screens associated to it. For the purpose of this library, we distinguish three types of indicator: numeric, heatmap, simulation.
+
+
+* Numeric: Numeric indicators are just a number or set of numbers. They are usually displayed in a chart (bar chart, radar chart, etc) next to the table. The most common numeric indicator are the numbers that go in the radar plot, which display information about density, diversity, and proximity.
+
+
+* Heatmap: These indicators are geodata. They are made up of geometries (points, lines, or polygons) and properties associated to them. These indicators are displayed as layers directly on the CityScope table.
+
+
+* Agent: These type of indicators are also displayed on the table but they are the result of an agent based simulation and are therefore displayed as a dynamic layer. They change over time like a short movie. 
+
+
+# Setup
+
+To setup GAMABrix copy the file `GAMABrix.gaml` into your model directory and import it into your model. Right after declaring your model, import the necessary species and functions by running:
 ```
 import "GAMABrix.gaml"
 ```
 
-This will add to `global` the necessary functions to communicate with `CityIO` and three very important species that you will use to give your agents the properties they need to also live in CityIO: `cityio_numeric_indicator`, `cityio_heatmap_indicator`, and `cityio_agent`.
+This will add to `global` the necessary functions to communicate with `CityIO` and two very important species that you will use to give your agents the properties they need to also live in CityIO: `cityio_numeric_indicator` and `cityio_agent`. Additionally, it sets up a series of `block` agents that will ensure your world is a copy of the world in the table you have selected.
 
 
-Think of `cityio_numeric_indicator` and `cityio_heatmap_indicator` as two observers in your model that will report information back to CityIO. Later, we'll talk about how to create sub-species of these two species and how to create agents. `cityio_agent` is used as the parent class of any species that you want to visualize in CityIO. There are some specific parameters your sub-species needs to define, and we'll talk about them later.
+# Tutorial 
+
+## Basics of building a CityScope indicator in GAMA
+
+Let’s get to it. First, what table are you building for? If you don’t have a specific table, that is totally okay and you can create one [here](https://cityscope.media.mit.edu/CS_cityscopeJS/). Note: by the time you read this, CityScope might pose some limitations on new projects (`tables`). Please follow instructions in the link above.
+
+For this tutorial, we crated one called `dungeonmaster`.
+
+An indicator will basically take in the properties of the `block` agents in the world, and produce a result. Each new indicator is built as an subclass of the `cityio_agent` class. `cityio_agent` is your friend, so we'll spend some time discussing it here.
+
+When you setup a model by importing `GAMABrix`, the model will be a one day simulation, that then posts the results to cityio, and then stay idle waiting for an update from the table.
+
+Think of each indicator as an observer in your model that will report information back to CityIO. When it's a numeric indicator, the agent will just report a number that it calculates based on the `block`s, when it's a heatmap indicator, the agent will report some numbers along with its location, and when it's an agent, the agent will report it's location over time. `cityio_agent` is used as the parent class of any species that you want to visualize in CityIO. There are some specific parameters your sub-species needs to define to set the agent as a numeric, heatmap, or agent indicator.
+
+
+## GAMABrix for `cs-brix` users
+
+If you are familiar with the python library [cs-brix](https://cityscope.media.mit.edu/CS_Brix/), keep reading. Otherwise, skip to the next section of the tutorial. `brix` is relies on defining classes that contain functions that take `geogrid_data` as an input. For `GAMABrix` this is not necessary. Since `GAMA` relies on setting up a world with agents, the input data is already in the world in the form of `blocks`. Therefore, when building urban indicators in `GAMA` you do not need to worry about input, and you can just get the necessary information from the `block` agents that will be automatically created in your world. 
+
+In terms of output, `brix` relies on a series of return functions passed to a `Handler` class. In `GAMA`, the world itself acts as the `Handler` class, so there is no need to explicitly add your indicators to the `Handler` as they are already contained in the `global` species. The way to flag your indicators to be sent to `cityIO` is to define them as a subclass of `cityio_agent`. 
+
+While `brix` can handle multiple tables at the same time by creating multiple threads for each `Handler`, `GAMA` is constrained to one table per model.
 
 
 ## The CityIO global
 
 To connect your world to a table you need to declare the table name inside your `global`. For example, we named our table `dungeonmaster`:
-
 ```
 string city_io_table<-"dungeonmaster";
 ```
 
-While you are building your model, we recommend turning `GAMABrix` off speed up the process (the default). By setting `post_on<-false`, the model will only update your local grid without posting any of the indicators to cityio. This will reduce your bandwidth usage and allow you to debug your model faster. 
+While you are building your model, we recommend turning off `GAMABrix` to speed up the process (the default). By setting `post_on<-false`, the model will only update your local grid without posting any of the indicators to cityio. In other words, you will only be *getting* from `cityIO` not *posting*. This will reduce your bandwidth usage and allow you to debug your model faster. 
 
 Once you are done and want to deploy, change:
 ```
 bool post_on<-true;
 ```
 
-Below are some variable definitions that you might be interested in:
+Additionally, the following variables can be defined in the `global` and allow for a finer control of how the `global` communicates with `cityIO`. You do not need to set them up now, as the default should work fine.
 * `city_io_table`: String, name of the table to connect to.
 * `post_on`: Boolean, used to turn the posting feature on or off. Keep it off while building the model and turn it on to post to the table.
 * `update_frequency`: Intenger, frequency, in number of simulation ticks, by which to update local grid by checking for changes in gridhash. This is not the posting frequency. Optional, and defaults to `10`.
@@ -47,57 +84,70 @@ Below are some variable definitions that you might be interested in:
 * `idle_update_frequency`: Float, time in real world seconds (not simulation seconds) between two get requests to check hash when in idle mode. 
 
 
-## Input
+## Let's talk input
 
-What is geogrid_data? Every time we create a CityScope table, we define a regularly spaced grid which is overlaid on the city district we’re modelling. These grid cells are the basic unit of analysis for the CityScope modules. Every grid cell has properties such as the `Type` which represents the land use and `Height` which represents the number of floors. These data are dynamic and are updated each time a user interacts with the CityScope table, experimenting with the spatial organisation of land uses and infrastructure. These dynamic data are stored the variable `geogrid_data`. This is a list of ojects: one for each grid cell in the CityScope table. 
+`GAMA` will keep a copy of the `cityIO` grid locally by creating the necessary `block` agents. This makes all the grid information accessible to all the agents by interacting with the `block` agents. 
 
-In GAMA, the user does not need to be aware of `geogrid_data`. The `udpateGrid` action should make sure that the state of the simulated world matches the state of the table, and then the user just interacts with the simulated world. All the indicators are then a funcion of the local GAMA world, and not a direct function of `geogrid_data`. 
+The main properties that `block` agents have are:
+* type: String that identifies the type of the block. This is editable (e.g. `Residential`).
+* height: Float, height of the block.
+* color: RGB object.
+* block_lbcs: `map<string, float>` Map that connects strings (LBCS codes) and float (proportion of the block in each code).
+* block_naics: `map<string, float>` Map that connects strings (NAICS codes) and float (proportion of the block in each code).
 
-The user will eventually interact with the `block` species. 
+Note that `block_lbcs` and `block_naics` are the same for each `type` and are defined when you create the table. 
 
-## Output
+## Building an indicator (output)
 
 
-## Basic numeric indicator
+Now, we'll turn some agents into observers that will report information to `cityIO`. All three different types of indicators report different types of information, and an agent can be reporting any type of information to `cityIO`.
 
-In GAMA, indicators are defined as agents from an indicator species. The species for numeric indicators is called `cityio_numeric_indicator`. There are two ways of creating a numeric indicator. 
+* Numeric: Reports numbers (e.g. average commuting time, total energy consumption, etc.). Turn this on by setting `is_numeric<-true`.
+* Heatmap: Reports numbers with location (e.g. traffic in a particular intersection, total sunlight in a specific location). Turn this on by setting `is_heatmap<-false`.
+* Agent: Report all their locations during one whole day of simulation. Turn this on by setting `is_visible<-true`. Note that the variable `is_visible` refers only to wether you'll see the agent in your CityScope table. You still need to `display` them in your local GAMA interfase if you want to see them. 
 
-First, for simple calculations, you can create an agent of the `cityio_numeric_indicator` species and pass it the formula to be evaluated as:
+When creating a numeric indicator you need to write a `reflex` for your agent that updates either `numeric_values` or `heatmap_values`. These two variables should be `map<string,float>`. Here is a simple example that `numeric_values` with the number of blocks.
+
 ```
-create cityio_numeric_indicator with: (viz_type:"bar",indicator_name: "Max Height", indicator_value: "max(block collect each.height)");
-```
-
-This line of code creates a numeric indicator, called `Max height`, to be displayed as a `bar`, and that performs the calculation `max(block collect each.height)`, which gets the maximum height of all blocks. 
-
-Second, for more complex indicators it might make sense for the user to define its own species. This is done by creating a sub-species of the `cityio_numeric_indicator` species. The sub-species needs to define a `return_indicator` function that should return a `float`. The following example implements the same indicator as above:
-
-```
-species my_cool_indicator parent: cityio_numeric_indicator {
-	float return_indicator {
-		return max(block collect each.height);
-	}
+reflex update_numeric {
+	numeric_values<-[];
+	numeric_values<+"Number of blocks"::length(block);
 }
 ```
-and in the `global init`  the useer creates:
+
+Similarly, here is another example that updates `heatmap_values` with two layers, `heat` and `map` defined as random numbers:
 ```
-create my_cool_indicator with: (viz_type:"bar",indicator_name: "Number of blocks");
+reflex update_heatmap {
+	heatmap_values<-[];
+	heatmap_values<+ "heat"::rnd(10);
+	heatmap_values<+ "map"::rnd(10);
+}
 ```
 
-If the species is not created as a sub-species of `cityio_numeric_indicator`, the indicator will not update. 
+For an agent indicator there is no value to be updated, as the indicator just reports its location. However, if your agent does not move, you will get a very boring dot so you might want to update the location. Here is a simple `reflex` that updates the location:
+```
+reflex move{
+	do wander;
+}
+```
 
+Additionally, `GAMABrix` provides a shortcut to create numeric indicators that do not require you to define a subspecies. This is meant for straightforward indicators that can be calculated in one line of code. To create a simple numeric indicator, just create and agent of the `cityio_numeric_indicator` species and pass your function as a string to `indicator_value`. For example, a numeric indicator that returns the average height of blocks:
+```
+create cityio_numeric_indicator with: (viz_type:"bar",indicator_name: "Mean Height", indicator_value: "mean(block collect each.height)");
+```
 
+## Deploy your indicator 
 
+Let's say you finished writing your model and are ready to leave it running forever (in a server with ssh access, for example). 
 
-# Running GAMA on a server with ssh access
-
-We highly recommend using a docker container to run GAMA on a headless server. This will take care of compatibility issues between platforms. 
+We highly recommend using a docker container to run headless GAMA on a server. This will take care of compatibility issues between platforms. 
 
 First, pull the image from dockerhub. This step only needs to be performed once per server. We will be using [this image](https://hub.docker.com/r/gamaplatform/gama).
 ```
 > docker pull gamaplatform/gama
 ```
 
-Second, we will build the `xml` file with the model meta parameters. You will only need to do this once for each model. Ensure you model directory (the folder that contains models, results, etc) contains a `headless` folder, and then run the following command adding the name of your gama file where needed:
+Second, we will build the `xml` file with the model meta parameters. You will only need to do this once for each model. Ensure you model directory (the folder that contains models, results, etc) contains a `headless` folder, and then run the following command adding the name of your gama file (`model_file.gaml`) where needed:
 ```
 > docker run --rm -v "$(pwd)":/usr/lib/gama/headless/my_model gamaplatform/gama -xml CityScopeHeadless my_model/models/[model_file.gaml] my_model/headless/myHeadlessModel.xml
 ```
@@ -111,7 +161,85 @@ Finally, we will run this model inside a container. This final step is what you 
 
 # Examples
 
-Agents that randomly move on road network.
+## Basic numeric indicator
+
+To create a numeric indicator, the recommended way is to define a species of agents that will act as *observers* that will report the information to `cityIO`. This species needs to have `cityio_agent` as parent species.
+
+You need to define four things:
+* Set `is_numeric` to `true`.
+* Define a reflex that updates the `numeric_values` map (`map<string,float>`).
+* Define an `indicator_name` either in the species definition or in the create statement.
+* Set the `viz_type` to either `bar` or `radar` (defaults to `bar` if you don't change it).
+
+Here's a simple example:
+```
+species my_numeric_indicator parent: cityio_agent {
+	bool is_numeric<-true;
+	string viz_type <- "bar";
+	string indicator_name<-"Table Size";
+	
+	reflex update_numeric {
+		numeric_values<-[];
+		numeric_values<+indicator_name::length(block);
+	}
+}
+```
+
+Don't forget to create an agent of this species in the `global` `init`.
+```
+create my_numeric_indicator;
+```
+
+For simple indicators, you can rely on creating an agent of the `cityio_numeric_indicator` species in your `global` `init`. Here's an example:
+```
+create cityio_numeric_indicator with: (viz_type:"bar", indicator_name: "Max Height",  indicator_value: "max(block collect each.height)");
+```
+
+## Basic heatmap indicator
+
+To create a heatmap indicator, define a species of agents that will act as *observers* that will report the information to `cityIO`. These agents need to have a location assigned to them. This species needs to have `cityio_agent` as parent species.
+
+You need to define three things:
+* Set `is_heatmap` to `true`.
+* Define a reflex that updates the `heatmap_values` map (`map<string,float>`).
+* Define an `indicator_name` either in the species definition or in the create statement.
+
+```
+species thermometer parent: cityio_agent {
+	bool is_heatmap<-true;
+	string indicator_name<-"thermometer";
+	
+	reflex update_heatmap {
+		heatmap_values<-[];
+		heatmap_values<+ "heat"::rnd(10);
+		heatmap_values<+ "map"::rnd(10);
+	}	
+}
+```
+
+## Basic agent indicator
+
+Finally, you can easily add agents to be displayed in `cityIO`. Interestingly, these are the easiest indicators to define. In fact, you can turn any species into a `cityio_agent` by defining their parent class. 
+
+You need to is_visible two things:
+* Set `is_heatmap` to `true`.
+* Define a reflex that updates the agent's location. 
+
+```
+species people parent: cityio_agent skills:[moving]{ 
+	bool is_visible<-true;
+	
+	reflex move{
+		do wander;
+	}
+}
+```
+
+Additionally, you can define the integers `profile` and `mode` that will control the way they are displayed in the front end. You can also define reflexes that update these two properties. For example, you can differentiate between drivers and walkers, or between day workers and night workers, etc. 
+
+
+
+<!-- Agents that randomly move on road network.
 1) Pull road network from OSM
-2) Place agents in network and make them move randomly.
+2) Place agents in network and make them move randomly. -->
 
