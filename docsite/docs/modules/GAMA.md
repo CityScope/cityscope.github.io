@@ -60,9 +60,10 @@ While `brix` can handle multiple tables at the same time by creating multiple th
 
 ## The CityIO global
 
-To connect your world to a table you need to declare the table name inside your `global`. For example, we named our table `dungeonmaster`:
+To connect your world to a table you need to declare the table name inside your `global` and set the geometry of your world based on this table. For example, we named our table `dungeonmaster`:
 ```
 string city_io_table<-"dungeonmaster";
+geometry shape <- envelope(setup_cityio_world());
 ```
 
 While you are building your model, we recommend turning off `GAMABrix` to speed up the process (the default). By setting `post_on<-false`, the model will only update your local grid without posting any of the indicators to cityio. In other words, you will only be *getting* from `cityIO` not *posting*. This will reduce your bandwidth usage and allow you to debug your model faster. 
@@ -82,6 +83,8 @@ Additionally, the following variables can be defined in the `global` and allow f
 * `saveLocationInterval`: Float, frequency in second by which to save locally the location of agents. This is not the post frequency. Optional and defaults to `10` steps.	
 * `totalTimeInSec`: Integer, total time in seconds that the simulation will run for. Defaults to a whole day. Please note that `CityIO` will not render more than 1 day of simulation.
 * `idle_update_frequency`: Float, time in real world seconds (not simulation seconds) between two get requests to check hash when in idle mode. 
+
+When you import `GAMABrix` you will also see an additional experiment called `CityScopeHeadless`. This experiment is used to run your model as a headless process in a server.
 
 
 ## Let's talk input
@@ -237,6 +240,93 @@ species people parent: cityio_agent skills:[moving]{
 
 Additionally, you can define the integers `profile` and `mode` that will control the way they are displayed in the front end. You can also define reflexes that update these two properties. For example, you can differentiate between drivers and walkers, or between day workers and night workers, etc. 
 
+## Full module example (with comments)
+
+```
+model citIOGAMA
+
+// Import GAMABrix (this needs to be in the same directory as your model)
+import "GAMABrix.gaml" 
+
+global {
+	// Define the table you'll be working with
+	string city_io_table<-"dungeonmaster";
+    geometry shape <- envelope(setup_cityio_world());
+
+    // Set post to true so that GAMABrix can post to cityIO
+	bool post_on<-true;
+	
+	init {
+		// Create people based on species defined below
+		create people number:10; 
+
+		// Create 100 points of a heatmap indicator (species defined below)
+		create thermometer number:100;
+
+		// Use cityio_numeric_indicator to define a mean block height numeric indicator
+		create cityio_numeric_indicator with: (viz_type:"bar",indicator_name: "Mean Height", indicator_value: "mean(block collect each.height)");
+		
+		// Create a numeric indicator based on the species defined below
+		create my_numeric_indicator     with: (viz_type:"bar",indicator_name: "Number of blocks");
+	}
+	
+	
+}
+
+// Define a custom numeric indicator
+species my_numeric_indicator parent: cityio_agent {
+	// Set the indicator as numeric
+	bool is_numeric<-true;
+
+	// Visualize it as a bar chart
+	string viz_type <- "bar";
+	
+	// Define reflex that updates numeric_values
+	reflex update_numeric {
+		numeric_values<-[];
+		numeric_values<+indicator_name::length(block);
+	}
+}
+
+// Define custom heatmap indicator
+species thermometer parent: cityio_agent {
+	// Set the indicator as heatmap
+	bool is_heatmap<-true;
+
+	// Define reflex that updates heatmap_values
+	reflex update_heatmap {
+		heatmap_values<-[];
+		heatmap_values<+ "heat"::rnd(10);
+		heatmap_values<+ "map"::rnd(10);
+	}	
+}
+
+// Define people, to be used as agent indicators
+species people parent: cityio_agent skills:[moving]{ 
+	// Set agents as visible in cityIO
+	bool is_visible<-true;
+	
+	// Update the agents location at every step
+	reflex move{
+		do wander;
+	}
+	
+	// Set base aspect to visualize in GAMA GUI
+	aspect base{
+		draw circle(10) color:#blue;
+	}
+}
+
+// Define a experiment to visualize in GUI
+experiment CityScope type: gui autorun:false{
+	output {
+		display map_mode type:opengl background:#black{	
+			species block aspect:base;
+			species people aspect:base position:{0,0,0.1};
+		}
+	}
+}
+```
 
 
 <!-- Agents that randomly move on road network.
