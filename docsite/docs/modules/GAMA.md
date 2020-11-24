@@ -44,7 +44,7 @@ For this tutorial, we crated one called `dungeonmaster`.
 
 An indicator will basically take in the properties of the `brix` agents in the world or the properties of any other simulated agent and produce a result. Each new indicator is built as an subclass of the `cityio_agent` class. `cityio_agent` is your friend, so we'll spend some time discussing it here.
 
-When you setup a model by importing `GAMABrix`, the model will be a one day simulation, that then posts the results to cityio, and then stay idle waiting for an update from the table.
+When you setup a model by importing `GAMABrix`, the model will run for one whole day of simulation, then posts the results of this simulation to cityio, and then stay idle waiting for an update from the table. This can be a bit annoying when you are only starting to build your model, so you can turn off this behavior and just keep the local grid update. 
 
 Think of each indicator as an observer in your model that will report information back to CityIO. When it's a numeric indicator, the agent will just report a number that it calculates based on the `brix`s, when it's a heatmap indicator, the agent will report some numbers along with its location, and when it's an agent, the agent will report it's location over time. `cityio_agent` is used as the parent class of any species that you want to visualize in CityIO. There are some specific parameters your sub-species needs to define to set the agent as a numeric, heatmap, or agent indicator.
 
@@ -66,7 +66,9 @@ string city_io_table<-"dungeonmaster";
 geometry shape <- envelope(setup_cityio_world());
 ```
 
-While you are building your model, we recommend turning off `GAMABrix` to speed up the process (the default). By setting `post_on<-false`, the model will only update your local grid without posting any of the indicators to cityio. In other words, you will only be *getting* from `cityIO` not *posting*. This will reduce your bandwidth usage and allow you to debug your model faster. 
+While you are building your model, we recommend turning off `GAMABrix` to speed up the process (the default). By setting `post_on<-false`, the model will only update your local grid without posting any of the indicators to cityio. In other words, you will only be *getting* from `cityIO` not *posting*. This will reduce your bandwidth usage and allow you to debug your model faster. By doing this, the model will still keep track of the day and enter idle mode once the day is over. 
+
+For early stages of model building, you might also want to set `pull_only<-true`. This will tell turn off most of the functionality of the module and just make sure you are updating the local grid by pulling from your table. The simulation will not enter idle mode and the day will never reset. 
 
 Once you are done and want to deploy, change:
 ```
@@ -83,6 +85,7 @@ Additionally, the following variables can be defined in the `global` and allow f
 * `saveLocationInterval`: Float, frequency in second by which to save locally the location of agents. This is not the post frequency. Optional and defaults to `10` steps.	
 * `totalTimeInSec`: Integer, total time in seconds that the simulation will run for. Defaults to a whole day. Please note that `CityIO` will not render more than 1 day of simulation.
 * `idle_update_frequency`: Float, time in real world seconds (not simulation seconds) between two get requests to check hash when in idle mode. 
+* `pull_only`: Boolean, used to use GAMABrix only to update the local grid. This is very useful for the early stages of model building.
 
 When you import `GAMABrix` you will also see an additional experiment called `CityScopeHeadless`. This experiment is used to run your model as a headless process in a server.
 
