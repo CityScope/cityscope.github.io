@@ -1,6 +1,6 @@
 # Description: Workflow that updates markdown files by fetching them from other repositories. It runs every day at midnight automatically, or it can be triggered manually or by setting up a dispatch action in the lower level repo.
 # Author: Cristian Jara-Figueroa, Phd Student MIT Media Lab
-# Last updated: September 18, 2020
+# Last updated: November 30, 2020
 name: Update documentation from downstream repos
 
 on:
