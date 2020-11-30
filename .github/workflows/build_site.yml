@@ -16,7 +16,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         ref: new_docsite
-      - name: Build website
+      - name: yarn deploy
         uses: borales/actions-yarn@v2.0.0
+        # env:
+          # GIT_USER: crisjf
+        # with:
+          # cmd: deploy
+      - name: List files
         run: ls -l
-        # run: yarn && GIT_USER=relno yarn deploy
