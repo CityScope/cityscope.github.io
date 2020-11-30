@@ -95,6 +95,13 @@ If you are testing and are curious how `geogrid_data` would look like if you set
 I.get_geogrid_data(include_geometries=True)
 ```
 
+Please note that `geogrid_data` behaves very much like a list, but it is not a list. It belongs to the class `brix.GEOGRIDDATA`, which is an extension of a list to include additional functions and properties related to the table. For example, you can get the meta-properties of the table (such as type definitions, location, etc.) by using `brix.GEOGRIDDATA.get_geogrid_props()`. This is useful if, for example, you are interested in counting the total number of block types, including those that are not currently on the table. Run the following example to see how geogrid_props looks like:
+
+```
+geogrid_data = I.get_geogrid_data()
+geogrid_data.get_geogrid_props()
+```
+
 ## Build and test your indicator (output)
 
 This library ensures that you can focus on what you do best: writing a kick ass `brix.Indicator.return_indicator()` function that will make everyone’s urban planning life better.
@@ -130,7 +137,7 @@ Note that if you define `viz_type` in the return dictionary of `return_indicator
 
 ## Deploy your indicator
 
-Finally, once you have build a series of indicators, the right way to deploy them is to use the `brix.Handler` class. A `brix.Handler` object should be the go-to connection to the table and will handle all possible exceptions. The two most important methods are `brix.Handler.add_indicators()` which takes a list of `brix.Indicator` objects and connects them to the table, and `brix.Handler.listen()` that is a method that runs continuously waiting for updates in the CityScope table. This method creates its own thread by default, to free up the main thread in case the user needs to connect to other tables. The example below assumes you have already defined indicators named Density, Diversity and Proximity in a file named `myindicators.py`.
+Finally, once you have build a series of indicators, the right way to deploy them is to use the `brix.Handler` class. A `brix.Handler` object should be the go-to connection to the table and will handle all possible exceptions. The two most important methods are `brix.Handler.add_indicators()` which takes a list of `brix.Indicator` objects and connects them to the table, and `brix.Handler.listen()` that is a method that runs continuously waiting for updates in the CityScope table. This method can also creates its own thread, to free up the main thread in case the user needs to connect to other tables (by setting `new_thread=True`). The example below assumes you have already defined indicators named Density, Diversity and Proximity in a file named `myindicators.py`.
 
 ```
 from brix import Handler
@@ -256,6 +263,9 @@ Returns the geogrid data from:
 
     
     * **include_geometries** (boolean, defaults to False) – If True it will also add the geometry information for each grid unit.
+
+
+    * **with_properties** (boolean, defaults to False) – If True it will add the properties of each grid unit as defined when the table was constructed (e.g. LBCS code, NAICS code, etc.)
 
 
     * **as_df** (boolean, defaults to False) – If True it will return data as a pandas.DataFrame.
@@ -407,7 +417,7 @@ Returns list of all indicator names.
 
 
 
-#### listen(new_thread=True, showFront=True, append=False)
+#### listen(new_thread=False, showFront=True, append=False)
 Listens for changes in the table’s geogrid and update all indicators accordingly.
 You can use the update_package method to see the object that will be posted to the table.
 This method starts with an update before listening.
@@ -417,8 +427,8 @@ This runs in a separate thread by default.
 * **Parameters**
 
     
-    * **new_thread** (boolean, defaults to True.) – If True it will run in a separate thread, freeing up the main thread for other tables.
-    We recommend setting this to False when debugging, to avoid needed to recreate the object.
+    * **new_thread** (boolean, defaults to False.) – If True it will run in a separate thread, freeing up the main thread for other tables.
+    We recommend setting this to False when debugging, to avoid needing to recreate the object.
 
 
     * **showFront** (boolean, defaults to True) – If True it will open the front-end URL in a webbrowser at start.
