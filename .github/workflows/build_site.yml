@@ -15,12 +15,19 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-        ref: new_docsite
+        with:
+          ref: new_docsite
       - name: yarn deploy
         uses: borales/actions-yarn@v2.0.0
-        # env:
-          # GIT_USER: crisjf
+        env:
+          GIT_USER: crisjf
         # with:
           # cmd: deploy
       - name: List files
-        run: ls -l
+        run: ls -l && echo $GIT_USER
+
+# Steps to deploy (bash)
+# cd docsite
+# yarn install
+# export GIT_USER=crisjf
+# yarn deploy
