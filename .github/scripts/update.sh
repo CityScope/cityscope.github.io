@@ -7,7 +7,7 @@
 #   * REPO_NAME_OWNER: Organization or user where the repo lives (e.g. CityScope)
 #   * REPO_NAME: Name of repo (e.g. CS_Brix)
 #   * DESTINATION_PATH: Path in local repo where to store the md file (it defaults to docsite/docs/modules)
-#   * SOURCE_FILE_PATH: Path to fetch from remote repo, including name of file (it defaults to master/README.md). This can also be a list of files, which will be joined into a single file.
+#   * SOURCE_FILE_PATH: Path to fetch from remote repo, including name of file and the branch (it defaults to master/README.md). This can also be a list of files, which will be joined into a single file.
 #   * REPO_LABEL: (OPTIONAL) Name of repo in docs. (Defaults to removing CS_ from repo name)
 
 while getopts ":o:r:d:s:l:" opt; do
