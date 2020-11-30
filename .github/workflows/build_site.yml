@@ -1,0 +1,23 @@
+# Description: Workflow that builds the website after a push to new_docsite branch
+# Author: Cristian Jara-Figueroa, Phd Student MIT Media Lab
+# Last updated: November 30, 2020
+name: Build website using yarn
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - new_docsite
+
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        ref: new_docsite
+      - name: Build website
+        uses: borales/actions-yarn@v2.0.0
+        run: ls -l
+        # run: yarn && GIT_USER=relno yarn deploy
