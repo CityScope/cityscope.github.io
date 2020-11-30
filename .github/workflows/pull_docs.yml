@@ -17,8 +17,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+      # SYNTAX TO ADD REPOS
+      # - name: Update REPO_NAME
+        # run: bash .github/scripts/update.sh -o REPO_NAME_OWNER -r REPO_NAME (-d DESTINATION_PATH) (-s SOURCE_FILE_PATH) (-l REPO_LABEL)
       - name: Update CS_Brix
-        # run: bash .github/scripts/update.sh -o CityScope -r CS_Brix -d docsite/docs/modules -s docs-pages/docs/markdown/docusaurus.md
         run: bash .github/scripts/update.sh -o CityScope -r CS_Brix -d docsite/docs/modules/Brix -s docs-pages/docs/markdown/index.md -l Brix
       - name: Update CS_Brix (tutorial)
         run: bash .github/scripts/update.sh -o CityScope -r CS_Brix -d docsite/docs/modules/Brix/Tutorial -s docs-pages/docs/markdown/tutorial.md -l Tutorial
@@ -30,11 +32,6 @@ jobs:
         run: bash .github/scripts/update.sh -o CityScope -r CS_Simulation_GAMA -d docsite/docs/modules -s master/CS_CityScope_GAMA/models/cityIO/README.md -l GAMA
       - name: Update CS_CityIO
         run: bash .github/scripts/update.sh -o CityScope -r CS_CityIO -d docsite/docs/backend -s docs/cityio_documentation.md
-      # - name: Update CS_Proxymix
-        # run: bash .github/scripts/update.sh wiki/CityScope CS_Proxymix docsite/docs/modules
-      # SYNTAX TO ADD REPOS
-      # - name: Update REPO_NAME
-        # run: bash .github/scripts/update.sh -o REPO_NAME_OWNER -r REPO_NAME (-d DESTINATION_PATH) (-s SOURCE_FILE_PATH) (-l REPO_LABEL)
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
         with:
