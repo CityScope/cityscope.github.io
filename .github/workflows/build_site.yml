@@ -13,24 +13,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      working-directory: docsite
+      working-directory: ./docsite
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
           ref: new_docsite
+      - name: List files and check location
+        run: pwd && ls -l
+        working-directory: ./docsite
       - name: yarn install
         uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install
+        working-directory: ./docsite
       - name: yarn deploy
         uses: borales/actions-yarn@v2.0.0
         env:
           GIT_USER: crisjf
         with:
           cmd: deploy
-      - name: List files and check location
-        run: pwd && ls -l
+        working-directory: ./docsite
+
 
 # Steps to deploy (bash)
 # cd docsite
