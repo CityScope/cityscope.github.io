@@ -96,6 +96,13 @@ The entire Python program exits when only daemon threads are left.
 
 #### getName()
 
+#### get_GEOGRID()
+
+#### get_GEOGRIDDATA()
+Returns the raw GEOGRIDDATA object.
+This function should be treated as a low-level function, please use `brix.Handler.get_geogrid_data()` instead.
+
+
 #### get_geogrid_data(include_geometries=False, with_properties=False, as_df=False)
 Returns the geogrid data from:
 [http://cityio.media.mit.edu/api/table/table_name/GEOGRIDDATA](http://cityio.media.mit.edu/api/table/table_name/GEOGRIDDATA)
@@ -147,7 +154,7 @@ Retreives the GEOGRID hash from:
 [http://cityio.media.mit.edu/api/table/table_name/meta/hashes](http://cityio.media.mit.edu/api/table/table_name/meta/hashes)
 
 
-#### get_indicator_values(include_composite=False)
+#### get_indicator_values(geogrid_data=None, include_composite=False)
 Returns the current values of numeric indicators. Used for developing a composite indicator.
 
 
@@ -296,7 +303,22 @@ This is a non-negative integer. See the get_native_id() function.
 This represents the Thread ID as reported by the kernel.
 
 
-#### perform_update(grid_hash_id=None, append=True)
+#### normalize_codes(code_proportion)
+Helper function to transform:
+[{‘proportion’: 0.3, ‘use’: {‘6700’: 1}}, {‘proportion’: 0.7, ‘use’: {‘2310’: 0.3, ‘4100’: 0.7}}]
+
+into:
+{‘6700’: 0.3, ‘2310’: 0.21, ‘4100’: 0.49}
+
+
+#### parse_classifications(geogrid, classification_list=['LBCS', 'NAICS'])
+Helper function to parse the LBCS and NAICS strings into dictionaries of the form:
+{‘6700’: 0.3, ‘2310’: 0.21, ‘4100’: 0.49}
+
+
+#### pause_listen()
+
+#### perform_update(grid_hash_id=None, append=False)
 Performs single table update.
 
 
@@ -310,8 +332,19 @@ Performs single table update.
 
 
 
+#### post_geogrid_data(geogrid_data)
+Posts the given geogrid_data object, ensuring that the object is valid.
+
+
+#### reset_geogrid_data()
+Resets the GEOGRIDDATA endpoint to the initial value.
+If the GEOGRIDDATA has not been updated, this will update it.
+
+
+#### resume_listen()
+
 #### return_indicator(indicator_name)
-Returns the value returned by `brix.Indicator.return_indicator()` function of the selected indicator.
+Returns the unformatted value returned by `brix.Indicator.return_indicator()` function of the selected indicator.
 
 
 * **Parameters**
@@ -380,6 +413,29 @@ same thread object.
 
 #### test_indicators()
 Dry run over all indicators.
+
+
+#### update_geogrid_data(update_func, geogrid_data=None, \*\*kwargs)
+High order function to update table geogrid data.
+THIS FUNCTION IS STILL NOT STABLE.
+
+
+* **Parameters**
+
+    **update_func** (*function*) – function to update the geogriddadata (list of dicts)
+    Function should return a list of dicts that represents a valid geogiddata object.
+
+
+### Example
+
+```python
+>>> def add_height(geogrid_data, levels):
+                for cell in geogrid_data:
+                        cell['height'] += levels
+                return geogrid_data
+>>> H = Handler('tablename', quietly=False)
+>>> H.update_landuse(add_height)
+```
 
 
 #### update_package(geogrid_data=None, append=False)
@@ -488,6 +544,16 @@ User defined function. This function defines the value of the indicator as a fun
 
 
 
+#### set_return_indicator(return_indicator)
+Used to set the return_indicator method by passing a function.
+
+
+* **Parameters**
+
+    **return_indicator** (*func*) – Function that takes geogrid_data as input.
+
+
+
 #### setup()
 User defined function. Used to set up the main attributed of the custom indicator. Acts similar to an __init__ method.
 
@@ -569,6 +635,16 @@ Applies `brix.CompositeIndicator.compose_function` to the indicator values to re
 * **Return type**
 
     list
+
+
+
+#### set_return_indicator(return_indicator)
+Used to set the return_indicator method by passing a function.
+
+
+* **Parameters**
+
+    **return_indicator** (*func*) – Function that takes geogrid_data as input.
 
 
 
