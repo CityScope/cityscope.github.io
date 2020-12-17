@@ -48,6 +48,9 @@ pip install cs-brix
     * Deploy your indicator
 
 
+    * Additional tools
+
+
 * Classes
 
 
@@ -58,6 +61,15 @@ pip install cs-brix
 
 
     * Indicator sub-classes
+
+
+* Functions
+
+
+    * Wrapper functions
+
+
+    * OSM functions
 
 
 * Examples
