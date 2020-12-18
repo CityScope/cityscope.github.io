@@ -440,14 +440,15 @@ same thread object.
 Dry run over all indicators.
 
 
-#### update_geogrid_data(update_func, geogrid_data=None, \*\*kwargs)
+#### update_geogrid_data(update_func, \*\*kwargs)
 Function to update table GEOGRIDDATA.
 
 
 * **Parameters**
 
-    **update_func** (*function*) – function to update the geogriddadata (list of dicts)
-    Function should return a list of dicts that represents a valid geogiddata object.
+    **update_func** (*function*) – Function to update the geogriddadata (list of dicts)
+    Function should take a `brix.Handler` as the first and only positional argument plus any number of keyword arguments.
+    Function should return a list of dicts that represents a valid geogriddata object.
 
 
 ### Example
