@@ -26,7 +26,7 @@ What are the types of indicators you can build? Indicators can be anything that 
 
 # Setup
 
-To setup GAMABrix copy the file `GAMABrix.gaml` into your model directory and import it into your model. Right after declaring your model, import the necessary species and functions by running:
+To setup GAMABrix copy the file `GAMABrix.gaml` into your model directory and import it into your model. You can download `GAMABrix.gaml` from [here](https://github.com/CityScope/CS_Simulation_GAMA/blob/master/CS_CityScope_GAMA/models/cityIO/models/GAMABrix.gaml) Right after declaring your model, import the necessary species and functions by running:
 ```
 import "GAMABrix.gaml"
 ```
