@@ -89,6 +89,8 @@ Additionally, the following variables can be defined in the `global` and allow f
 
 When you import `GAMABrix` you will also see an additional experiment called `CityScopeHeadless`. This experiment is used to run your model as a headless process in a server.
 
+By default, `GAMABrix` will run its init (which creates the grid) right after your model's init. This means that you will not have access to any `brix` object inside your init. You can always change this behavior by forcing `GAMABrix` to run its init earlyer by adding `do brix_init` where needed. 
+
 
 ## Let's talk input
 
