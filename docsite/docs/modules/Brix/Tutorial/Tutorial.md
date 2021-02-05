@@ -71,6 +71,8 @@ geogrid_data = I.get_geogrid_data()
 geogrid_data.get_geogrid_props()
 ```
 
+Some tables might include a non-interactive area. This is fairly straightforward to filter out as intercative cells are characterized by `cell['interative']='Web'`. In the same way you work with `include_geometries` and `with_properties` you can set `exclude_noninteractive=True` to ensure you will always be working with the interactive cells from GEOGRIDDATA.
+
 ## Build and test your indicator (output)
 
 This library ensures that you can focus on what you do best: writing a kick ass `brix.Indicator.return_indicator()` function that will make everyone’s urban planning life better.
