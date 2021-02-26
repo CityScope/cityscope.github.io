@@ -135,36 +135,6 @@ for h in handler_list:
         h.listen()
 ```
 
-### Auto-updates of GEOGRIDDATA
-
-Brix also has the capability of automatically updating GEOGRIDDATA. For simple one-time updates, follow the documentation of `brix.Handler.update_geogrid_data()`. To use this feeature, you first need to define a function that takes a `brix.Handler` as an input. When used with `brix.Handler.update_geogrid_data()`, this function can take any number of keyword arguments. The following example raises the height of all cells by 3 units:
-
-```
-def add_height(geogrid_data, levels=1):
-        for cell in geogrid_data:
-                cell['height'] += levels
-        return geogrid_data
-
-H = Handler('dungeonmaster', quietly=False)
-H.update_geogrid_data(add_height,levels=3)
-```
-
-Brix also supports GEOGRIDDATA updates everytime there’s a recorded user interaction in the front end. To add a function to the update schedule, use `brix.Handler.add_geogrid_data_update_function()`. This has the limitation that your update funcion cannot take in any arguments other than the Handler class you are using. If this limitation proves too restrictive, please submit an issue and we’ll consider pushing an update.
-
-The following example updates the whole grid to Light Industrial use everytime there’s a user interaction:
-
-```
-def update_g(H):
-        geogrid_data = H.get_geogrid_data(exclude_noninteractive=True)
-        for cell in geogrid_data:
-                cell['name'] = 'Light Industrial'
-        return geogrid_data
-
-H = Handler(table_name,quietly=False)
-H.add_geogrid_data_update_function(update_g)
-H.listen()
-```
-
 ## Step by step examples
 
 ### Diversity of land-use indicator - step by step

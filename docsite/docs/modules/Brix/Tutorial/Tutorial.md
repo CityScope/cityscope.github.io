@@ -71,7 +71,7 @@ geogrid_data = I.get_geogrid_data()
 geogrid_data.get_geogrid_props()
 ```
 
-Some tables might include a non-interactive area. This is fairly straightforward to filter out as intercative cells are characterized by `cell['interative']='Web'`. In the same way you work with `include_geometries` and `with_properties` you can set `exclude_noninteractive=True` to ensure you will always be working with the interactive cells from GEOGRIDDATA.
+Depending on the needs of your indicator, you can generate different views of this object. For example, you can use `brix.GEOGRIDDATA.as_df()` to return the pandas.DataFrame version of your object. Similarly, you can use `brix.GEOGRIDDATA.as_graph()` to return the networkx.Graph representation of GEOGRIDDATA. The graph representation is the network connecting every cell to its 4 closest neighbors.
 
 ## Build and test your indicator (output)
 
@@ -134,4 +134,47 @@ To see the indicators in the handler you can use `H.list_indicators()` to list t
 This module also contains a set of other useful functions that integrate with `brix.Handler` and `brix.Indicator`.
 
 The functions `brix.get_OSM_geometries()` and `brix.get_OSM_nodes()` help you get data from Open Street Maps for your table.
+
+### Auto-updates of GEOGRIDDATA
+
+Brix also has the capability of automatically updating GEOGRIDDATA. For simple one-time updates, follow the documentation of `brix.Handler.update_geogrid_data()`. To use this feeature, you first need to define a function that takes a `brix.GEOGRIDDATA` as an input. When used with `brix.Handler.update_geogrid_data()`, this function can take any number of keyword arguments. The following example raises the height of all cells by 3 units:
+
+```
+def add_height(geogrid_data, levels=1):
+        for cell in geogrid_data:
+                cell['height'] += levels
+        return geogrid_data
+
+H = Handler('dungeonmaster', quietly=False)
+H.update_geogrid_data(add_height,levels=3)
+```
+
+Brix also supports GEOGRIDDATA updates everytime there is a registered user interaction in the front end. To add a function to the update schedule, use `brix.Handler.add_geogrid_data_update_function()`. This has the limitation that your update funcion cannot take in any arguments other. If this limitation proves too restrictive, please submit an issue and we’ll consider pushing an update.
+
+The following example updates the whole grid to Light Industrial use everytime there’s a user interaction:
+
+```
+def update_g(geogrid_data):
+        for cell in geogrid_data:
+                cell['name'] = 'Light Industrial'
+        return geogrid_data
+
+H = Handler(table_name,quietly=False)
+H.add_geogrid_data_update_function(update_g)
+H.listen()
+```
+
+The updates triggered by `brix.Handler.listen()` follow the following order:
+
+
+1. get GEOGRIDDATA
+
+
+2. run all GEOGRIDDATA updates using the result of 1 as input
+
+
+3. get the new GEOGRIDDATA
+
+
+4. update all indicators using the GEOGRIDDATA object resulting from 3
 
