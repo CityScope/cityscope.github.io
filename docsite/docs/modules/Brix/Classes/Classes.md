@@ -7,5 +7,7 @@ id: Classes
 
 ## Indicator class
 
+## GEOGRIDDATA class
+
 ## Indicator sub-classes
 
