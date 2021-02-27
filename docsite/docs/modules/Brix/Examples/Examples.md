@@ -113,6 +113,29 @@ class Noise(Indicator):
                 return out
 ```
 
+### Static-Heatmap indicator
+
+The `brix.Indicator` class provides a flexible way to define any type of indicator. In some cases, a simple approach is needed. Let’s assume we want to build a simple heatmap indicator that just visualizes a given shapefile, and does not react to changes in geogriddata. We can use `brix.StaticHeatmap` to build that.
+
+Let’s start by creating a shapefile with the centroid of each cell as geometry and a random value as properties.
+
+```
+heatmap = H.get_geogrid_data(include_geometries=True).as_df()
+heatmap.geometry = heatmap.geometry.centroid
+heatmap = heatmap[['geometry']]
+heatmap['noise'] = [random.random() for v in heatmap['geometry']]
+heatmap = gpd.GeoDataFrame(heatmap.drop('geometry',1),geometry=heatmap['geometry'])
+```
+
+This shapefile can either be saved to memory, or passed directly to the constructor.
+
+```
+H = Handler('dungeonmaster')
+N = StaticHeatmap(heatmap)
+H.add_indicator(N)
+H.update_package()
+```
+
 ### Multiple tables simultaneously
 
 The following examples instantiates three `brix.Handler` objects for three different tables (dungeonA, dungeonB, and dungeonC) and adds a diversity of land use indicator to each. It then runs `brix.Handler.listen()` for each table in its own separate thread.
