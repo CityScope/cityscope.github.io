@@ -210,6 +210,7 @@ Gets table properties. This info can also be accessed through `brix.Handler.get_
 
 #### grid_bounds(bbox=False, buffer_percent=None)
 Returns the bounds of the geogrid.
+Wrapper around `brix.GEOGRIDDATA.bounds()`
 
 
 * **Parameters**
@@ -671,6 +672,34 @@ Returns the geogriddata object as a networkx.Graph.
 * **Return type**
 
     networkx.Graph
+
+
+
+#### bounds(bbox=False, buffer_percent=None)
+Returns the bounds of the geogrid.
+
+
+* **Parameters**
+
+    
+    * **bbox** (*boolean**, **defaults to False*) – If True, it will return a bounding box instead of a polygon. [W, S, E, N]
+
+
+    * **buffer_percent** (*float**, **optional*) – If given, this will add a buffer around the table.
+    Size of buffer in units of the grid diameter
+    See `brix.get_buffer_size()`.
+
+
+
+* **Returns**
+
+    **limit** – Bounds of the table. If bbox=True it will return a horizontal bounding box.
+
+
+
+* **Return type**
+
+    shapely.Polygon or list
 
 
 
