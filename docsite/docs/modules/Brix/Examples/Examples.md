@@ -431,6 +431,13 @@ shapefile = gpd.read_file('/Users/username/Downloads/14_Manzanas_INV2016_shp/14_
 shapefile = shapefile[shapefile['VIVTOT']!='N.D.']
 ```
 
+Since the VIVTOT column that we are interested in visualizing has a skewed distribution, we will log-transform it.
+
+::
+
+    import numpy as np
+    shapefile[‘log_VIVTOT’] = np.log(shapefile[‘VIVTOT’]+1)
+
 Next, we load a table and use its grid to sample the heatmap.
 
 ```
@@ -440,11 +447,12 @@ H = Handler(table_name)
 geogrid_data = H.get_geogrid_data()
 ```
 
-The next step is to use the grid to sample the values of the heatmap. We will use the VIVTOT column, and save the resulting heatmap to a file so we can load it later.
+The next step is to use the grid to sample the values of the heatmap. We will use the log_VIVTOT column, and save the resulting heatmap to a file so we can load it later. We will also remove the missing values.
 
 ```
 from brix import griddify
-heatmap = griddify(geogrid_data,shapefile,columns=['VIVTOT'])
+heatmap = griddify(geogrid_data,shapefile,columns=['log_VIVTOT'])
+heatmap = heatmap[~heatmap['log_VIVTOT'].isna()]
 heatmap.to_file('/Users/username/Downloads/14_Manzanas_INV2016_shp/HEATMAP.shp')
 ```
 
@@ -452,7 +460,7 @@ This shapefile is a table of points and their properties. To build your indicato
 
 ```
 from brix import StaticHeatmap
-N = StaticHeatmap('/Users/username/Downloads/14_Manzanas_INV2016_shp/HEATMAP.shp',columns=['VIVTOT'])
+N = StaticHeatmap('/Users/username/Downloads/14_Manzanas_INV2016_shp/HEATMAP.shp',columns=['log_VIVTOT'])
 ```
 
 Finally, we add it to a Handler class and check the update package:
@@ -468,7 +476,7 @@ To wrap up, once the heatmap file has been saved, all you need to do deploy the 
 ```
 from brix import Handler, StaticHeatmap
 table_name = 'jalisco'
-N = StaticHeatmap('/Users/username/Downloads/14_Manzanas_INV2016_shp/HEATMAP.shp',columns=['VIVTOT'])
+N = StaticHeatmap('/Users/username/Downloads/14_Manzanas_INV2016_shp/HEATMAP.shp',columns=['log_VIVTOT'])
 H = Handler(table_name)
 H.add_indicator(N)
 H.listen()
