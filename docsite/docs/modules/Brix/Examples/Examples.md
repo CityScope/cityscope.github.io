@@ -113,53 +113,6 @@ class Noise(Indicator):
                 return out
 ```
 
-### Static-Heatmap indicator
-
-The `brix.Indicator` class provides a flexible way to define any type of indicator. In some cases, a simple approach is needed. Let’s assume we want to build a simple heatmap indicator that just visualizes a given shapefile, and does not react to changes in geogriddata. We can use `brix.StaticHeatmap` to build that.
-
-In this example, we will use the number of houses by block in Guadalajara, Mexico. You can download the shapefile from [HERE](https://www.inegi.org.mx/contenidos/masiva/indicadores/inv/14_Manzanas_INV2016_shp.zip). We will not be using our trusted dungeonmaster table, as it does not overlap with the data. Instead we will use jalisco.
-
-The first step will be to “griddify” our shapefile, meaning we will transform it from polygons to sampling points. Please note that you can use any sampling method for this, and that the sampling points do not need to match the grid. To make things easier, we have provided `brix.griddify()`, which uses the centroids of the grid to sample the values of the heatmap.
-
-We start by loading the shapefile and removing the missing values:
-
-```
-import geopandas as gpd
-shapefile = gpd.read_file('/Users/username/Downloads/14_Manzanas_INV2016_shp/14_Manzanas_INV2016.shp')
-shapefile = shapefile[shapefile['VIVTOT']!='N.D.']
-```
-
-Next, we load a table and use its grid to sample the heatmap.
-
-```
-from brix import Handler
-table_name = 'jalisco'
-H = Handler(table_name)
-geogrid_data = H.get_geogrid_data()
-```
-
-The next step is to use the grid to sample the values of the heatmap. We will use the VIVTOT column, and save the resulting heatmap to a file so we can load it later.
-
-```
-from brix import griddify
-heatmap = griddify(geogrid_data,shapefile,columns=['VIVTOT'])
-heatmap.to_file('/Users/username/Downloads/14_Manzanas_INV2016_shp/HEATMAP.shp')
-```
-
-This shapefile is a table of points and their properties. To build your indicator you can either load the file and pass it to the :class:brix.StaticHeatmap\` constructor, or have the constructor load it for you.
-
-```
-N = StaticHeatmap('/Users/username/Downloads/14_Manzanas_INV2016_shp/HEATMAP.shp',columns=['VIVTOT'])
-```
-
-Finally, we add it to a Handler class and check the update package:
-
-```
-H = Handler('jalisco')
-H.add_indicator(N)
-H.update_package()
-```
-
 ### Multiple tables simultaneously
 
 The following examples instantiates three `brix.Handler` objects for three different tables (dungeonA, dungeonB, and dungeonC) and adds a diversity of land use indicator to each. It then runs `brix.Handler.listen()` for each table in its own separate thread.
@@ -459,6 +412,65 @@ from brix import Handler
 H = Handler('dungeonmaster')
 P = ProximityIndicator()
 H.add_indicator(P)
+H.listen()
+```
+
+### Static-Heatmap indicator
+
+The `brix.Indicator` class provides a flexible way to define any type of indicator. In some cases, a simple approach is needed. Let’s assume we want to build a simple heatmap indicator that just visualizes a given shapefile, and does not react to changes in geogriddata. We can use `brix.StaticHeatmap` to build that.
+
+In this example, we will use the number of houses by block in Guadalajara, Mexico. You can download the shapefile from [HERE](https://www.inegi.org.mx/contenidos/masiva/indicadores/inv/14_Manzanas_INV2016_shp.zip). We will not be using our trusted dungeonmaster table, as it does not overlap with the data. Instead we will use jalisco.
+
+The first step will be to “griddify” our shapefile, meaning we will transform it from polygons to sampling points. Please note that you can use any sampling method for this, and that the sampling points do not need to match the grid. To make things easier, we have provided `brix.griddify()`, which uses the centroids of the grid to sample the values of the heatmap.
+
+We start by loading the shapefile and removing the missing values:
+
+```
+import geopandas as gpd
+shapefile = gpd.read_file('/Users/username/Downloads/14_Manzanas_INV2016_shp/14_Manzanas_INV2016.shp')
+shapefile = shapefile[shapefile['VIVTOT']!='N.D.']
+```
+
+Next, we load a table and use its grid to sample the heatmap.
+
+```
+from brix import Handler
+table_name = 'jalisco'
+H = Handler(table_name)
+geogrid_data = H.get_geogrid_data()
+```
+
+The next step is to use the grid to sample the values of the heatmap. We will use the VIVTOT column, and save the resulting heatmap to a file so we can load it later.
+
+```
+from brix import griddify
+heatmap = griddify(geogrid_data,shapefile,columns=['VIVTOT'])
+heatmap.to_file('/Users/username/Downloads/14_Manzanas_INV2016_shp/HEATMAP.shp')
+```
+
+This shapefile is a table of points and their properties. To build your indicator you can either load the file and pass it to the :class:brix.StaticHeatmap\` constructor, or have the constructor load it for you.
+
+```
+from brix import StaticHeatmap
+N = StaticHeatmap('/Users/username/Downloads/14_Manzanas_INV2016_shp/HEATMAP.shp',columns=['VIVTOT'])
+```
+
+Finally, we add it to a Handler class and check the update package:
+
+```
+H = Handler(table_name)
+H.add_indicator(N)
+H.update_package()
+```
+
+To wrap up, once the heatmap file has been saved, all you need to do deploy the indicator is:
+
+```
+from brix import Handler, StaticHeatmap
+table_name = 'jalisco'
+N = StaticHeatmap('/Users/username/Downloads/14_Manzanas_INV2016_shp/HEATMAP.shp',columns=['VIVTOT'])
+H = Handler(table_name)
+H.add_indicator(N)
 H.listen()
 ```
 

@@ -5,7 +5,7 @@ id: Tutorial
 
 ## Basics of building a CityScope indicator
 
-Let’s get to it. First, what table are you building for? If you don’t have a specific table, that is totally okay and you can create one [here](https://cityscope.media.mit.edu/CS_cityscopeJS/). Note: by the time you read this, CityScope might pose some limitations on new projects (`tables`). Please follow instructions in the link above.
+Let’s get to it. First, what table are you building for? If you don’t have a specific table, that is totally okay and you can create one [here](https://cityscope.media.mit.edu/CS_cityscopeJS/#/editor). Note: by the time you read this, CityScope might pose some limitations on new projects (`tables`). Please follow instructions in the link above.
 For this tutorial, we crated one called `dungeonmaster`.
 
 After creating a table, open the frond end given by the tool and edit the table at least once. Change some blocks, and push those changes to CityIO.
