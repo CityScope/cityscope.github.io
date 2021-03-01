@@ -429,6 +429,7 @@ We start by loading the shapefile and removing the missing values:
 import geopandas as gpd
 shapefile = gpd.read_file('/Users/username/Downloads/14_Manzanas_INV2016_shp/14_Manzanas_INV2016.shp')
 shapefile = shapefile[shapefile['VIVTOT']!='N.D.']
+shapefile['VIVTOT'] = shapefile['VIVTOT'].astype(float)
 ```
 
 Since the VIVTOT column that we are interested in visualizing has a skewed distribution, we will log-transform it.
@@ -442,8 +443,7 @@ Next, we load a table and use its grid to sample the heatmap.
 
 ```
 from brix import Handler
-table_name = 'jalisco'
-H = Handler(table_name)
+H = Handler('jalisco')
 geogrid_data = H.get_geogrid_data()
 ```
 
@@ -466,7 +466,7 @@ N = StaticHeatmap('/Users/username/Downloads/14_Manzanas_INV2016_shp/HEATMAP.shp
 Finally, we add it to a Handler class and check the update package:
 
 ```
-H = Handler(table_name)
+H = Handler('jalisco')
 H.add_indicator(N)
 H.update_package()
 ```
@@ -475,9 +475,8 @@ To wrap up, once the heatmap file has been saved, all you need to do deploy the 
 
 ```
 from brix import Handler, StaticHeatmap
-table_name = 'jalisco'
 N = StaticHeatmap('/Users/username/Downloads/14_Manzanas_INV2016_shp/HEATMAP.shp',columns=['log_VIVTOT'])
-H = Handler(table_name)
+H = Handler('jalisco')
 H.add_indicator(N)
 H.listen()
 ```
