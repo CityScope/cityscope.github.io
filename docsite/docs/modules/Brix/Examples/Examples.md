@@ -471,7 +471,28 @@ H.add_indicator(N)
 H.update_package()
 ```
 
-To wrap up, once the heatmap file has been saved, all you need to do deploy the indicator is:
+To sum up, to preprocess the data:
+
+```
+import geopandas as gpd
+import numpy as np
+from brix import Handler
+from brix import griddify
+
+shapefile = gpd.read_file('/Users/username/Downloads/14_Manzanas_INV2016_shp/14_Manzanas_INV2016.shp')
+shapefile = shapefile[shapefile['VIVTOT']!='N.D.']
+shapefile['VIVTOT'] = shapefile['VIVTOT'].astype(float)
+shapefile['log_VIVTOT'] = np.log(shapefile['VIVTOT']+1)
+
+
+H = Handler('jalisco')
+geogrid_data = H.get_geogrid_data()
+heatmap = griddify(geogrid_data,shapefile,columns=['log_VIVTOT'],buffer_percent=3)
+heatmap = heatmap[~heatmap['log_VIVTOT'].isna()]
+heatmap.to_file('/Users/username/Downloads/14_Manzanas_INV2016_shp/HEATMAP.shp')
+```
+
+And once the heatmap file has been saved, all you need to do deploy the indicator is:
 
 ```
 from brix import Handler, StaticHeatmap
