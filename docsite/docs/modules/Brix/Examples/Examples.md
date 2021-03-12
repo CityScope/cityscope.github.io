@@ -135,6 +135,61 @@ for h in handler_list:
         h.listen()
 ```
 
+### Hybrid indicator
+
+For more complex uses cases, where a module runs a big simulation and wants to show both a heatmap and a numeric indicator, you can use a hybrid indicator. To start, set:
+
+```
+self.indicator_type = 'hybrid'
+```
+
+If you set your indicator as hybrid you need to define a numeric and a heatmap part. The following example generates a heatmap with noise and the average noise as a numeric indicator.
+
+```
+from brix import Indicator
+from numpy import mean
+import random
+class HybridNoise(Indicator):
+        def setup(self):
+                self.indicator_type = 'hybrid'
+                self.name = 'noise'
+                self.requires_geometry = True
+                self.mynoise = None
+
+        def return_indicator_heatmap(self, geogrid_data):
+                features = []
+                for cell in geogrid_data:
+                        feature = {}
+                        lat,lon = zip(*cell['geometry']['coordinates'][0])
+                        lat,lon = mean(lat),mean(lon)
+                        feature['geometry'] = {'coordinates': [lat,lon],'type': 'Point'}
+                        feature['properties'] = {self.name:random.random()}
+                        features.append(feature)
+                self.mynoise = features
+                out = {'type':'FeatureCollection','features':features}
+                return out
+
+        def return_indicator_numeric(self, geogrid_data):
+                mean_noise = mean([cell['properties'][self.name] for cell in self.mynoise])
+                return mean_noise
+```
+
+By default, brix will run the heatmap indicator first, followed by the numeric indicator. If you need more control over how these functions interact with each other, you can always re-define the return_indicator function. If you choose to do so, make sure that it returns a dictionary with two keys (‘heatmap’ and ‘numeric’):
+
+```
+{'heatmap': heatmap_values, 'numeric': numeric_values}
+```
+
+In the previous example:
+
+```
+def return_indicator(self, geogrid_data):
+        out = {}
+        out['heatmap'] = self.return_indicator_heatmap(geogrid_data)
+        out['numeric'] = self.return_indicator_numeric(geogrid_data)
+        return out
+```
+
 ## Step by step examples
 
 ### Diversity of land-use indicator - step by step

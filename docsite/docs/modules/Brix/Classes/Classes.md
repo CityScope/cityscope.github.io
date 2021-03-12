@@ -704,8 +704,33 @@ Returns the bounds of the geogrid.
 
 
 #### check_id_validity(quietly=True)
+Checks if all ids are in GEOGRIDDATA or if some are missing by comparing the number of unique ids of the current object with the grid size as return by `brix.GEOGRIDDATA.grid_size()`.
+Does not raise an error, but returns a boolean.
+See `brix.GEOGRIDDATA.fill_missing_cells()`
 
-#### check_type_validity(quietly=True)
+
+* **Returns**
+
+    **validity** – If False, the number of unique ids does not match the grid size.
+
+
+
+* **Return type**
+
+    boolean
+
+
+
+#### check_type_validity(raise_error=True)
+Checks if all types in the given GEOGRIDDATA object correspond to a type defined in GEOGRID.
+This function raises an error by default.
+
+
+* **Parameters**
+
+    **raise_error** (boolean, defaults to True) – If False, it will not raise the error by return a boolean of whether the types are valid or not.
+
+
 
 #### clear()
 Remove all items from list.
@@ -764,8 +789,12 @@ Get the value of `brix.Handler.geogrid_props` from the corresponding `brix.Handl
 #### get_type_info()
 
 #### get_type_set()
+Returns set with all types defined in GEOGRID.
+
 
 #### grid_size()
+Returns size of the grid (total numer of cells).
+
 
 #### index()
 Return first index of value.
