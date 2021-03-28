@@ -1,5 +1,5 @@
 ---
-id: How to Build CitIO
+id: Build
 ---
 
 From version 3, the Dockerfile inside the repository can be used for

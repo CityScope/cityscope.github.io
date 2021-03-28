@@ -16,7 +16,7 @@ module.exports = {
             "UI/RoboScope",
         ],
         Modules: ["modules/Types System", "modules/Brix/Brix", "modules/GAMA"],
-        Backend: ["backend/CityIO"],
+        Backend: ["backend/CityIO", "backend/API", "backend/Build"],
         Archive: [
             "archive/Schema",
             "archive/Specs",

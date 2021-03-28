@@ -2,5 +2,5 @@
 id: CityIO
 ---
 
-- [API](./Api.md)
-- [How to Build CityIO](./Build.md)
+- [API](Api)
+- [How to Build CityIO](Build)

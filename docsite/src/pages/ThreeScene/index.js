@@ -62,16 +62,14 @@ export default class ThreeScene extends Component {
 
         this.paths.forEach((URL) => {
             loader.load(URL, function (object) {
-                var wrapperObj = new THREE.Geometry();
+                var wrapperObj = new THREE.BufferGeometry();
                 var objMesh = new THREE.Mesh();
                 object.traverse(function (child) {
                     if (child instanceof THREE.Mesh) {
                         objMesh = child;
                     }
                 });
-                var mlcsGeom = new THREE.Geometry().fromBufferGeometry(
-                    objMesh.geometry
-                );
+                var mlcsGeom = new THREE.BufferGeometry(objMesh.geometry);
                 mlcsGeom.scale(0.1, 0.1, 0.1);
                 for (let i = 0; i < count; i++) {
                     let clone = mlcsGeom.clone();
