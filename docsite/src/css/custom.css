@@ -33,9 +33,11 @@ imported from old site
 }
 
 .legotitle {
+    padding: 1em;
+    margin: 0;
     font-family: "Press Start 2P";
     color: #ff5278;
-    font-size: 16px;
+    font-size: 22px;
 }
 
 a,

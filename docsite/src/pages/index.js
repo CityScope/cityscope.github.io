@@ -5,7 +5,7 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
-import ThreeScene from "./ThreeScene";
+// import ThreeScene from "./ThreeScene";
 
 function Home() {
     const context = useDocusaurusContext();
@@ -24,13 +24,11 @@ function Home() {
                         )}
                         to={useBaseUrl("docs/")}
                     >
-                        <h1 className="legotitle">
-                            {siteConfig.title}
-                        </h1>
+                        <h1 className="legotitle">{siteConfig.title}</h1>
                     </Link>
                 </div>
             </div>
-            <ThreeScene />
+            {/* <ThreeScene /> */}
         </Layout>
     );
 }
