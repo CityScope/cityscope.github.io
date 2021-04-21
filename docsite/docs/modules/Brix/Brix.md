@@ -69,6 +69,9 @@ pip install cs-brix
 * Functions
 
 
+    * Helper functions
+
+
     * Wrapper functions
 
 
