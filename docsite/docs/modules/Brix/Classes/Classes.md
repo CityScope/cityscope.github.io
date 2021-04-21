@@ -183,7 +183,7 @@ Retreives the GEOGRID hash from:
 
 
 #### get_indicator_values(geogrid_data=None, include_composite=False)
-Returns the current values of numeric indicators. Used for developing a composite indicator.
+Returns the current values of NUMERIC indicators. Used for developing a composite indicator.
 
 
 * **Parameters**
@@ -394,7 +394,7 @@ Performs single table update.
 
 
 
-#### post_geogrid_data(geogrid_data)
+#### post_geogrid_data(geogrid_data, override_verification=False)
 Posts the given geogrid_data object, ensuring that the object is valid.
 
 Function can be called by itself or using `brix.Handler.update_geogrid_data()`.
@@ -402,13 +402,26 @@ Function can be called by itself or using `brix.Handler.update_geogrid_data()`.
 
 * **Parameters**
 
-    **geogrid_data** (*dict*) – Dictionary corresponding to a valid `brix.GEOGRIDDATA` object.
+    
+    * **geogrid_data** (*dict*) – Dictionary corresponding to a valid `brix.GEOGRIDDATA` object.
+
+
+    * **override_verification** (boolean, defaults to False) – If True, it will override the verification of the input as a valid object.
 
 
 
-#### reset_geogrid_data()
+#### remote_host( = 'https://cityio.media.mit.edu')
+
+#### reset_geogrid_data(override_verification=True)
 Resets the GEOGRIDDATA endpoint to the initial value.
 If the GEOGRIDDATA has not been updated, this will update it.
+
+
+* **Parameters**
+
+    **override_verification** (boolean, defaults to True) – If True, it will ensure the object defined in GEOGRID/features is a valid GEOGRIDDATA object.
+    If False, it will post the object in GEOGRID/features to GEOGRIDDATa without any verification.
+
 
 
 #### return_indicator(indicator_name)
@@ -608,6 +621,18 @@ User defined function. This function defines the value of the indicator as a fun
 
     list, dict, or float
 
+
+
+#### return_indicator_heatmap(geogrid_data)
+Placeholder for user to define.
+
+
+#### return_indicator_numeric(geogrid_data)
+Placeholder for user to define.
+
+
+#### return_indicator_textual(geogrid_data)
+Placeholder for user to define.
 
 
 #### set_return_indicator(return_indicator)
@@ -827,7 +852,7 @@ Raises IndexError if list is empty or index is out of range.
 
 #### remap_colors()
 Forces the colors to match the define colors of the cell type.
-Requires that GEOGRIDDATA is set
+Requires that GEOGRIDDATA is set.
 
 
 #### remap_interactive()
@@ -958,6 +983,18 @@ Applies `brix.CompositeIndicator.compose_function` to the indicator values to re
 
 
 
+#### return_indicator_heatmap(geogrid_data)
+Placeholder for user to define.
+
+
+#### return_indicator_numeric(geogrid_data)
+Placeholder for user to define.
+
+
+#### return_indicator_textual(geogrid_data)
+Placeholder for user to define.
+
+
 #### set_return_indicator(return_indicator)
 Used to set the return_indicator method by passing a function.
 
@@ -1086,6 +1123,18 @@ User defined function. This function defines the value of the indicator as a fun
 
     list, dict, or float
 
+
+
+#### return_indicator_heatmap(geogrid_data)
+Placeholder for user to define.
+
+
+#### return_indicator_numeric(geogrid_data)
+Placeholder for user to define.
+
+
+#### return_indicator_textual(geogrid_data)
+Placeholder for user to define.
 
 
 #### set_return_indicator(return_indicator)
