@@ -6,7 +6,7 @@ id: Classes
 ## Handler class
 
 
-### class brix.Handler(table_name, GEOGRIDDATA_varname='GEOGRIDDATA', GEOGRID_varname='GEOGRID', quietly=True, host_mode='remote', reference=None)
+### class brix.Handler(table_name, quietly=True, host_mode='remote', host_name=None, reference=None, shell_mode=False)
 Class to handle the connection for indicators built based on data from the GEOGRID. To use, instantiate the class and use the `add_indicator()` method to pass it a set of `Indicator` objects.
 
 
@@ -17,21 +17,25 @@ Class to handle the connection for indicators built based on data from the GEOGR
     [https://cityio.media.mit.edu/api/table/table_name](https://cityio.media.mit.edu/api/table/table_name)
 
 
-    * **GEOGRIDDATA_varname** (str, defaults to GEOGRIDDATA) – Name of geogrid-data variable in the table API.
-    The object located at:
-    [https://cityio.media.mit.edu/api/table/table_name/GEOGRIDDATA_varname](https://cityio.media.mit.edu/api/table/table_name/GEOGRIDDATA_varname)
-    will be used as input for the return_indicator function in each indicator class.
-
-
-    * **GEOGRID_varname** (str, defaults to GEOGRID) – Name of variable with geometries.
-
-
     * **quietly** (boolean, defaults to True) – If True, it will show the status of every API call.
+
+
+    * **host_mode** (*str**, **defaults to 'remote'*) – If ‘local’ it will use [http://127.0.0.1:5000/](http://127.0.0.1:5000/) as host.
+
+
+    * **host_name** (*str**, **defaults to class remote_host*) – If passed, it will override the class host.
 
 
     * **reference** (*dict**, **optional*) – Dictionary for reference values for each indicator.
 
 
+    * **shell_mode** (*Boolean**, **optional defaults to False*) – If True, it will not get the current hash when instantiating the class. Useful for testing.
+
+
+
+#### GEOGRIDDATA_endpoint( = 'GEOGRIDDATA')
+
+#### GEOGRID_endpoint( = 'GEOGRID')
 
 #### add_geogrid_data_update_function(update_func)
 Adds a function to update GEOGRIDDATA.
@@ -93,6 +97,8 @@ Prints the front end url for the table.
     str
 
 
+
+#### cityio_post_headers( = {'Content-Type': 'application/json'})
 
 #### clear_table()
 Clears all indicators from the table.
@@ -307,8 +313,28 @@ thread before it has been started and attempts to do so raises the same
 exception.
 
 
+#### classmethod list_all_indicator_instances()
+Returns the instance of every indicator instance.
+
+
 #### list_indicators()
 Returns list of all indicator names.
+
+
+* **Returns**
+
+    **indicators_names** – List of indicator names.
+
+
+
+* **Return type**
+
+    list
+
+
+
+#### list_unlinked_indicators()
+Returns the names of all the unlinked indicators.
 
 
 * **Returns**
@@ -552,46 +578,6 @@ Returns the package that will be posted in CityIO.
 Parent class to build indicators from. To use, you need to define a subclass than inherets properties from this class. Doing so, ensures your indicator inherets the necessary methods and properties to connect with a CityScipe table.
 
 
-#### get_geogrid_data(include_geometries=None, with_properties=None)
-Returns the geogrid data from the linked table. Function mainly used for development. See `brix.Indicator.link_table()`. It returns the exact object that will be passed to return_indicator
-
-
-* **Parameters**
-
-    
-    * **include_geometries** (boolean, defaults to `brix.Indicator.requires_geometry`) – If True, it will override the default parameter of the Indicator.
-
-
-    * **with_properties** (boolean, defaults to `brix.Indicator.requires_geogrid_props`) – If True, it will override the default parameter of the Indicator.
-
-
-
-* **Returns**
-
-    **geogrid_data** – Data that will be passed to the `brix.Indicator.return_indicator()` function by the `brix.Handler` when deployed.
-
-
-
-* **Return type**
-
-    str or pandas.DataFrame
-
-
-
-#### get_table_properties()
-Gets table properties from the linked table. See `brix.Indicator.link_table()` and `brix.Handler.get_table_properties()`.
-
-
-#### link_table(table_name)
-Creates a `brix.Handler` and links the table to the indicator. This function should be used only for developing the indicator.
-
-
-* **Parameters**
-
-    **table_name** (str or `brix.Handler`) – Name of the table or Handler object.
-
-
-
 #### load_module()
 User defined function. Used to load any data necessary for the indicator to run. In principle, you could do everything using `brix.Indicator.setup()` but we encourage to separte data loading and module definition into two functions.
 
@@ -833,7 +819,7 @@ Insert object before index.
 
 #### link_table(table_name)
 Sets geogrid using set_geogrid.
-This function should use if GEOGRIDDATA needs to be updated.
+This function should use if GEOGRID needs to be updated.
 
 
 * **Parameters**
@@ -910,46 +896,6 @@ The reverse flag can be set to sort in descending order.
 
 ### class brix.CompositeIndicator(\*args, \*\*kwargs)
 Subclass used to define composite indicators. Composite indicators are functions of already defined indicators. By defining `brix.Indicator.setup()` and `brix.Indicator.return_indicator()`, this class allows you to define a composite indicator by just passing an aggregation function.
-
-
-#### get_geogrid_data(include_geometries=None, with_properties=None)
-Returns the geogrid data from the linked table. Function mainly used for development. See `brix.Indicator.link_table()`. It returns the exact object that will be passed to return_indicator
-
-
-* **Parameters**
-
-    
-    * **include_geometries** (boolean, defaults to `brix.Indicator.requires_geometry`) – If True, it will override the default parameter of the Indicator.
-
-
-    * **with_properties** (boolean, defaults to `brix.Indicator.requires_geogrid_props`) – If True, it will override the default parameter of the Indicator.
-
-
-
-* **Returns**
-
-    **geogrid_data** – Data that will be passed to the `brix.Indicator.return_indicator()` function by the `brix.Handler` when deployed.
-
-
-
-* **Return type**
-
-    str or pandas.DataFrame
-
-
-
-#### get_table_properties()
-Gets table properties from the linked table. See `brix.Indicator.link_table()` and `brix.Handler.get_table_properties()`.
-
-
-#### link_table(table_name)
-Creates a `brix.Handler` and links the table to the indicator. This function should be used only for developing the indicator.
-
-
-* **Parameters**
-
-    **table_name** (str or `brix.Handler`) – Name of the table or Handler object.
-
 
 
 #### load_module()
@@ -1054,46 +1000,6 @@ The indicator will post the given shapefile to the table.
 
 
 
-#### get_geogrid_data(include_geometries=None, with_properties=None)
-Returns the geogrid data from the linked table. Function mainly used for development. See `brix.Indicator.link_table()`. It returns the exact object that will be passed to return_indicator
-
-
-* **Parameters**
-
-    
-    * **include_geometries** (boolean, defaults to `brix.Indicator.requires_geometry`) – If True, it will override the default parameter of the Indicator.
-
-
-    * **with_properties** (boolean, defaults to `brix.Indicator.requires_geogrid_props`) – If True, it will override the default parameter of the Indicator.
-
-
-
-* **Returns**
-
-    **geogrid_data** – Data that will be passed to the `brix.Indicator.return_indicator()` function by the `brix.Handler` when deployed.
-
-
-
-* **Return type**
-
-    str or pandas.DataFrame
-
-
-
-#### get_table_properties()
-Gets table properties from the linked table. See `brix.Indicator.link_table()` and `brix.Handler.get_table_properties()`.
-
-
-#### link_table(table_name)
-Creates a `brix.Handler` and links the table to the indicator. This function should be used only for developing the indicator.
-
-
-* **Parameters**
-
-    **table_name** (str or `brix.Handler`) – Name of the table or Handler object.
-
-
-
 #### load_module()
 User defined function. Used to load any data necessary for the indicator to run. In principle, you could do everything using `brix.Indicator.setup()` but we encourage to separte data loading and module definition into two functions.
 
@@ -1149,4 +1055,96 @@ Used to set the return_indicator method by passing a function.
 
 #### setup(shapefile, columns=None, name=None, normalize_values=True)
 User defined function. Used to set up the main attributed of the custom indicator. Acts similar to an __init__ method.
+
+## User class
+
+
+### class brix.User(\*args, sleep_time=7, name=None, \*\*kwargs)
+Class that simulates a user doing changes to the grid.
+
+To use, instantiate the class, and run User.start_user().
+This will create a new thread with a user running.
+
+
+#### add_indicator(I, test=True)
+Adds indicator to handler object.
+
+
+* **Parameters**
+
+    
+    * **I** (`brix.Indicator`) – Indicator object to handle. If indicator has name, this will use as identifier. If indicator has no name, it will generate an identifier.
+
+
+    * **test** (boolean, defaults to True) – If True it will ensure the indicator runs before adding it to the `brix.Handler`.
+
+
+
+#### classmethod getinstances()
+
+#### listen(new_thread=False, showFront=True, append=False)
+Listens for changes in the table’s geogrid and update all indicators accordingly.
+You can use the update_package method to see the object that will be posted to the table.
+This method starts with an update before listening.
+Can run in a separate thread.
+Does not support updating GEOGRIDDATA.
+
+
+* **Parameters**
+
+    
+    * **new_thread** (boolean, defaults to False.) – If True it will run in a separate thread, freeing up the main thread for other tables.
+    We recommend setting this to False when debugging, to avoid needing to recreate the object.
+
+
+    * **showFront** (boolean, defaults to True) – If True it will open the front-end URL in a webbrowser at start.
+    Only works if new_tread=False.
+
+
+    * **append** (boolean, defaults to False) – If True it will append the new indicators to whatever is already there.
+    This option will be deprecated soon. We recommend not using it unless strictly necessary.
+
+
+
+#### run()
+Run method to be called by `threading.Thread.start()`.
+
+
+#### start_user()
+
+#### stop_user()
+
+#### update_package(geogrid_data=None, append=False)
+Returns the package that will be posted in CityIO.
+
+
+* **Parameters**
+
+    
+    * **geogrid_data** (*dict**, **optional*) – Result of `brix.Handler.get_geogrid_data()`. If not provided, it will be retrieved.
+
+
+    * **append** (boolean, defaults to False) – If True, it will append the new indicators to whatever is already there.
+
+
+
+* **Returns**
+
+    **new_values** – Note that all heatmat indicators have been grouped into just one value.
+
+
+
+* **Return type**
+
+    list
+
+
+
+#### user_sim(quietly=True)
+Simulates a user that changes the grid every sleep_time seconds.
+The user flips a random cell 90% of the time, and shuffles the whole grid the other 10% of the time.
+There is a small chance that the user will reset the grid to its original setting.
+
+
+#### user_status()
 

@@ -66,6 +66,9 @@ pip install cs-brix
     * Indicator sub-classes
 
 
+    * User class
+
+
 * Functions
 
 
