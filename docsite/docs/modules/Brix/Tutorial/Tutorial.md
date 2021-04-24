@@ -99,7 +99,21 @@ geogrid_data.as_df()
 
 This library ensures that you can focus on what you do best: writing a kick ass `brix.Indicator.return_indicator()` function that will make everyone’s urban planning life better.
 
-To test your function while debugging it, you can use the object returned by `brix.Handler.get_geogrid_data()`:
+To recap, an indicator is build by defining at least a `brix.Indicator.setup()` function that takes care of configuring the indicator and a `brix.Indicator.return_indicator()` that will calculate the value of the indicator for a given `geogrid_data`.
+
+Here’s an example of simple `brix.Indicator.setup()` and `brix.Indicator.return_indicator()` functions for a numeric indicator:
+
+```
+def setup(self):
+        self.name = 'My numeric indicator'
+        self.indicator_type = 'numeric'
+        self.viz_type = 'radar'
+
+def return_indicator(self,geogrid_data):
+        return 1
+```
+
+To test your `brix.Indicator.return_indicator()` function while debugging it, you can use the object returned by `brix.Handler.get_geogrid_data()`:
 
 ```
 H = Handler('dungeonmaster')
@@ -107,19 +121,9 @@ geogrid_data = H.get_geogrid_data()
 I.return_indicator(geogrid_data)
 ```
 
-The property `brix.Indicator.indicator_type` will toggle between a Heatmap indicator or a numeric indicator (`numeric` for numeric and `heatmap` for heatmap).
+Brix distinguish between four different types of indicators defined using the attribute `brix.Indicator.indicator_type` defined in `brix.Indicator.setup()`: `numeric`, `heatmap`, `textual`, and `hybrid`.
 
-For numeric indicators, there are multiple ways in which the front end can display them (e.g. bar chart, radar plot, etc.). This is controlled by the `brix.Indicator.viz_type` property of the class. The default value is set to `self.viz_type=radar` which means that unless it is specified otherwise, all numeric indicators will be added to the radar plot. When building an indicator that returns a single number you can just change the value of this parameter in the `brix.Indicator.setup()`. When building an indicator that returns multiple numbers it will just assume every number should be displayed in the same front end visualization. If you want to have more fine control of where each indicator is displayed, we recommend building your return_indicator function such that it returns a dictionary with the following structure:
-
-```
-{
-        'name': 'Social Wellbeing',
-        'value': random.random(),
-        'viz_type': 'bar'
-}
-```
-
-Note that if you define `viz_type` in the return dictionary of `return_indicator`, it will overwrite any default property defined in `setup`. Remember that your `return_indicator` function can also return a list of indicators. In the following example of a return value for the `return_indicator` function, the indicator returns two numbers that should be displayed in the radar plot, and one to be displayed as a bar chart.
+`indicator_type='numeric'` is the default and refers to a simple numeric indicator (e.g. average, density, diversity, etc.). When defining a numeric indicator, there are multiple ways in which the front end can display them (e.g. bar chart, radar plot, etc.). This is controlled by the `brix.Indicator.viz_type` attribute, also defined in the `brix.Indicator.setup()`. The default value is set to `self.viz_type=radar` which means that unless it is specified otherwise, all numeric indicators will be added to the radar plot. For a `numeric` indicator, the `brix.Indicator.return_indicator()` function can simply return a number or a list of numbers, all of which will be added to the same front end visualization (e.g. all bar charts, all radar numbers). If you want to have more fine control of where each indicator is displayed, we recommend building your `brix.Indicator.return_indicator()` function such that it returns a dictionary with the following structure:
 
 ```
 [
@@ -127,6 +131,35 @@ Note that if you define `viz_type` in the return dictionary of `return_indicator
         {'name': 'Environmental Impact', 'value': 0.1, 'viz_type': 'radar'},
         {'name': 'Mobility Impact', 'value': 0.5, 'viz_type': 'bar'}
 ]
+```
+
+Note that if you define `viz_type` in the return dictionary of `return_indicator`, it will overwrite any default property defined in `brix.Indicator.setup()`.
+
+`indicator_type='heatmap'` refers to a heatmap indicator that will be displayed not in a chart but projected directly on the table (e.g. density, traffic congestion, etc.). For a `heatmap` indicator, the `brix.Indicator.return_indicator()` function should return a geojson of points with attributes, or a geopandas.GeoDataFrame also with points and attributes. This type of indicator is a bit more complicated to build and will often require knowledge of spatial analytics. See the examples if you are interested.
+
+`indicator_type='heatmap'` refers to a heatmap indicator that will be displayed not in a chart but projected directly on the table (e.g. density, traffic congestion, etc.). For a `heatmap` indicator, the `brix.Indicator.return_indicator()` function should return a geojson of points with attributes, or a geopandas.GeoDataFrame also with points and attributes. This type of indicator is a bit more complicated to build and will often require knowledge of spatial analytics. See the examples if you are interested.
+
+`indicator_type='textual'` refers to an indicator that is displayed as a text annotation in one of the cells. This can be used to highlight something important about that cell to the front end user. For a `textual` indicator, the `brix.Indicator.return_indicator()` function should return a list of dictionaries, each with two keys, `id` that identified the cell to annotate, and `info` with a string that will be projected over that cell in the front end. Here’s an example of a list that annotated cell `450` with `yes!` and cell `40` with `no!`:
+
+```
+[{
+        "id": 450,
+        "info": "yes!"
+},{
+        "id": 40,
+        "info": "no!"
+}]
+```
+
+Finally, `indicator_type='hybrid'` is used when building a very complex module that returns information to be displayed in multiple different formats. Think of a complex energy usage simulation that will display the total energy consumed as bar in the bar chart, that will show the energy used by each cell projected on the table as a heatmap, and that might annotate some cells when they do not have enough energy available to them. For a `hybrid` indicators, you have two ways of organization your code. You can define your own `brix.Indicator.return_indicator()` function, or you can define specific functions for each of the available types of indicators: `brix.Indicator.return_indicator_numeric()`, `brix.Indicator.return_indicator_heatmap()`, and `brix.Indicator.return_indicator_textual()`. If you do not define a `brix.Indicator.return_indicator()` function, brix will run first the heatmap, then the numeric indicator, and finally the textual indicator. If you chose to have tighter control of the order in which the simulation runs, you can also define your own `brix.Indicator.return_indicator()` by calling these three functions. This function should return a dictionary with three keys: `heatmap`, `numeric`, and `textual`. Not all three keys have to be present. See the example below:
+
+```
+def return_indicator(self, geogrid_data):
+out = {}
+out['heatmap'] = self.return_indicator_heatmap(geogrid_data)
+out['numeric'] = self.return_indicator_numeric(geogrid_data)
+out['textual'] = self.return_indicator_textual(geogrid_data)
+return out
 ```
 
 ## Deploy your indicator

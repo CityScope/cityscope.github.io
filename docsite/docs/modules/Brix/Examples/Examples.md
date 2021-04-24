@@ -113,6 +113,31 @@ class Noise(Indicator):
                 return out
 ```
 
+### Textual indicator
+
+The example below annotates two randomly chosen cells with `yes!` and `no!`.
+
+```
+from brix import Indicator
+import random
+class RandomFlag(Indicator):
+        '''
+        Example of textual indicator that annotates two random cells.
+        '''
+        def setup(self):
+                self.indicator_type = 'textual'
+                self.requires_geometry = True
+                self.name = 'Yes/No'
+
+        def return_indicator(self, geogrid_data):
+                cells = random.sample(geogrid_data,2)
+                out = [
+                        {'id':cells[0]['id'],'info':'yes!'},
+                        {'id':cells[1]['id'],'info':'no!'},
+                ]
+                return out
+```
+
 ### Multiple tables simultaneously
 
 The following examples instantiates three `brix.Handler` objects for three different tables (dungeonA, dungeonB, and dungeonC) and adds a diversity of land use indicator to each. It then runs `brix.Handler.listen()` for each table in its own separate thread.
