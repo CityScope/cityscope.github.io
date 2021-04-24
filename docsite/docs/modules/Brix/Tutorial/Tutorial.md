@@ -137,8 +137,6 @@ Note that if you define `viz_type` in the return dictionary of `return_indicator
 
 `indicator_type='heatmap'` refers to a heatmap indicator that will be displayed not in a chart but projected directly on the table (e.g. density, traffic congestion, etc.). For a `heatmap` indicator, the `brix.Indicator.return_indicator()` function should return a geojson of points with attributes, or a geopandas.GeoDataFrame also with points and attributes. This type of indicator is a bit more complicated to build and will often require knowledge of spatial analytics. See the examples if you are interested.
 
-`indicator_type='heatmap'` refers to a heatmap indicator that will be displayed not in a chart but projected directly on the table (e.g. density, traffic congestion, etc.). For a `heatmap` indicator, the `brix.Indicator.return_indicator()` function should return a geojson of points with attributes, or a geopandas.GeoDataFrame also with points and attributes. This type of indicator is a bit more complicated to build and will often require knowledge of spatial analytics. See the examples if you are interested.
-
 `indicator_type='textual'` refers to an indicator that is displayed as a text annotation in one of the cells. This can be used to highlight something important about that cell to the front end user. For a `textual` indicator, the `brix.Indicator.return_indicator()` function should return a list of dictionaries, each with two keys, `id` that identified the cell to annotate, and `info` with a string that will be projected over that cell in the front end. Here’s an example of a list that annotated cell `450` with `yes!` and cell `40` with `no!`:
 
 ```
