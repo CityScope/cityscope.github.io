@@ -24,7 +24,9 @@ class MyIndicator(Indicator):
                 Here you will define the properties of your indicator.
                 Although there are no required properties, be nice and give your indicator a name.
                 '''
-                self.name = 'Alfonso'
+                self.name = 'My numeric indicator'
+        self.indicator_type = 'numeric'
+        self.viz_type = 'radar'
 
         def load_module(self):
                 '''
