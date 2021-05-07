@@ -7,7 +7,7 @@ Here is a list of APIs exposed for cityio.
 # list tables
 
 ``` bash
-curl https://cityiotest.mirage.city/api/tables/list/
+curl https://cityio.media.mit.edu/api/tables/list/
 ```
 
 ``` text
@@ -17,10 +17,11 @@ curl https://cityiotest.mirage.city/api/tables/list/
 # get a table
 
 ``` bash
-curl https://cityiotest.mirage.city/api/table/test/ | jq .
+curl https://cityio.media.mit.edu/api/table/test/ | jq .
 ```
 
 `| jq .` is just to pretty format the result.
+
 
 ``` text
 {
@@ -47,7 +48,7 @@ curl https://cityiotest.mirage.city/api/table/test/ | jq .
 ``` bash
 curl -X POST -d '{"grid":[0,1,1]}' \
 -H "Content-Type:application/json" \
-https://cityiotest.mirage.city/api/table/test/ | jq .
+https://cityio.media.mit.edu/api/table/test/ | jq .
 ```
 
 ``` text
@@ -61,7 +62,7 @@ https://cityiotest.mirage.city/api/table/test/ | jq .
 # get deeper data
 
 ``` bash
-curl https://cityiotest.mirage.city/api/table/test/grid | jq .
+curl https://cityio.media.mit.edu/api/table/test/grid | jq .
 ```
 
 ``` text
@@ -77,7 +78,7 @@ curl https://cityiotest.mirage.city/api/table/test/grid | jq .
 ``` bash
 curl -X POST -d '{"setting":{"cars":true}}' \
 -H "Content-Type:application/json" \
-https://cityiotest.mirage.city/api/table/test/new_module | jq .
+https://cityio.media.mit.edu/api/table/test/new_module | jq .
 ```
 
 ``` text
@@ -93,7 +94,7 @@ exists
 ``` bash
 curl -X POST -d '{"pev": true, "cars":false}' \
 -H "Content-Type:application/json" \
-https://cityiotest.mirage.city/api/table/test/new_module/setting | jq .
+https://cityio.media.mit.edu/api/table/test/new_module/setting | jq .
 ```
 
 ``` text
@@ -108,7 +109,7 @@ this case the commit changes
 # delete table
 
 ``` bash
-curl -X DELETE https://cityiotest.mirage.city/api/table/test/
+curl -X DELETE https://cityio.media.mit.edu/api/table/test/
 ```
 
 ``` text
@@ -116,7 +117,7 @@ ok
 ```
 
 ``` bash
-curl https://cityiotest.mirage.city/api/tables/list/
+curl https://cityio.media.mit.edu/api/tables/list/
 ```
 
 ``` text
@@ -126,7 +127,7 @@ curl https://cityiotest.mirage.city/api/tables/list/
 # dump data
 
 ``` bash
-curl https://cityiotest.mirage.city/api/dump/ | jq .
+curl https://cityio.media.mit.edu/api/dump/ | jq .
 ```
 
 This gives a good overview of how cityio is internally saving data.
@@ -232,7 +233,7 @@ This gives a good overview of how cityio is internally saving data.
 a `module` is recorded as `blob`. Files are recorded as `blobs` in git.
 
 ``` bash
-curl https://cityiotest.mirage.city/api/module/8kzzuAWtRcnhd4SnD2zeEuieq5VtuA8nsNcBgzpRaLuE/
+curl https://cityio.media.mit.edu/api/module/8kzzuAWtRcnhd4SnD2zeEuieq5VtuA8nsNcBgzpRaLuE/
 ```
 
 ``` text
@@ -245,7 +246,7 @@ the `hashes` entry in the meta is recorded as a `tree`. Directories are
 recorded as `trees` in git.
 
 ``` bash
-curl https://cityiotest.mirage.city/api/hashes/BGuzwcPaxADXvLkR2uciX1pkRumFGJV25UENUur4mUfa/ | jq .
+curl https://cityio.media.mit.edu/api/hashes/BGuzwcPaxADXvLkR2uciX1pkRumFGJV25UENUur4mUfa/ | jq .
 ```
 
 ``` text
@@ -258,7 +259,7 @@ curl https://cityiotest.mirage.city/api/hashes/BGuzwcPaxADXvLkR2uciX1pkRumFGJV25
 # get a commit by Id (and roll back)
 
 ``` bash
-curl https://cityiotest.mirage.city/api/commit/GmJxu8Lq4vT2xx2HaW9nrmTJdprdKkkrFYFkQ8Mq8UcC/ | jq .
+curl https://cityio.media.mit.edu/api/commit/GmJxu8Lq4vT2xx2HaW9nrmTJdprdKkkrFYFkQ8Mq8UcC/ | jq .
 ```
 
 ``` text
@@ -273,7 +274,7 @@ the `parent` field of this points to other commits. You can roll back to
 different states using this endpoint.
 
 ``` bash
-curl https://cityiotest.mirage.city/api/commit/BTLvsmmQbJc5JiMZEsrhzMFgBjRRxcH8irDKz99WbC3b/ | jq .
+curl https://cityio.media.mit.edu/api/commit/BTLvsmmQbJc5JiMZEsrhzMFgBjRRxcH8irDKz99WbC3b/ | jq .
 ```
 
 ``` text
@@ -287,11 +288,11 @@ curl https://cityiotest.mirage.city/api/commit/BTLvsmmQbJc5JiMZEsrhzMFgBjRRxcH8i
 # Post a table by 'tagging', similar to branching
 
 ``` bash
-curl -X POST https://cityiotest.mirage.city/api/table/raw/new_table/BTLvsmmQbJc5JiMZEsrhzMFgBjRRxcH8irDKz99WbC3b/ | jq .
+curl -X POST https://cityio.media.mit.edu/api/table/raw/new_table/BTLvsmmQbJc5JiMZEsrhzMFgBjRRxcH8irDKz99WbC3b/ | jq .
 ```
 
 ``` bash
-curl https://cityiotest.mirage.city/api/tables/list/
+curl https://cityio.media.mit.edu/api/tables/list/
 ```
 
 ``` text

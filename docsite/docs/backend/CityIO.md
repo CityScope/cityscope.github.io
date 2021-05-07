@@ -3,7 +3,7 @@ id: CityIO
 ---
 # What is CityIO?
 
-- data-hub (dump?) to have several clients work together
+- data-hub to have several clients work together
 
 - (lower case)architecture to enforce collaboration within network
 
