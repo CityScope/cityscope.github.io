@@ -104,6 +104,10 @@ Prints the front end url for the table.
 
 #### cityio_post_headers( = {'Content-Type': 'application/json'})
 
+#### clear_endpoints()
+Clears the table of all pre-existing numeric, heatmap, and textual indicators.
+
+
 #### clear_table()
 Clears all indicators from the table.
 
@@ -121,7 +125,15 @@ The entire Python program exits when only daemon threads are left.
 
 #### getName()
 
-#### get_GEOGRID()
+#### get_GEOGRID(force_get=False)
+Returns geogrid object stored locally. If force_get=True, it will return remote object and overwrite local object.
+
+
+* **Parameters**
+
+    **force_get** (boolean, defaults to False) – If True it will GET request the geogrid object and overwrite the locally stored one.
+
+
 
 #### get_GEOGRIDDATA()
 Returns the raw GEOGRIDDATA object.
@@ -354,7 +366,7 @@ Returns list of all indicator names.
 
 
 
-#### listen(new_thread=False, showFront=True, append=False)
+#### listen(new_thread=False, showFront=True, append=False, clear_endpoints=False)
 Listens for changes in the table’s geogrid and update all indicators accordingly.
 You can use the update_package method to see the object that will be posted to the table.
 This method starts with an update before listening.
@@ -375,6 +387,10 @@ Does not support updating GEOGRIDDATA.
 
     * **append** (boolean, defaults to False) – If True it will append the new indicators to whatever is already there.
     This option will be deprecated soon. We recommend not using it unless strictly necessary.
+
+
+    * **clear_endpoints** (boolean, defaults to False) – If True, it will clear all existing heatmap, numeric, and textual indicators.
+    This is not recommended for deployment, only for testing.
 
 
 
@@ -409,6 +425,8 @@ Helper function to parse the LBCS and NAICS strings into dictionaries of the for
 Performs GEOGRIDDATA update using the functions added to the `brix.Handler` using `brix.Hanlder.add_geogrid_data_update_function()`.
 
 Returns True if an update happened, and Flase otherwise.
+
+Any grid indicator will overrule any grid function.
 
 
 #### perform_update(grid_hash_id=None, append=False)
@@ -512,6 +530,29 @@ Returns the current values of the indicators posted for the table.
 #### setDaemon(daemonic)
 
 #### setName(name)
+
+#### set_opacity(alpha, default_alpha=1)
+Sets opacity values in GEOGRID.
+To see updates in GEOGRIDDATA, reset GEOGRIDDATA using `brix.Handler.reset_geogrid_data()`.
+
+
+* **Parameters**
+
+    
+    * **alpha** (*float** or **dict*) – Values of opacity between 0 and 1.
+    If dict, use the types as keys and opacity as values.
+    Non-specificed types will be set to default_alpha.
+    If float, this will change the opacity for all types equally.
+
+
+    * **default_alpha** (*float**, **defaults to 1*) – Opacity value to use when type not specified in alpha.
+
+
+
+#### set_timezone()
+Sets the time zone of the table based on its coordinates.
+Useful for front end shadow simulation.
+
 
 #### start()
 Start the thread’s activity.
@@ -841,6 +882,8 @@ Remove and return item at index (default last).
 Raises IndexError if list is empty or index is out of range.
 
 
+#### pop_geometries()
+
 #### remap_colors()
 Forces the colors to match the define colors of the cell type.
 Requires that GEOGRIDDATA is set.
@@ -1108,6 +1151,10 @@ Does not support updating GEOGRIDDATA.
 
     * **append** (boolean, defaults to False) – If True it will append the new indicators to whatever is already there.
     This option will be deprecated soon. We recommend not using it unless strictly necessary.
+
+
+    * **clear_endpoints** (boolean, defaults to False) – If True, it will clear all existing heatmap, numeric, and textual indicators.
+    This is not recommended for deployment, only for testing.
 
 
 
