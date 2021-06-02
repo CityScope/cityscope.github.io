@@ -26,7 +26,7 @@ What are the types of indicators you can build? Indicators can be anything that 
 
 ## Installation
 
-Brix is now on pip. Just do:
+Brix can be installed from pip. Just do:
 
 ```
 pip install cs-brix
