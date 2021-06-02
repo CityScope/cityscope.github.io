@@ -33,7 +33,7 @@ pip install cs-brix
 ```
 
 
-* Tutorial
+* Getting started
 
 
     * Basics of building a CityScope indicator
@@ -48,7 +48,16 @@ pip install cs-brix
     * Deploy your indicator
 
 
-    * Additional tools
+* Tutorials
+
+
+    * Auto-updates of GEOGRIDDATA
+
+
+    * Creating a table from python
+
+
+    * Testing your module
 
 
 * Classes

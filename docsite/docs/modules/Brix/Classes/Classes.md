@@ -6,7 +6,7 @@ id: Classes
 ## Handler class
 
 
-### class brix.Handler(table_name, quietly=True, host_mode='remote', host_name=None, reference=None, shell_mode=False)
+### class brix.Handler(table_name, quietly=False, host_mode='remote', host_name=None, reference=None, shell_mode=False)
 Class to handle the connection for indicators built based on data from the GEOGRID. To use, instantiate the class and use the `add_indicator()` method to pass it a set of `Indicator` objects.
 
 
@@ -17,7 +17,7 @@ Class to handle the connection for indicators built based on data from the GEOGR
     [https://cityio.media.mit.edu/api/table/table_name](https://cityio.media.mit.edu/api/table/table_name)
 
 
-    * **quietly** (boolean, defaults to True) – If True, it will show the status of every API call.
+    * **quietly** (boolean, defaults to False) – If True, it will show the status of every API call.
 
 
     * **host_mode** (*str**, **defaults to 'remote'*) – If ‘local’ it will use [http://127.0.0.1:5000/](http://127.0.0.1:5000/) as host.
@@ -80,6 +80,14 @@ Same as `brix.Handler.add_indicator()` but it takes in a list of `brix.Indicator
 Returns a generator with every indicator instance.
 
 
+#### center_grid_view()
+Sets the initial grid view to the center of the grid.
+
+
+#### check_rest()
+Checks if module should be put in resting mode
+
+
 #### check_table(return_value=False)
 Prints the front end url for the table.
 
@@ -121,6 +129,11 @@ main thread is not a daemon thread and therefore all threads created in
 the main thread default to daemon = False.
 
 The entire Python program exits when only daemon threads are left.
+
+
+#### delete_table()
+Deletes table if it exists.
+Will prompt user to make sure this function was not run by mistake.
 
 
 #### getName()
@@ -306,6 +319,22 @@ after the run() method terminates. The module function enumerate()
 returns a list of all alive threads.
 
 
+#### is_table()
+Checks it table exists by getting the base url.
+
+
+* **Returns**
+
+    **self.is_table** – True if table exists.
+
+
+
+* **Return type**
+
+    boolean
+
+
+
 #### join(timeout=None)
 Wait until the thread terminates.
 
@@ -366,7 +395,7 @@ Returns list of all indicator names.
 
 
 
-#### listen(new_thread=False, showFront=True, append=False, clear_endpoints=False)
+#### listen(new_thread=False, showFront=False, append=False, clear_endpoints=False, robust=False)
 Listens for changes in the table’s geogrid and update all indicators accordingly.
 You can use the update_package method to see the object that will be posted to the table.
 This method starts with an update before listening.
@@ -381,7 +410,7 @@ Does not support updating GEOGRIDDATA.
     We recommend setting this to False when debugging, to avoid needing to recreate the object.
 
 
-    * **showFront** (boolean, defaults to True) – If True it will open the front-end URL in a webbrowser at start.
+    * **showFront** (boolean, defaults to False) – If True it will open the front-end URL in a webbrowser at start.
     Only works if new_tread=False.
 
 
@@ -391,6 +420,10 @@ Does not support updating GEOGRIDDATA.
 
     * **clear_endpoints** (boolean, defaults to False) – If True, it will clear all existing heatmap, numeric, and textual indicators.
     This is not recommended for deployment, only for testing.
+
+
+    * **robust** (boolean, defaults to False) – If True, whenever a grid configuration breaks an indicator, the module will not stop, but rather wait until the grid changes and try to update again.
+    Incompatible with new_thread=True
 
 
 
@@ -429,7 +462,7 @@ Returns True if an update happened, and Flase otherwise.
 Any grid indicator will overrule any grid function.
 
 
-#### perform_update(grid_hash_id=None, append=False)
+#### perform_update(grid_hash_id=None, append=False, return_update_package=False)
 Performs single table update.
 
 
@@ -440,6 +473,9 @@ Performs single table update.
 
 
     * **append** (boolean, defaults to True) – If True, it will append the new indicators to whatever is already there.
+
+
+    * **return_update_package** (boolean, defaults to False) – If True this funciton will return the posted object.
 
 
 
@@ -554,6 +590,10 @@ Sets the time zone of the table based on its coordinates.
 Useful for front end shadow simulation.
 
 
+#### sleep_time()
+Returns sleep time in seconds, handling whether the table is in rest_mode or not.
+
+
 #### start()
 Start the thread’s activity.
 
@@ -616,6 +656,10 @@ Returns the package that will be posted in CityIO.
 
     list
 
+
+
+#### wake_up()
+Turns off rest mode.
 
 ## Indicator class
 
@@ -1145,7 +1189,7 @@ Does not support updating GEOGRIDDATA.
     We recommend setting this to False when debugging, to avoid needing to recreate the object.
 
 
-    * **showFront** (boolean, defaults to True) – If True it will open the front-end URL in a webbrowser at start.
+    * **showFront** (boolean, defaults to False) – If True it will open the front-end URL in a webbrowser at start.
     Only works if new_tread=False.
 
 
@@ -1155,6 +1199,10 @@ Does not support updating GEOGRIDDATA.
 
     * **clear_endpoints** (boolean, defaults to False) – If True, it will clear all existing heatmap, numeric, and textual indicators.
     This is not recommended for deployment, only for testing.
+
+
+    * **robust** (boolean, defaults to False) – If True, whenever a grid configuration breaks an indicator, the module will not stop, but rather wait until the grid changes and try to update again.
+    Incompatible with new_thread=True
 
 
 
