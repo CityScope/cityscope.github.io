@@ -17,7 +17,7 @@
     "clsx": "^1.1.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "three": "^0.125.0"
+    "three": "^0.137.0"
   },
   "browserslist": {
     "production": [
