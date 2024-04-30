@@ -1,6 +1,7 @@
 ---
 slug: /
 sidebar_position: 1
+title: CityScope
 ---
 
 ##
@@ -11,9 +12,7 @@ CityScope is a project conducted at the MIT Media Lab City Science group. It inc
 
 ## CityScope Ecosystem
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/o71Ab4cJ1uA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-This [website](https://cityscope.github.io) serves documentation for the CityScope project.
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/o71Ab4cJ1uA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### CityScope GitHub Organization Structure
 
