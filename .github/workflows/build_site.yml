@@ -1,56 +1,51 @@
-# Description: Workflow that builds the website after a push to new_docsite branch
-# Author: Cristian Jara-Figueroa, Phd Student MIT Media Lab
-# Last updated: November 30, 2020
-name: Build website using yarn
+name: Deploy to GitHub Pages
 
 on:
-  workflow_dispatch:
-  # push:
-  #   branches:
-  #     - new_docsite
+  push:
+    branches:
+      - main
+    # Review gh actions docs if you want to further define triggers, paths, etc
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
 jobs:
   build:
+    name: Build Docusaurus
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.x]
-    env:
-      working-directory: ./docsite
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
-          ref: new_docsite
-      - name: List files and check location
-        run: pwd && ls -l
-        working-directory: ./docsite
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: install yarn
-        run: npm install -g yarn
-        working-directory: ./docsite
-      - name: yarn install and deploy
-        run: yarn && yarn deploy
-        working-directory: ./docsite
-        env:
-          GIT_USER: crisjf
-      # - name: yarn install
-      #   uses: borales/actions-yarn@v2.0.0
-      #   with:
-      #     cmd: install
-      # - name: yarn deploy
-      #   uses: borales/actions-yarn@v2.0.0
-      #   env:
-      #     GIT_USER: crisjf
-      #   with:
-      #     cmd: deploy
+          node-version: 18
+          cache: npm
 
+      - name: Install dependencies
+        run: npm ci
+      - name: Build website
+        run: npm run build
 
-# Steps to deploy (bash)
-# cd docsite
-# yarn install
-# export GIT_USER=crisjf
-# yarn deploy
+      - name: Upload Build Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

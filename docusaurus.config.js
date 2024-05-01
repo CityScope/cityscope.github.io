@@ -7,7 +7,7 @@ module.exports = {
   favicon: "img/favicon.ico",
   organizationName: "CityScope", // Usually your GitHub org/user name.
   projectName: "cityscope.github.io", // Usually your repo name.
-  deploymentBranch: "github-pages",
+  deploymentBranch: "master",
 
   themeConfig: {
     navbar: {
