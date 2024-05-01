@@ -12,7 +12,7 @@ node_modules
 package-lock.json
 
 .eslintcache
-
+# ignore yarn error log
 yarn-error.log
 build
 coverage
