@@ -9,7 +9,7 @@
 
 node_modules
 .yarn
-package-lock.json
+# package-lock.json
 
 .eslintcache
 # ignore yarn error log
