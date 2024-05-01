@@ -1,0 +1,27 @@
+{
+  "id": "archive/h3/h3",
+  "title": "[Archive] H3 Grid",
+  "description": "This documentation is under construction.",
+  "source": "@site/docs/archive/h3/h3.md",
+  "sourceDirName": "archive/h3",
+  "slug": "/archive/h3/",
+  "permalink": "/archive/h3/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/docs/archive/h3/h3.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Archive",
+    "permalink": "/category/archive"
+  },
+  "next": {
+    "title": "[Archive] The brix library",
+    "permalink": "/archive/brix/"
+  }
+}

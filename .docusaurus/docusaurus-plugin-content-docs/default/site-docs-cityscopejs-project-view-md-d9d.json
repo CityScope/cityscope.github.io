@@ -1,0 +1,27 @@
+{
+  "id": "cityscopejs/Project view",
+  "title": "Project view",
+  "description": "When you open a project, CityScopeJS will present you with the project view. This page aims to provide a workspace where you can manage your projects and visualize the outputs of modules. It consists of a navigation bar at the top of the screen, where you can click on different buttons to open several windows with various functionalities. The available options are:",
+  "source": "@site/docs/cityscopejs/Project view.md",
+  "sourceDirName": "cityscopejs",
+  "slug": "/cityscopejs/Project view",
+  "permalink": "/cityscopejs/Project view",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/docs/cityscopejs/Project view.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Opening a project",
+    "permalink": "/cityscopejs/Opening a project"
+  },
+  "next": {
+    "title": "Modules",
+    "permalink": "/category/modules"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "cityscopejs/Introduction",
+  "title": "Introduction",
+  "description": "CityScope platform for the web",
+  "source": "@site/docs/cityscopejs/Introduction.md",
+  "sourceDirName": "cityscopejs",
+  "slug": "/cityscopejs/Introduction",
+  "permalink": "/cityscopejs/Introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/docs/cityscopejs/Introduction.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "CityScopeJS",
+    "permalink": "/category/cityscopejs"
+  },
+  "next": {
+    "title": "Opening a project",
+    "permalink": "/cityscopejs/Opening a project"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "cityscopeWS/Introduction",
+  "title": "Introduction",
+  "description": "Welcome to the documentation of the CityScope WS Software.",
+  "source": "@site/docs/cityscopeWS/Introduction.md",
+  "sourceDirName": "cityscopeWS",
+  "slug": "/cityscopeWS/Introduction",
+  "permalink": "/cityscopeWS/Introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/cityscopeWS/Introduction.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Internal_Note",
+    "permalink": "/backend/Internal_Note"
+  },
+  "next": {
+    "title": "H3 Grid",
+    "permalink": "/category/h3-grid"
+  }
+}

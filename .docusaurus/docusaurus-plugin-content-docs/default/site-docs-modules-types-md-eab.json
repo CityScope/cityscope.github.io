@@ -1,0 +1,28 @@
+{
+  "id": "modules/Types System",
+  "title": "Types System",
+  "description": "CityScope (CS) Types are the basic land-use units that can be combined and arranged to represent urban environments within the CityScope platform. CS Types are assigned to each cell within the grid that is overlaid over the urban area of enquiry. The grid provides unified segmentation, scale and a level of abstraction that can be easily manipulated by users. Each cell within the grid can either be fixed or dynamic, depending on project limits; fixed cells within a grid are not intended to be changeable by users; dynamic cells are intended for manipulation to interact with the CityScope platform. Interactions take place as users manipulate Types within the project area.",
+  "source": "@site/docs/modules/types.md",
+  "sourceDirName": "modules",
+  "slug": "/modules/Types System",
+  "permalink": "/modules/Types System",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/docs/modules/types.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "Types System",
+    "title": "Types System",
+    "position": 1
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/modules/Core Modules/Introduction"
+  },
+  "next": {
+    "title": "CityIO",
+    "permalink": "/category/cityio"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Core Modules",
+  "description": "All you need to know about Core Modules.",
+  "slug": "/category/core-modules",
+  "permalink": "/docs/category/core-modules",
+  "navigation": {
+    "previous": {
+      "title": "Module example",
+      "permalink": "/docs/Brix/Module example"
+    },
+    "next": {
+      "title": "Introduction",
+      "permalink": "/docs/Core Modules/Introduction"
+    }
+  }
+}

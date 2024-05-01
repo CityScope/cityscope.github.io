@@ -1,0 +1,12 @@
+{
+  "title": "CityIO",
+  "description": "All you need to know about CityIO Websockets.",
+  "slug": "/category/cityio",
+  "permalink": "/docs/category/cityio",
+  "navigation": {
+    "next": {
+      "title": "Introduction",
+      "permalink": "/docs/cityio/Introduction"
+    }
+  }
+}

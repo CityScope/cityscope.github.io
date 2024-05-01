@@ -1,0 +1,203 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/",
+          "mainDocId": "intro/intro",
+          "docs": [
+            {
+              "id": "archive/brix/Brix",
+              "path": "/archive/brix/",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "archive/brix/Examples/Examples",
+              "path": "/archive/brix/Examples/",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "archive/brix/GAMA",
+              "path": "/archive/brix/GAMA",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "archive/brix/Tutorial/Tutorial",
+              "path": "/archive/brix/Tutorial/",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "archive/cityio/API",
+              "path": "/archive/cityio/API",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "archive/cityio/Build",
+              "path": "/archive/cityio/Build",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "archive/cityio/CityIO",
+              "path": "/archive/cityio/",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "archive/cityio/Internal_Note",
+              "path": "/archive/cityio/Internal_Note",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "archive/h3/h3",
+              "path": "/archive/h3/",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "cityio/API",
+              "path": "/cityio/API",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "cityio/Architecture",
+              "path": "/cityio/Architecture",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "cityio/CityIO - Core",
+              "path": "/cityio/CityIO - Core",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "cityio/CityIO - Module",
+              "path": "/cityio/CityIO - Module",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "cityio/CityIO - UI",
+              "path": "/cityio/CityIO - UI",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "cityio/Introduction",
+              "path": "/cityio/Introduction",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "cityscopejs/Introduction",
+              "path": "/cityscopejs/Introduction",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "cityscopejs/Opening a project",
+              "path": "/cityscopejs/Opening a project",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "cityscopejs/Project view",
+              "path": "/cityscopejs/Project view",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "intro/github",
+              "path": "/intro/github",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "intro/intro",
+              "path": "/",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "intro/system",
+              "path": "/intro/system",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "modules/brix/DeckGL Modules",
+              "path": "/modules/brix/DeckGL Modules",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "modules/brix/Introduction",
+              "path": "/modules/brix/Introduction",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "modules/brix/Module example",
+              "path": "/modules/brix/Module example",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "modules/Core Modules/Introduction",
+              "path": "/modules/Core Modules/Introduction",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "modules/Types System",
+              "path": "/modules/Types System",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "tanglibe user interfaces/CityScope Table Design",
+              "path": "/tanglibe user interfaces/CityScope Table Design",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "tanglibe user interfaces/CityScoPy",
+              "path": "/tanglibe user interfaces/CityScoPy",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "tanglibe user interfaces/RoboScope",
+              "path": "/tanglibe user interfaces/RoboScope",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "/category/cityscopejs",
+              "path": "/category/cityscopejs",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "/category/modules",
+              "path": "/category/modules",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "/category/brix",
+              "path": "/category/brix",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "/category/cityio",
+              "path": "/category/cityio",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "/category/tangible-user-interfaces",
+              "path": "/category/tangible-user-interfaces",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "/category/archive",
+              "path": "/category/archive",
+              "sidebar": "sidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "sidebar": {
+              "link": {
+                "path": "/",
+                "label": "Introduction"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

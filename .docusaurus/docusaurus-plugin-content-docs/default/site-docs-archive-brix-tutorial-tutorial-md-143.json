@@ -1,0 +1,26 @@
+{
+  "id": "archive/brix/Tutorial/Tutorial",
+  "title": "Tutorials",
+  "description": "This module also contains a set of other useful functions that integrate with brix.Handler and brix.Indicator.",
+  "source": "@site/docs/archive/brix/Tutorial/Tutorial.md",
+  "sourceDirName": "archive/brix/Tutorial",
+  "slug": "/archive/brix/Tutorial/",
+  "permalink": "/archive/brix/Tutorial/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/docs/archive/brix/Tutorial/Tutorial.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "Tutorial"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "GAMA",
+    "permalink": "/archive/brix/GAMA"
+  },
+  "next": {
+    "title": "[Archive] CityIO",
+    "permalink": "/archive/cityio/"
+  }
+}

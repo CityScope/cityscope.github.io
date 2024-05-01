@@ -1,0 +1,26 @@
+{
+  "id": "general/License",
+  "title": "License",
+  "description": "guidelines for selecting an open source license",
+  "source": "@site/docs/general/licences.md",
+  "sourceDirName": "general",
+  "slug": "/general/License",
+  "permalink": "/general/License",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/general/licences.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "License"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/"
+  },
+  "next": {
+    "title": "Open Source",
+    "permalink": "/general/Open Source"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "cityscopeWS/CityScopeJS/Introduction",
+  "title": "Introduction",
+  "description": "This documentation is under construction. The content of the documentation may change without prior notice.",
+  "source": "@site/docs/cityscopeWS/CityScopeJS/Introduction.md",
+  "sourceDirName": "cityscopeWS/CityScopeJS",
+  "slug": "/cityscopeWS/CityScopeJS/Introduction",
+  "permalink": "/cityscopeWS/CityScopeJS/Introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/cityscopeWS/CityScopeJS/Introduction.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "CityScopeJS",
+    "permalink": "/category/cityscopejs"
+  },
+  "next": {
+    "title": "Opening a project",
+    "permalink": "/cityscopeWS/CityScopeJS/Opening a project"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "cityscopeWS/Brix/Module example",
+  "title": "Module example",
+  "description": "In this section, we present how to code an example DeckGL module on Brix WS that connects with a project in CityScopeJS and displays various visualizations.",
+  "source": "@site/docs/cityscopeWS/Brix/Module example.md",
+  "sourceDirName": "cityscopeWS/Brix",
+  "slug": "/cityscopeWS/Brix/Module example",
+  "permalink": "/cityscopeWS/Brix/Module example",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/cityscopeWS/Brix/Module example.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "DeckGL Modules",
+    "permalink": "/cityscopeWS/Brix/DeckGL Modules"
+  },
+  "next": {
+    "title": "Core Modules",
+    "permalink": "/category/core-modules"
+  }
+}

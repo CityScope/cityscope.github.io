@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcityscope_docs=self.webpackChunkcityscope_docs||[]).push([[394],{4455:t=>{t.exports=JSON.parse('{"title":"CityIO","slug":"/category/cityio","permalink":"/category/cityio","navigation":{"previous":{"title":"Types System","permalink":"/modules/Types System"},"next":{"title":"Introduction","permalink":"/cityio/Introduction"}}}')}}]);

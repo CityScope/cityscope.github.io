@@ -1,0 +1,27 @@
+{
+  "id": "modules/brix/DeckGL Modules",
+  "title": "DeckGL Modules",
+  "description": "The main difference in using Brix WS compared to the previous version of Brix is the method of sending data to CityScope for visualization. The previous version of Brix allowed for various pre-defined visualizations, such as numeric with bars or graphs, heatmaps, or ABM, among others. While this was useful, it didn't offer enough flexibility for module makers to create complex visualizations with a variety of different elements. They were always constrained to using the same method to display data.",
+  "source": "@site/docs/modules/brix/DeckGL Modules.md",
+  "sourceDirName": "modules/brix",
+  "slug": "/modules/brix/DeckGL Modules",
+  "permalink": "/modules/brix/DeckGL Modules",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/docs/modules/brix/DeckGL Modules.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/modules/brix/Introduction"
+  },
+  "next": {
+    "title": "Module example",
+    "permalink": "/modules/brix/Module example"
+  }
+}

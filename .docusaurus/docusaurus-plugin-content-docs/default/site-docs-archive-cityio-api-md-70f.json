@@ -1,0 +1,26 @@
+{
+  "id": "Archive/cityio/API",
+  "title": "API",
+  "description": "Here is a list of APIs exposed for cityio.",
+  "source": "@site/docs/Archive/cityio/Api.md",
+  "sourceDirName": "Archive/cityio",
+  "slug": "/Archive/cityio/API",
+  "permalink": "/Archive/cityio/API",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/Archive/cityio/Api.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "API"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "[Archive] CityIO",
+    "permalink": "/Archive/cityio/"
+  },
+  "next": {
+    "title": "Internal_Note",
+    "permalink": "/Archive/cityio/Internal_Note"
+  }
+}

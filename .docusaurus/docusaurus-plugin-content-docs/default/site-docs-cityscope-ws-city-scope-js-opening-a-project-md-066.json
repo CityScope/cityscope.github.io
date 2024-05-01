@@ -1,0 +1,27 @@
+{
+  "id": "cityscopeWS/CityScopeJS/Opening a project",
+  "title": "Opening a project",
+  "description": "On the CityScopeJS landing page, there are two ways to access a project.",
+  "source": "@site/docs/cityscopeWS/CityScopeJS/Opening a project.md",
+  "sourceDirName": "cityscopeWS/CityScopeJS",
+  "slug": "/cityscopeWS/CityScopeJS/Opening a project",
+  "permalink": "/cityscopeWS/CityScopeJS/Opening a project",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/cityscopeWS/CityScopeJS/Opening a project.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/cityscopeWS/CityScopeJS/Introduction"
+  },
+  "next": {
+    "title": "Project view",
+    "permalink": "/cityscopeWS/CityScopeJS/Project view"
+  }
+}

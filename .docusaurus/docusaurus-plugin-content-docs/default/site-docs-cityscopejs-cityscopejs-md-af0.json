@@ -1,0 +1,26 @@
+{
+  "id": "cityscopejs/CityScopeJS",
+  "title": "CityScopeJS",
+  "description": "CityScope platform for the web",
+  "source": "@site/docs/cityscopejs/cityscopejs.md",
+  "sourceDirName": "cityscopejs",
+  "slug": "/cityscopejs/",
+  "permalink": "/cityscopejs/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/docs/cityscopejs/cityscopejs.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "CityScopeJS"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Project view",
+    "permalink": "/cityscopejs/Project view"
+  },
+  "next": {
+    "title": "Modules",
+    "permalink": "/category/modules"
+  }
+}

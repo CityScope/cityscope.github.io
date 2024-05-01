@@ -1,0 +1,15 @@
+{
+  "title": "CityScopeJS",
+  "slug": "/category/cityscopejs",
+  "permalink": "/category/cityscopejs",
+  "navigation": {
+    "previous": {
+      "title": "Development on GitHub",
+      "permalink": "/intro/github"
+    },
+    "next": {
+      "title": "Introduction",
+      "permalink": "/cityscopejs/Introduction"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "backend/CityIO",
+  "title": "What is CityIO?",
+  "description": "- data-hub (dump?) to have several clients work together",
+  "source": "@site/docs/backend/CityIO.md",
+  "sourceDirName": "backend",
+  "slug": "/backend/CityIO",
+  "permalink": "/backend/CityIO",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/backend/CityIO.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "CityIO"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Build",
+    "permalink": "/backend/Build"
+  },
+  "next": {
+    "title": "Internal_Note",
+    "permalink": "/backend/Internal_Note"
+  }
+}

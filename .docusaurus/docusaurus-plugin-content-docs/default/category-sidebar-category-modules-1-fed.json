@@ -1,0 +1,16 @@
+{
+  "title": "Modules",
+  "description": "CityScope Modules",
+  "slug": "/category/modules-1",
+  "permalink": "/category/modules-1",
+  "navigation": {
+    "previous": {
+      "title": "API",
+      "permalink": "/cityio/API"
+    },
+    "next": {
+      "title": "CityScoPy",
+      "permalink": "/tanglibe user interfaces/CityScoPy"
+    }
+  }
+}

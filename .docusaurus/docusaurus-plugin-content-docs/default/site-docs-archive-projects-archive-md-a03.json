@@ -1,0 +1,22 @@
+{
+  "id": "archive/Past CityScope Projects",
+  "title": "Past CityScope Projects",
+  "description": "-   Archive of past CSjs projects https://github.com/CityScope/CScityscopeJSModules",
+  "source": "@site/docs/archive/projects_archive.md",
+  "sourceDirName": "archive",
+  "slug": "/archive/Past CityScope Projects",
+  "permalink": "/archive/Past CityScope Projects",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/archive/projects_archive.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "Past CityScope Projects"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Specs",
+    "permalink": "/archive/Specs"
+  }
+}

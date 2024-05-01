@@ -1,0 +1,27 @@
+{
+  "id": "CityIO/CityIO - Core",
+  "title": "CityIO - Core",
+  "description": "The objective of this interface is to facilitate the integration of core modules into the CityScope network.",
+  "source": "@site/docs/CityIO/CityIO - Core.md",
+  "sourceDirName": "CityIO",
+  "slug": "/CityIO/CityIO - Core",
+  "permalink": "/CityIO/CityIO - Core",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/CityIO/CityIO - Core.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "CityIO - Module",
+    "permalink": "/CityIO/CityIO - Module"
+  },
+  "next": {
+    "title": "API",
+    "permalink": "/CityIO/API"
+  }
+}

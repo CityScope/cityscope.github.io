@@ -1,0 +1,16 @@
+{
+  "title": "CityScopeJS",
+  "description": "All you need to know about CityScopeJS Websockets.",
+  "slug": "/category/cityscopejs",
+  "permalink": "/docs/category/cityscopejs",
+  "navigation": {
+    "previous": {
+      "title": "API",
+      "permalink": "/docs/cityio/API"
+    },
+    "next": {
+      "title": "Introduction",
+      "permalink": "/docs/cityscopejs/Introduction"
+    }
+  }
+}

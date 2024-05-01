@@ -1,0 +1,26 @@
+{
+  "id": "Archive/Brix/Examples/Examples",
+  "title": "Examples",
+  "description": "Short examples",
+  "source": "@site/docs/Archive/Brix/Examples/Examples.md",
+  "sourceDirName": "Archive/Brix/Examples",
+  "slug": "/Archive/Brix/Examples/",
+  "permalink": "/Archive/Brix/Examples/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/Archive/Brix/Examples/Examples.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "Examples"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "[Archive] The brix library",
+    "permalink": "/Archive/Brix/"
+  },
+  "next": {
+    "title": "GAMA",
+    "permalink": "/Archive/Brix/GAMA"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "cityio/Introduction",
+  "title": "Introduction",
+  "description": "The purpose of this section is to outline the architecture and interfaces of CityIOWS, an updated version of CityIO that utilizes WebSockets for communication with modules and user interfaces.",
+  "source": "@site/docs/cityio/Introduction.md",
+  "sourceDirName": "cityio",
+  "slug": "/cityio/Introduction",
+  "permalink": "/cityio/Introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/docs/cityio/Introduction.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "CityIO",
+    "permalink": "/category/cityio"
+  },
+  "next": {
+    "title": "Architecture",
+    "permalink": "/cityio/Architecture"
+  }
+}

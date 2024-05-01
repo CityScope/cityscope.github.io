@@ -1,0 +1,26 @@
+{
+  "id": "Archive/Internal_Note",
+  "title": "Internal_Note",
+  "description": "this section is for internal maintenance only.",
+  "source": "@site/docs/Archive/Internal_Note.md",
+  "sourceDirName": "Archive",
+  "slug": "/Archive/Internal_Note",
+  "permalink": "/Archive/Internal_Note",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/Archive/Internal_Note.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "Internal_Note"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "What is CityIO?",
+    "permalink": "/Archive/CityIO"
+  },
+  "next": {
+    "title": "CityScoPy",
+    "permalink": "/UI/CityScoPy"
+  }
+}

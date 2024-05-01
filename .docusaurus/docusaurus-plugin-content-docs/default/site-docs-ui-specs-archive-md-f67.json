@@ -1,0 +1,26 @@
+{
+  "id": "UI/Specs",
+  "title": "Specs",
+  "description": "CityScope Hardware",
+  "source": "@site/docs/UI/specs_archive.md",
+  "sourceDirName": "UI",
+  "slug": "/UI/Specs",
+  "permalink": "/UI/Specs",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/UI/specs_archive.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "Specs"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "RoboScope",
+    "permalink": "/UI/RoboScope"
+  },
+  "next": {
+    "title": "CityScope Ecosystem",
+    "permalink": "/general/CityScope Ecosystem"
+  }
+}

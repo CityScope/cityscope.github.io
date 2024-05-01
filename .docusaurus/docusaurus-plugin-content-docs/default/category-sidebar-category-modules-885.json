@@ -1,0 +1,16 @@
+{
+  "title": "Modules",
+  "description": "CityScope Modules",
+  "slug": "/category/modules",
+  "permalink": "/category/modules",
+  "navigation": {
+    "previous": {
+      "title": "Project view",
+      "permalink": "/cityscopejs/Project view"
+    },
+    "next": {
+      "title": "Brix",
+      "permalink": "/category/brix"
+    }
+  }
+}

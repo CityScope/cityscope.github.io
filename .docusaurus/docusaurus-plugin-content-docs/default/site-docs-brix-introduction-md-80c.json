@@ -1,0 +1,27 @@
+{
+  "id": "Brix/Introduction",
+  "title": "Introduction",
+  "description": "This documentation is under construction. The content of the documentation may change without prior notice.",
+  "source": "@site/docs/Brix/Introduction.md",
+  "sourceDirName": "Brix",
+  "slug": "/Brix/Introduction",
+  "permalink": "/Brix/Introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/docs/Brix/Introduction.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Brix",
+    "permalink": "/category/brix"
+  },
+  "next": {
+    "title": "DeckGL Modules",
+    "permalink": "/Brix/DeckGL Modules"
+  }
+}

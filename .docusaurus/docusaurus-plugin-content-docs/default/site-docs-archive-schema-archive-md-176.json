@@ -1,0 +1,26 @@
+{
+  "id": "archive/Schema",
+  "title": "Schema",
+  "description": "CityIO Data Structure Standard version 2.1 [2018]",
+  "source": "@site/docs/archive/schema_archive.md",
+  "sourceDirName": "archive",
+  "slug": "/archive/Schema",
+  "permalink": "/archive/Schema",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/archive/schema_archive.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "Schema"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Build",
+    "permalink": "/backend/Build"
+  },
+  "next": {
+    "title": "Specs",
+    "permalink": "/archive/Specs"
+  }
+}

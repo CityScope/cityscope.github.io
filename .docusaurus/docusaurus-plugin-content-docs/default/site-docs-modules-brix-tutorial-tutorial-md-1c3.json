@@ -1,0 +1,26 @@
+{
+  "id": "modules/Brix/Tutorial/Tutorial",
+  "title": "Tutorials",
+  "description": "This module also contains a set of other useful functions that integrate with brix.Handler and brix.Indicator.",
+  "source": "@site/docs/modules/Brix/Tutorial/Tutorial.md",
+  "sourceDirName": "modules/Brix/Tutorial",
+  "slug": "/modules/Brix/Tutorial/",
+  "permalink": "/modules/Brix/Tutorial/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/modules/Brix/Tutorial/Tutorial.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "Tutorial"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "GAMA",
+    "permalink": "/modules/Brix/GAMA"
+  },
+  "next": {
+    "title": "Types System",
+    "permalink": "/modules/Types System"
+  }
+}

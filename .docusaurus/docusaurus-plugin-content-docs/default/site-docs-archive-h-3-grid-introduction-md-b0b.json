@@ -1,0 +1,27 @@
+{
+  "id": "Archive/H3 Grid/Introduction",
+  "title": "Introduction",
+  "description": "This documentation is under construction. The content of the documentation may change without prior notice.",
+  "source": "@site/docs/Archive/H3 Grid/Introduction.md",
+  "sourceDirName": "Archive/H3 Grid",
+  "slug": "/Archive/H3 Grid/Introduction",
+  "permalink": "/Archive/H3 Grid/Introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/Archive/H3 Grid/Introduction.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "H3 Grid",
+    "permalink": "/category/h3-grid"
+  },
+  "next": {
+    "title": "[Archive] The brix library",
+    "permalink": "/Archive/Brix/"
+  }
+}

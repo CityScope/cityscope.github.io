@@ -1,0 +1,26 @@
+{
+  "id": "Archive/cityio_old/CityIO",
+  "title": "What is CityIO?",
+  "description": "- data-hub (dump?) to have several clients work together",
+  "source": "@site/docs/Archive/cityio_old/CityIO.md",
+  "sourceDirName": "Archive/cityio_old",
+  "slug": "/Archive/cityio_old/CityIO",
+  "permalink": "/Archive/cityio_old/CityIO",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/Archive/cityio_old/CityIO.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "CityIO"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Build",
+    "permalink": "/Archive/cityio_old/Build"
+  },
+  "next": {
+    "title": "Internal_Note",
+    "permalink": "/Archive/cityio_old/Internal_Note"
+  }
+}

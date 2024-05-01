@@ -1,0 +1,44 @@
+# Description: Workflow that updates markdown files by fetching them from other repositories. It runs every day at midnight automatically, or it can be triggered manually or by setting up a dispatch action in the lower level repo.
+# Author: Cristian Jara-Figueroa, Phd Student MIT Media Lab
+# Last updated: November 30, 2020
+name: Update documentation from downstream repos
+
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+  workflow_dispatch:
+  repository_dispatch:
+    types: [docs_update]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      # SYNTAX TO ADD REPOS
+      # - name: Update REPO_NAME
+        # run: bash .github/scripts/update.sh -o REPO_NAME_OWNER -r REPO_NAME (-d DESTINATION_PATH) (-s SOURCE_FILE_PATH) (-l REPO_LABEL)
+      - name: Update CS_Brix
+        run: bash .github/scripts/update.sh -o CityScope -r CS_Brix -d docsite/docs/modules/Brix -s docs-pages/docs/markdown/index.md -l Brix
+      - name: Update CS_Brix (tutorial)
+        run: bash .github/scripts/update.sh -o CityScope -r CS_Brix -d docsite/docs/modules/Brix/Tutorial -s docs-pages/docs/markdown/tutorial.md -l Tutorial
+      - name: Update CS_Brix (classes)
+        run: bash .github/scripts/update.sh -o CityScope -r CS_Brix -d docsite/docs/modules/Brix/Classes -s docs-pages/docs/markdown/classes.md -l Classes
+      - name: Update CS_Brix (examples)
+        run: bash .github/scripts/update.sh -o CityScope -r CS_Brix -d docsite/docs/modules/Brix/Examples -s docs-pages/docs/markdown/examples.md -l Examples
+      - name: Update CS_GAMABrix
+        run: bash .github/scripts/update.sh -o CityScope -r CS_Simulation_GAMA -d docsite/docs/modules -s master/CS_CityScope_GAMA/models/cityIO/README.md -l GAMA
+      - name: Update CS_CityIO
+        run: bash .github/scripts/update.sh -o CityScope -r CS_CityIO -d docsite/docs/backend -s master/docs/cityio_documentation.md
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          author_name: crisjf
+          author_email: crisjf@mit.edu
+          message: "Auto documentation update from Actions"
+          add: "."
+          ref: 'new_docsite'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

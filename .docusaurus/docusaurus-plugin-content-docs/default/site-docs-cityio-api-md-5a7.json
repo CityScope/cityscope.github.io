@@ -1,0 +1,27 @@
+{
+  "id": "cityio/API",
+  "title": "API",
+  "description": "The CityIO HTTP API enables users to access and update information regarding the projects (grids).",
+  "source": "@site/docs/cityio/API.md",
+  "sourceDirName": "cityio",
+  "slug": "/cityio/API",
+  "permalink": "/cityio/API",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/docs/cityio/API.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "CityIO - Core",
+    "permalink": "/cityio/CityIO - Core"
+  },
+  "next": {
+    "title": "Tangible User Interfaces",
+    "permalink": "/category/tangible-user-interfaces"
+  }
+}

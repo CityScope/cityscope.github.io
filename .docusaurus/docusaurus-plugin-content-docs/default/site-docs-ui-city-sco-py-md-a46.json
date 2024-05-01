@@ -1,0 +1,26 @@
+{
+  "id": "UI/CityScoPy",
+  "title": "CityScoPy",
+  "description": "Download latest release",
+  "source": "@site/docs/UI/CityScoPy.md",
+  "sourceDirName": "UI",
+  "slug": "/UI/CityScoPy",
+  "permalink": "/UI/CityScoPy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/UI/CityScoPy.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "CityScoPy"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Internal_Note",
+    "permalink": "/Archive/cityio_old/Internal_Note"
+  },
+  "next": {
+    "title": "RoboScope",
+    "permalink": "/UI/RoboScope"
+  }
+}

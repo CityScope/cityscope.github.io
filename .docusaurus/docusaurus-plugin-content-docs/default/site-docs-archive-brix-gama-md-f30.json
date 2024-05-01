@@ -1,0 +1,26 @@
+{
+  "id": "archive/brix/GAMA",
+  "title": "GAMA",
+  "description": "Agent-Based Model developped in the CityScience group using Gama Platform and integrated in CityScope",
+  "source": "@site/docs/archive/brix/GAMA.md",
+  "sourceDirName": "archive/brix",
+  "slug": "/archive/brix/GAMA",
+  "permalink": "/archive/brix/GAMA",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/docs/archive/brix/GAMA.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "GAMA"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Examples",
+    "permalink": "/archive/brix/Examples/"
+  },
+  "next": {
+    "title": "Tutorials",
+    "permalink": "/archive/brix/Tutorial/"
+  }
+}

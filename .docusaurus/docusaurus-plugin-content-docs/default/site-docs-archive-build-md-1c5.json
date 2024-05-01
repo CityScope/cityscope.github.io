@@ -1,0 +1,26 @@
+{
+  "id": "Archive/Build",
+  "title": "Build",
+  "description": "From version 3, the Dockerfile inside the repository can be used for",
+  "source": "@site/docs/Archive/Build.md",
+  "sourceDirName": "Archive",
+  "slug": "/Archive/Build",
+  "permalink": "/Archive/Build",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/Archive/Build.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "Build"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "API",
+    "permalink": "/Archive/API"
+  },
+  "next": {
+    "title": "What is CityIO?",
+    "permalink": "/Archive/CityIO"
+  }
+}

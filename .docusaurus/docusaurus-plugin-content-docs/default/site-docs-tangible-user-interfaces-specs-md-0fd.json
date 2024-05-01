@@ -1,0 +1,26 @@
+{
+  "id": "Tangible User Interfaces/CityScope Table Design",
+  "title": "CityScope Table Design",
+  "description": "CityScope Hardware",
+  "source": "@site/docs/Tangible User Interfaces/specs.md",
+  "sourceDirName": "Tangible User Interfaces",
+  "slug": "/Tangible User Interfaces/CityScope Table Design",
+  "permalink": "/Tangible User Interfaces/CityScope Table Design",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/docs/Tangible User Interfaces/specs.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "CityScope Table Design"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "RoboScope",
+    "permalink": "/Tangible User Interfaces/RoboScope"
+  },
+  "next": {
+    "title": "Types System",
+    "permalink": "/modules/Types System"
+  }
+}

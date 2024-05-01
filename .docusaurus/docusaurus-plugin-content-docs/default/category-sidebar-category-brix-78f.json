@@ -1,0 +1,16 @@
+{
+  "title": "Brix",
+  "description": "All you need to know about Brix Websockets.",
+  "slug": "/category/brix",
+  "permalink": "/category/brix",
+  "navigation": {
+    "previous": {
+      "title": "Modules",
+      "permalink": "/category/modules"
+    },
+    "next": {
+      "title": "Introduction",
+      "permalink": "/modules/brix/Introduction"
+    }
+  }
+}

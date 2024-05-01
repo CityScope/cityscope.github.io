@@ -1,0 +1,24 @@
+{
+  "id": "CityScope",
+  "title": "CityScope",
+  "description": "CityScope in Andorra. Photo: Ariel Noyman",
+  "source": "@site/docs/CityScope.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/docs/CityScope.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "slug": "/",
+    "sidebar_position": 1
+  },
+  "sidebar": "sidebar",
+  "next": {
+    "title": "CityScopeJS",
+    "permalink": "/category/cityscopejs"
+  }
+}

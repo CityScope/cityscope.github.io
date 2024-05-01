@@ -1,0 +1,27 @@
+{
+  "id": "CityIO/CityIO - Module",
+  "title": "CityIO - Module",
+  "description": "The aim of this interface is to enable user modules to access information about the grids created in CityIO, calculate Key Performance Indicators (KPIs), and then transmit them to the user interfaces.",
+  "source": "@site/docs/CityIO/CityIO - Module.md",
+  "sourceDirName": "CityIO",
+  "slug": "/CityIO/CityIO - Module",
+  "permalink": "/CityIO/CityIO - Module",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/CityIO/CityIO - Module.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "CityIO - UI",
+    "permalink": "/CityIO/CityIO - UI"
+  },
+  "next": {
+    "title": "CityIO - Core",
+    "permalink": "/CityIO/CityIO - Core"
+  }
+}

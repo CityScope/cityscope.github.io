@@ -1,0 +1,26 @@
+{
+  "id": "archive/Specs",
+  "title": "Specs",
+  "description": "CityScope Hardware",
+  "source": "@site/docs/archive/specs_archive.md",
+  "sourceDirName": "archive",
+  "slug": "/archive/Specs",
+  "permalink": "/archive/Specs",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/blob/new_docsite/docsite/docs/archive/specs_archive.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "Specs"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Schema",
+    "permalink": "/archive/Schema"
+  },
+  "next": {
+    "title": "Past CityScope Projects",
+    "permalink": "/archive/Past CityScope Projects"
+  }
+}

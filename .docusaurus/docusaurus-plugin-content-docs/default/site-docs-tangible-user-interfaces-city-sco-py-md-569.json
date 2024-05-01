@@ -1,0 +1,26 @@
+{
+  "id": "Tangible User Interfaces/CityScoPy",
+  "title": "CityScoPy",
+  "description": "Download latest release",
+  "source": "@site/docs/Tangible User Interfaces/CityScoPy.md",
+  "sourceDirName": "Tangible User Interfaces",
+  "slug": "/Tangible User Interfaces/CityScoPy",
+  "permalink": "/Tangible User Interfaces/CityScoPy",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/CityScope/cityscope.github.io/docs/Tangible User Interfaces/CityScoPy.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "CityScoPy"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "CityScope",
+    "permalink": "/"
+  },
+  "next": {
+    "title": "RoboScope",
+    "permalink": "/Tangible User Interfaces/RoboScope"
+  }
+}

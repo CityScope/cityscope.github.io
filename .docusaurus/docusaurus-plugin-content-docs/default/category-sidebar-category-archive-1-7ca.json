@@ -1,0 +1,16 @@
+{
+  "title": "Archive",
+  "description": "All you need to know about CityScopeJS Websockets.",
+  "slug": "/category/archive-1",
+  "permalink": "/category/archive-1",
+  "navigation": {
+    "previous": {
+      "title": "API",
+      "permalink": "/cityio/API"
+    },
+    "next": {
+      "title": "[Archive] H3 Grid",
+      "permalink": "/archive/h3/"
+    }
+  }
+}
