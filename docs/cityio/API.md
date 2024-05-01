@@ -4,11 +4,6 @@ sidebar_position: 6
 
 The CityIO HTTP API enables users to access and update information regarding the projects (grids).
 
-:::warning[Warning]
-
-This section is currently under review, and the endpoints may be subject to change in the upcoming weeks.
-
-:::
 
 ## Endpoints
 

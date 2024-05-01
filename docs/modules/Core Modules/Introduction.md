@@ -6,6 +6,5 @@ sidebar_position: 1
 
 :::warning[Warning]
 
-This documentation is under construction. The content of the documentation may change without prior notice.
-
+This documentation is under construction.
 :::

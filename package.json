@@ -6,7 +6,8 @@
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
-    "serve": "docusaurus serve"
+    "serve": "docusaurus serve",
+    "gh": "USE_SSH=true npm run deploy"
   },
   "browserslist": {
     "production": [

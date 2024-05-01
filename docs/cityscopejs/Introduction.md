@@ -2,12 +2,6 @@
 sidebar_position: 1
 ---
 
-:::warning[Warning]
-
-This documentation is under construction. The content of the documentation may change without prior notice.
-
-:::
-
 ## CityScope platform for the web
 
 CityScopeJS is the unified front-end for the [MIT CityScope](https://cityscope.media.mit.edu/) project. CityScopeJS allows users to examine different urban-design alternatives and observe their impact through different KPIs and matrices. CityScopeJS brings together different urban analytics modules, such as traffic simulation, ABM, noise, storm-water, access.
