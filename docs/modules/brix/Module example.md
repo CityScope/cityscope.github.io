@@ -6,7 +6,15 @@ In this section, we present how to code an example DeckGL module on Brix WS that
 
 Currently, Brix WS is not published as a Python library available through pip. Consequently, the first step would be to download the code from GitHub.
 
-## Basic structure of a module
+## MicroBrix
+
+It's available through Google colab a notebook with the necessary code to connect to CityIO and send module data to CityScopeJS:
+
+https://colab.research.google.com/drive/1Ulle6CbXMxDUJnQVmsQ6-0yWwgl8Egb3?usp=sharing
+
+## BrixWS
+
+### Basic structure of a module
 
 The basic structure of any module will be as follows:
 
@@ -34,7 +42,7 @@ Data loading actions should go in the `load_module` function
 
 `return_indicator` will be the main function of any module, in this one, you can read the data of the grid realted to the project, executed the necessary calculations to obtain the module output, and return it in a proper structure to be sent back to CityIO.
 
-## DeckGL Modules: adding layers
+### DeckGL Modules: adding layers
 
 In order to generate a DeckGL module, we need to send back to CityIO all the layers that will compose the visualization in CityScopeJS. In this example, we use different types of layers to generate a random indicator: heatmaps, columns, arc, and geojson.
 
@@ -95,7 +103,7 @@ The straightforward solution is, for each layer, calculate the necessary data, a
 
 It is important to note that this method could be follow with any set of the available layers.
 
-## Connecting with CityIO
+### Connecting with CityIO
 
 Connecting a module to a CityScope project will only require  to create a Handler, indicating the name of the table that you want to connect to. Then, add the indicator (module) previously defined to the handler, and start it.
 
